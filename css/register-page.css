@@ -11,7 +11,6 @@ body {
   padding: 0;
 }
 
-
 #main-container {
   width: 100%;
   height: 100%;
@@ -20,23 +19,81 @@ body {
   grid-template-columns: 1fr 3fr;
 }
 
-#login-container {
+#presentation-container {
+  width: 100%;
+  height: 100%;
+
+  background: var(--main-background-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#back-to-home-page-link-container {
+  width: 100%;
+}
+
+#back-to-home-page-link {
+  color: var(--secondary-title-color);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: none;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+#back-to-home-page-icon {
+  margin-right: 10px;
+  max-height: 43px;
+  max-width: 37px;
+}
+
+#brand-title {
+  color: var(--brand-title-color);
+  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#register-game-image-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#register-game-image-container > img {
+  width: 70%;
+  height: 70%;
+}
+
+#register-container {
   width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
-#login-container-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#login-title {
+#register-title {
   color: #000;
 
   font-family: League Spartan, sans-serif;
@@ -47,11 +104,11 @@ body {
   line-height: normal;
 }
 
-#login-form-container {
-  width: 70%;
+#register-form-container {
+  width: 50%;
 }
 
-#login-form {
+#register-form {
   width: 100%;
   height: 100%;
 
@@ -60,7 +117,7 @@ body {
   align-items: center;
 }
 
-#login-form > input {
+#register-form > input {
   width: 100%;
 
   color: var(--form-input-text-color);
@@ -78,10 +135,10 @@ body {
   margin-bottom: 20px;
 }
 
-#login-button {
+#register-button {
   display: flex;
-  align-items: end;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
 
   background: var(--main-background-color);
   box-shadow: 0 4px var(--button-shadow-color);
@@ -89,21 +146,21 @@ body {
   border: var(--main-background-color);
   border-radius: 20px;
 
-  width: 100%;
+  width: 50%;
   height: 100%;
 
-  padding: 5px;
+  padding-top: 5px;
   margin-top: 30px;
 
   cursor: pointer;
 }
 
-#login-button:hover {
+#register-button:hover {
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
 
-#login-button-text {
+#register-button-text {
   color: var(--secondary-title-color);
 
   text-align: center;
@@ -112,47 +169,4 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-
-#login-button-play-icon {
-  width: 52px;
-  height: 52px;
-}
-
-#register-account-link {
-  color: var(--main-title-color);
-
-  font-family: League Spartan, sans-serif;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  text-decoration-line: underline;
-
-  margin-bottom: 140px;
-}
-
-#presentation-container {
-  width: 100%;
-  height: 100%;
-
-  background: var(--main-background-color);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#brand-title {
-  color: var(--brand-title-color);
-  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
-
-  font-family: League Spartan, sans-serif;
-  font-size: 96px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  margin-top: 45px;
 }

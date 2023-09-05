@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro - Mirror Tetris</title>
+  <link rel="icon" type="image/x-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/register-page.css">
+</head>
+<body>
+<main id="main-container">
+  <aside id="presentation-container">
+    <div id="back-to-home-page-link-container">
+    <a id="back-to-home-page-link" href="./index.html">
+      <img id="back-to-home-page-icon" src="/images/icons/left-arrow-icon.png" alt="Ícone para voltar">
+      <span id="back-to-home-page-text">VOLTAR</span>
+    </a>
+    </div>
+
+    <h1 id="brand-title">TETRIS</h1>
+    <figure id="register-game-image-container">
+      <img src="/images/game-image.png" alt="Imagem representando uma partida do jogo de Mirror Tetris">
+    </figure>
+  </aside>
+
+  <div id="register-container">
+    <div id="register-title-container">
+      <h1 id="register-title">Realizar Cadastro</h1>
+    </div>
+
+    <div id="register-form-container">
+      <form id="register-form">
+        <label for="full-name-input"></label>
+        <input id="full-name-input" type="text" placeholder="Nome Completo" required>
+
+        <label for="birth-date-input"></label>
+        <input id="birth-date-input" type="text" placeholder="Data de nascimento" required>
+
+        <label for="cpf-input"></label>
+        <input id="cpf-input" type="text" placeholder="CPF" required>
+
+        <label for="telephone-input"></label>
+        <input id="telephone-input" type="tel" placeholder="Telefone" required>
+
+        <label for="email-input"></label>
+        <input id="email-input" type="email" placeholder="Email" required>
+
+        <label for="username-input"></label>
+        <input id="username-input" type="text" placeholder="Nome de usuário" required>
+
+        <label for="password-input"></label>
+        <input id="password-input" type="password" placeholder="Senha" required>
+
+        <button id="register-button"> <!--TODO should be a input submit?-->
+          <span id="register-button-text">CADASTRAR</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
