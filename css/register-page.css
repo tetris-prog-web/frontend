@@ -1,12 +1,172 @@
 html {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+#presentation-container {
+  width: 100%;
+  height: 100%;
+
+  background: var(--main-background-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#back-to-home-page-link-container {
+  width: 100%;
+}
+
+#back-to-home-page-link {
+  color: var(--secondary-title-color);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: none;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+#back-to-home-page-icon {
+  margin-right: 10px;
+  max-height: 43px;
+  max-width: 37px;
+}
+
+#brand-title {
+  color: var(--brand-title-color);
+  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#register-game-image-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#register-game-image-container > img {
+  width: 70%;
+  height: 70%;
+}
+
+#register-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#register-title {
+  color: #000;
+
+  font-family: League Spartan, sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+
+  line-height: normal;
+}
+
+#register-form-container {
+  width: 50%;
+}
+
+#register-form {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#register-form > input {
+  width: 100%;
+
+  color: var(--form-input-text-color);
+  font-family: League Spartan, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  border: var(--form-input-background-color);
+  border-radius: 10px;
+  background: var(--form-input-background-color);
+
+  padding: 20px 10px 20px 10px;
+  margin-bottom: 20px;
+}
+
+#register-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--main-background-color);
+  box-shadow: 0 4px var(--button-shadow-color);
+
+  border: var(--main-background-color);
+  border-radius: 20px;
+
+  width: 50%;
+  height: 100%;
+
+  padding-top: 5px;
+  margin-top: 30px;
+
+  cursor: pointer;
+}
+
+#register-button:hover {
+  box-shadow: 0 2px var(--button-shadow-color);
+  transform: translateY(2px);
+}
+
+#register-button-text {
+  color: var(--secondary-title-color);
+
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

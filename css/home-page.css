@@ -47,6 +47,10 @@ body {
   line-height: normal;
 }
 
+#login-form-container {
+  width: 70%;
+}
+
 #login-form {
   width: 100%;
   height: 100%;
@@ -57,7 +61,7 @@ body {
 }
 
 #login-form > input {
-  width: calc(100% + 20px);
+  width: 100%;
 
   color: var(--form-input-text-color);
   font-family: League Spartan, sans-serif;
