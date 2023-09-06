@@ -9,4 +9,6 @@
     --form-input-text-color: #A6A6A6;
     --form-input-background-color: rgba(166, 166, 166, 0.15);
     --button-shadow-color: rgba(0, 0, 0, 0.5);
+    --default-player-ranking: rgba(69, 78, 74, 0.637);
+    --current-player-ranking: rgba(209, 14, 14);
 }
