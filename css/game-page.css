@@ -1,0 +1,131 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/*#menu {*/
+/*    font-size: 5rem;*/
+/*}*/
+
+#game-navbar {
+  background-color: var(--main-background-color);
+  color: var(--brand-title-color);
+
+  height: 10%;
+  font-size: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#brand-title {
+  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+  font-family: League Spartan, sans-serif;
+  font-size: 5rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+#game-screen {
+  height: 90%;
+  background-image: url("/images/game-screen-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 50px;
+}
+
+#game-section {
+  background-color: #000000b6;
+  height: 100%;
+  width: 60%;
+}
+
+#game-information {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#game-information section {
+  background-color: #000000b6;
+  border-radius: 5%;
+  width: 50%;
+  margin: 1%;
+}
+
+#next-piece-container {
+  height: 40%;
+}
+
+#player-ranking-container {
+  height: 60%;
+
+  padding: 20px 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  font-family: League Spartan, sans-serif;
+  color: #FFF;
+}
+
+#current-score {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 3.5rem;
+}
+
+#player-ranking-list {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.player-position {
+  width: 80%;
+  height: 15%;
+
+margin: 10px 0;
+  padding-left: 10px;
+
+  border-radius: 10px;
+
+  background-color: var(--default-player-ranking);
+  font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+}
+
+#current-player-position {
+  background-color: var(--current-player-ranking);
+}
