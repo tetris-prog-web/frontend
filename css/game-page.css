@@ -19,10 +19,6 @@ body {
   flex-direction: column;
 }
 
-/*#menu {*/
-/*    font-size: 5rem;*/
-/*}*/
-
 #game-navbar {
   background-color: var(--main-background-color);
   color: var(--brand-title-color);
@@ -114,13 +110,13 @@ body {
   width: 80%;
   height: 15%;
 
-margin: 10px 0;
+  margin: 10px 0;
   padding-left: 10px;
 
-  border-radius: 10px;
-
+  border-radius: 15px;
   background-color: var(--default-player-ranking);
   font-size: 1.8rem;
+  font-weight: 500;
 
   display: flex;
   align-items: center;
