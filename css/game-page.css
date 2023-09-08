@@ -54,6 +54,12 @@ body {
   background-color: #000000b6;
   height: 100%;
   width: 60%;
+
+  display: flex;
+  justify-content: end;
+  align-items: end;
+
+  padding: 0 5px 5px 0;
 }
 
 #game-information {
@@ -65,35 +71,41 @@ body {
   flex-direction: column;
 }
 
-#game-information section {
+.data-container {
   background-color: #000000b6;
   border-radius: 5%;
   width: 50%;
   margin: 1%;
 }
 
-#next-piece-container {
+#first-data-container {
   height: 40%;
-  
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-#current-game-time{
-  text-align:center ;
-  font-family : League Spartan, sans-serif;
+#current-game-time {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
   font-size: 2rem;
   color: #FFF;
-
 }
 
-#lines-eliminated{
-  text-align:center ;
-  font-family : League Spartan, sans-serif;
+#next-piece {
+  width: 100%;
+}
+
+#lines-eliminated {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
   font-size: 1.5rem;
   color: #FFF;
-  
 }
 
-#player-ranking-container {
+#second-data-container {
   height: 60%;
   padding: 20px 0;
   display: flex;
@@ -112,9 +124,9 @@ body {
 }
 
 
-#current-game-difficulty{
+#current-game-difficulty {
   font-weight: bold;
-  font-weight :  League Spartan, sans-serif;
+  font-family: League Spartan, sans-serif;
   font-size: 1.2rem;
 }
 
