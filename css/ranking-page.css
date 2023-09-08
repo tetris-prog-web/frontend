@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: League Spartan, sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+#game-navbar {
+  background-color: var(--main-background-color);
+  color: var(--brand-title-color);
+
+  height: 10%;
+  font-size: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#brand-title {
+  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+  font-family: League Spartan, sans-serif;
+  font-size: 5rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+#ranking-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 90%;
+
+  background-image: url('../images/firewatch-night.png');
+  background-size: cover;
+  background-position: center;
+}
+
+#ranking-back {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 70%;
+  height: 80%;
+
+  background: rgba(0, 0, 0, 0.70);
+}
+
+#ranking-back h1 {
+  flex-shrink: 0;
+
+  color: var(--secondary-title-color);
+  font-family: League Spartan, sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#ranking-table-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ranking-table-header > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-shrink: 0;
+
+  width: 80%;
+}
+
+#ranking-back h3 {
+  color: var(--secondary-title-color);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#ranking-lines-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-shrink: 0;
+
+  width: 80%;
+  height: 70%;
+}
+
+#ranking-lines-box > div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  color: var(--secondary-title-color);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  width: 100%;
+  height: 80%;
+}
+
+.ranking-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-shrink: 0;
+
+  width: 100%;
+  height: 20%;
+  min-height: 36px;
+
+  border-radius: 20px;
+  background: rgba(69, 78, 74, 0.40);
+}
+
+.position-indicator {
+  min-width: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+
+}
+
+#your-max-score {
+  color: #18FF22;
+}
