@@ -74,13 +74,28 @@ body {
 
 #next-piece-container {
   height: 40%;
+  
+}
+
+#current-game-time{
+  text-align:center ;
+  font-family : League Spartan, sans-serif;
+  font-size: 2rem;
+  color: #FFF;
+
+}
+
+#lines-eliminated{
+  text-align:center ;
+  font-family : League Spartan, sans-serif;
+  font-size: 1.5rem;
+  color: #FFF;
+  
 }
 
 #player-ranking-container {
   height: 60%;
-
   padding: 20px 0;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -94,6 +109,13 @@ body {
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 3.5rem;
+}
+
+
+#current-game-difficulty{
+  font-weight: bold;
+  font-weight :  League Spartan, sans-serif;
+  font-size: 1.2rem;
 }
 
 #player-ranking-list {
