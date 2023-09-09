@@ -159,3 +159,11 @@ body {
 #current-player-position {
   background-color: var(--current-player-ranking);
 }
+
+#game-mode {
+  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+  font-family: League Spartan, sans-serif;
+  font-size: 1rem;
+  text-align: justify;
+  position: relative;
+}
