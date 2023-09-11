@@ -47,24 +47,29 @@ body {
   display: flex;
   justify-content: space-between;
   align-content: center;
-  padding: 50px;
+}
+
+#game-section-container {
+  width: 60%;
+  margin: 1%;
+  display: flex;
+  justify-content: center;
 }
 
 #game-section {
   background-color: #000000b6;
   height: 100%;
-  width: 60%;
-
-  display: flex;
-  justify-content: end;
-  align-items: end;
-
-  padding: 0 5px 5px 0;
+  width: 37%;
+  background-image: url("/images/gameblocks.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
 }
 
 #game-information {
   height: 100%;
   width: 40%;
+
   display: flex;
   justify-content: center;
   align-items: center;
