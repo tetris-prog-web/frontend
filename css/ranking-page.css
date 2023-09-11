@@ -163,3 +163,28 @@ body {
 #your-max-score {
   color: #18FF22;
 }
+
+@media screen and (max-width: 1065px) {
+  
+  #ranking-container{
+    height: 90%;
+    width: 100%;
+  }
+
+  #ranking-back {
+    width: 90%;
+    
+  }
+
+  #ranking-back h1{
+    font-size: 45px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  #ranking-back h3{
+    font-size: 1.4rem;
+    font-family: 500;
+    justify-content: space-evenly;
+  }
+}
