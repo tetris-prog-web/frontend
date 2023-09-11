@@ -154,5 +154,10 @@ body {
   font-weight: 700;
   line-height: normal;
 
-  margin-top: 45px;
+  margin-top: 20px;
 }
+
+#home-page-game-image-container{
+  margin-top: 0px;
+}
+
