@@ -145,19 +145,6 @@ body {
   align-items: center;
 }
 
-#brand-title {
-  color: var(--brand-title-color);
-  text-shadow: 0 7px 5px var(--default-text-shadow-color);
-
-  font-family: League Spartan, sans-serif;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  margin-top: 20px;
-}
-
 #home-page-game-image-container {
   margin-top: 0;
 }

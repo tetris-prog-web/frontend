@@ -16,7 +16,8 @@
     --default-text-shadow-color: rgba(221, 221, 221, 0.40);
 }
 
-#brand-title {
+.brand-title {
+    color: var(--brand-title-color);
     text-shadow: 0 7px 5px var(--default-text-shadow-color);
     font-family: League Spartan, sans-serif;
     font-size: 5rem;

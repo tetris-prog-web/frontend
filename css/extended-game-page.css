@@ -35,14 +35,6 @@ body {
   color: var(--brand-title-color);
 }
 
-#brand-title {
-  text-shadow: 0 7px 5px var(--default-text-shadow-color);
-  font-family: League Spartan, sans-serif;
-  font-size: 5rem;
-  font-style: normal;
-  line-height: normal;
-}
-
 #game-screen {
   height: 90%;
   background-image: url("/images/game-screen-background.jpg");

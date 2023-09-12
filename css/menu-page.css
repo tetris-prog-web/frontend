@@ -26,15 +26,6 @@ body{
     text-decoration: none;
     color: var(--brand-title-color);
 }
-
-#brand-title {
-    text-shadow: 0 7px 5px var(--default-text-shadow-color);
-    font-family: League Spartan, sans-serif;
-    font-size: 60px;
-    
-    padding-left: 30%;
-}
-
   
 #name {
     display: flex;
