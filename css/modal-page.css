@@ -12,9 +12,6 @@
     align-items: center;
     height: 100vh;
     position: relative;
-    background-image: url('../images/fundo-screen.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 #modal {
