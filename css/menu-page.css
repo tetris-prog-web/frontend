@@ -87,20 +87,15 @@ body{
   transform: translateY(2px);
 }
 
-@media screen and (max-width: 1065px) {
+@media screen and (max-width: 965px) {
     #options a {
         width: 100%; 
     }
 
     #name {
-        text-align: left; 
-        margin: 30px;
-    }
-
-    #name h3 {
-       
-        width: 100%;
         text-align: center; 
+        margin: 10px;
+        width: 100%;
     }
 }
 
