@@ -180,7 +180,7 @@ body {
 
   #presentation-container {
     display: flex;
-    height: 103%;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -190,5 +190,4 @@ body {
     justify-content: center;
     align-items: center;
   }
-
 }
