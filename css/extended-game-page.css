@@ -104,8 +104,22 @@ body {
   color: #FFF;
 }
 
+#current-score {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 3.5rem;
+  color: #FFF;
+}
+
+#current-game-difficulty {
+  font-weight: bold;
+  font-family: League Spartan, sans-serif;
+  font-size: 1.2rem;
+  color: #FFF;
+}
+
 #next-piece {
-  width: 100%;
+  width: 80%;
 }
 
 #lines-eliminated {
