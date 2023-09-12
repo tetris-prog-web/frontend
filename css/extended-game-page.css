@@ -21,7 +21,6 @@ body {
 
 #game-navbar {
   background-color: var(--main-background-color);
-  color: var(--brand-title-color);
 
   height: 10%;
   font-size: 4rem;
@@ -29,6 +28,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#game-navbar a{
+  text-decoration: none;
+  color: var(--brand-title-color);
 }
 
 #brand-title {
