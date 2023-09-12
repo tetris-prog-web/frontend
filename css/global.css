@@ -29,6 +29,11 @@ body {
   padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+  font-family: League Spartan, sans-serif;
+}
+
 .brand-title {
   color: var(--brand-title-color);
   text-shadow: 0 7px 5px var(--default-text-shadow-color);

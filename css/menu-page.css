@@ -1,95 +1,72 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: League Spartan, sans-serif;
+#game-navbar {
+  background-color: var(--main-background-color);
+  color: var(--brand-title-color);
+
+  height: 10%;
+  font-size: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-body{
-  height: 100%;
-  width: 100%;
+#game-navbar a {
+  text-decoration: none;
+  color: var(--brand-title-color);
 }
 
-#conteiner1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 5%;
-    font-size: 60px;
-    
-    background: var(--main-background-color);
-    
-    color: var(--brand-title-color);
-}
-
-#conteiner1 a{
-    text-decoration: none;
-    color: var(--brand-title-color);
-}
-  
 #name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
 
-#name iconify-icon{
-    font-size: 30px;
+#name iconify-icon {
+  font-size: 30px;
 }
 
-#conteiner2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 91.15vh;
-    position: relative;
-    background-image: url('../images/backgrounds/forest-river.png');
-    background-size: cover;
-    background-position: center;
+#options-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 90%;
+  width: 100%;
+
+  background-image: url('../images/backgrounds/forest-river.png');
+  background-size: cover;
+  background-position: center;
 }
 
-
-
-#options{
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
+#options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
- #options a {
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: 10px;
-    padding-top: 5px;
-    color: var(--secondary-title-color);
-    text-decoration: none;
-    text-align: center;
-    font-size: 50px;
-    height: 50px;
-    width: 700px;
-    box-shadow: 0 4px var(--button-shadow-color);
-    border-radius: 20px;
+#options a {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10px;
+  padding-top: 5px;
+  color: var(--secondary-title-color);
+  text-decoration: none;
+  text-align: center;
+  font-size: 50px;
+  height: 50px;
+  width: 700px;
+  box-shadow: 0 4px var(--button-shadow-color);
+  border-radius: 20px;
 }
 
-#options a:hover{
- box-shadow: 0 2px var(--button-shadow-color);
+#options a:hover {
+  box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
 
 @media screen and (max-width: 785px) {
-    #options a {
-        width: 500px; 
-    }
+  #options a {
+    width: 500px;
+  }
 }
-
- 
-
-
-  
-
-  
-  
-
-  
