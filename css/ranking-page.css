@@ -5,7 +5,7 @@
   align-items: center;
 
   width: 100%;
-  height: 80%;
+  height: 90%;
 
   background-image: url('../images/backgrounds/firewatch-night.png');
   background-size: cover;
@@ -17,9 +17,7 @@
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  justify-content: center;
 
   width: 70%;
   height: 90%;
@@ -28,11 +26,9 @@
 }
 
 #ranking-back h1 {
-  flex-shrink: 0;
-
   color: var(--secondary-title-color);
   font-family: League Spartan, sans-serif;
-  font-size: 64px;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -40,6 +36,7 @@
 
 #ranking-table-header {
   width: 100%;
+
   display: grid;
   text-align: center;
   align-items: center;
@@ -73,7 +70,7 @@
   flex-shrink: 0;
 
   width: 80%;
-  height: 90%;
+  height: 80%;
 }
 
 #ranking-lines-box > div {
@@ -91,13 +88,15 @@
 
   width: 100%;
   height: 80%;
+  min-height: 36px;
 }
 
 .ranking-line {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
-  align-items: center;
+  align-content: center;
+  justify-content: center;
 
   width: 100%;
   height: 20%;
@@ -105,17 +104,6 @@
 
   border-radius: 20px;
   background: rgba(69, 78, 74, 0.40);
-}
-
-.ranking-line p {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  text-align: center;
-  justify-self: center;
-  align-self: center;
-
-  width: 33.3%;
 }
 
 .position-indicator {
