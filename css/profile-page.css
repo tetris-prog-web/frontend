@@ -159,3 +159,31 @@
   font-weight: 700;
   line-height: normal;
 }
+
+#top-right-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#logout-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-family: League Spartan, sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#logout-link iconify-icon {
+  margin-left: 4px;
+  margin-bottom: 3px;
+}
+
+#logout-link:hover {
+  background-color: red;
+}

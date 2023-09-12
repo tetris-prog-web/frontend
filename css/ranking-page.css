@@ -1,20 +1,3 @@
-#game-navbar {
-  background-color: var(--main-background-color);
-  color: var(--brand-title-color);
-
-  height: 10%;
-  font-size: 4rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#game-navbar a{
-  text-decoration: none;
-  color: var(--brand-title-color);
-}
-
 #ranking-container {
   display: flex;
   flex-direction: column;
@@ -75,7 +58,6 @@
 
 #ranking-back h3 {
   color: var(--secondary-title-color);
-
   font-family: League Spartan, sans-serif;
   font-size: 2rem;
   font-style: normal;
@@ -128,20 +110,22 @@
 .ranking-line p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
   text-align: center;
   justify-self: center;
   align-self: center;
+
   width: 33.3%;
 }
 
 .position-indicator {
   min-width: 36px;
   max-width: 36px;
+  height: 36px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 36px;
 }
 
 .your-max-score {

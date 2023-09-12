@@ -6,22 +6,6 @@
   flex-direction: column;
 }
 
-#game-navbar {
-  background-color: var(--main-background-color);
-
-  height: 10%;
-  font-size: 4rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#game-navbar a {
-  text-decoration: none;
-  color: var(--brand-title-color);
-}
-
 #game-screen {
   height: 90%;
   background-image: url("/images/backgrounds/fire-watch-day.jpg");
