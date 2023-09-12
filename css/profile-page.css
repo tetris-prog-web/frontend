@@ -64,7 +64,7 @@ body {
   text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
 
   font-family: League Spartan, sans-serif;
-  font-size: 96px;
+  font-size: 60px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -163,7 +163,7 @@ body {
   height: 100%;
 
   padding-top: 5px;
-  margin-top: 30px;
+
 
   cursor: pointer;
 }
@@ -201,6 +201,7 @@ body {
     width: 55%;
     height: 70%;
   }
+
 
 }
 

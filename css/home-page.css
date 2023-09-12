@@ -114,9 +114,11 @@ body {
   line-height: normal;
 }
 
-#login-button-play-icon {
-  width: 52px;
-  height: 52px;
+#login-button iconify-icon
+{
+  text-decoration: none;
+  color: var(--secondary-title-color);
+  font-size: 50px;
 }
 
 #register-account-link {
@@ -149,7 +151,7 @@ body {
   text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
 
   font-family: League Spartan, sans-serif;
-  font-size: 96px;
+  font-size: 60px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -158,7 +160,7 @@ body {
 }
 
 #home-page-game-image-container{
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 
@@ -180,7 +182,7 @@ body {
 
   #presentation-container {
     display: flex;
-    height: 103%;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -189,12 +191,5 @@ body {
   #home-page-game-image-container{
     justify-content: center;
     align-items: center;
-  }
-
-}
-
-@media screen and (max-width: 600px){
-  #home-page-game-image-container{
-    width: 100%;
   }
 }
