@@ -216,4 +216,32 @@ body {
   }
 }
 
+#top-right-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 
+#logout-link {
+  display: inline-flex; 
+  align-items: center; 
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-family: League Spartan, sans-serif;
+  cursor: pointer;
+  font-weight: bold; 
+}
+
+#logout-link img {
+  margin-top: -3px; 
+  height: 20px;
+  width: 20px;
+}
+
+
+#logout-link:hover {
+  background-color: red;
+}
