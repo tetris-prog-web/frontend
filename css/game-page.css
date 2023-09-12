@@ -65,7 +65,7 @@ body {
   background-color: var(--default-container-background-color);
   height: 100%;
   width: 35%;
-  background-image: url("/images/gameblocks.png");
+  background-image: url("/images/gameblocks10x20.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
