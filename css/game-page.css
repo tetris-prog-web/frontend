@@ -31,6 +31,11 @@ body {
   align-items: center;
 }
 
+#game-navbar a{
+  text-decoration: none;
+  color: var(--brand-title-color);
+}
+
 #brand-title {
   text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
   font-family: League Spartan, sans-serif;
