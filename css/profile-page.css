@@ -53,10 +53,10 @@ body {
   margin-left: 20px;
 }
 
-#back-to-home-page-icon {
-  margin-right: 10px;
-  max-height: 43px;
-  max-width: 37px;
+#back-to-home-page-link iconify-icon {
+  text-decoration: none;
+  font-size: 25px;
+  color: var(--secondary-title-color);
 }
 
 #brand-title {
