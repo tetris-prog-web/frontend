@@ -114,9 +114,11 @@ body {
   line-height: normal;
 }
 
-#login-button-play-icon {
-  width: 52px;
-  height: 52px;
+#login-button iconify-icon
+{
+  text-decoration: none;
+  color: var(--secondary-title-color);
+  font-size: 50px;
 }
 
 #register-account-link {
