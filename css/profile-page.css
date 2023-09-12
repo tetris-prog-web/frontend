@@ -235,10 +235,9 @@ body {
   font-weight: bold; 
 }
 
-#logout-link img {
-  margin-top: -3px; 
-  height: 20px;
-  width: 20px;
+#logout-link iconify-icon {
+  margin-left: 4px;
+  margin-bottom: 3px;
 }
 
 
