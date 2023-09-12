@@ -1,16 +1,3 @@
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-
-  margin: 0;
-  padding: 0;
-}
-
 #main-container {
   width: 100%;
   height: 100%;
@@ -59,17 +46,6 @@ body {
   color: var(--secondary-title-color);
 }
 
-#brand-title {
-  color: var(--brand-title-color);
-  text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
-
-  font-family: League Spartan, sans-serif;
-  font-size: 96px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
 #register-game-image-container {
   width: 100%;
   height: 100%;
@@ -82,7 +58,6 @@ body {
 #register-game-image-container > img {
   width: 70%;
   height: 70%;
-  
 }
 
 #register-container {
@@ -95,7 +70,7 @@ body {
 }
 
 #register-title {
-  color: #000;
+  color: var(--main-title-color);
 
   font-family: League Spartan, sans-serif;
   font-size: 60px;
@@ -171,36 +146,3 @@ body {
   font-weight: 700;
   line-height: normal;
 }
-
-@media screen and (max-width: 795px) {
-  #main-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; 
-  }
-  
-  #register-button{
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  #register-game-image-container > img{
-    width: 55%;
-    height: 70%;
-  }
-
-}
-
-@media screen and (max-width: 1180px) and (min-width: 796px) {
-  #register-game-image-container > img{
-    width: 65%;
-    height: 50%;
-  }
-
-  #brand-title{
-    font-size: 70px;
-  }
-}
-
-

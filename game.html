@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +12,25 @@
 </head>
 <body>
 <main id="main-container">
-  <nav id="game-navbar">
-    
-    <a href="menu.html"><iconify-icon icon="mingcute:exit-fill"></iconify-icon></a>
-    
-    <a href="menu.html"><h1 id="brand-title">TETRIS</h1></a>
-    
-    <a href="profile.html"><iconify-icon icon="mingcute:user-4-line"></iconify-icon></a>
+  <nav class="game-navbar">
+    <a href="menu.html">
+      <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
+    </a>
+
+    <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
+
+    <a href="profile.html">
+      <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
+    </a>
   </nav>
 
   <div id="game-screen">
-    <div id="game-section-container">
-      <div id="game-section">
+    <div id="game-area-container">
+      <div id="game-area">
+        <img src="images/mock-game/gameblocks10x20.png" alt="Tela do jogo">
       </div>
     </div>
+
     <div id="game-information">
       <div id="first-data-container" class="data-container">
         <div id="current-score">00000</div>
@@ -63,7 +68,7 @@
             <p>1</p>
             <p>2:30</p>
           </div>
-          <h1 id="game-mode">MODO DE JOGO: NORMAL</h1>
+          <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
         </div>
 
       </div>

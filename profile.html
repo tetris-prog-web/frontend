@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Perfil - Mirror Tetris</title>
@@ -9,20 +9,21 @@
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
-  <div id="top-right-container">
-    <a id="logout-link" href="index.html"> SAIR <iconify-icon icon="el:off"></iconify-icon>
-    </a>
-  </div>
+<div id="top-right-container">
+  <a id="logout-link" href="index.html"> SAIR
+    <iconify-icon icon="el:off"></iconify-icon>
+  </a>
+</div>
 <main id="main-container">
   <aside id="presentation-container">
     <div id="back-to-home-page-link-container">
-    <a id="back-to-home-page-link" href="menu.html">
-      <iconify-icon icon="material-symbols:arrow-back"></iconify-icon>
-      <span id="back-to-home-page-text">VOLTAR</span>
-    </a>
+      <a id="back-to-home-page-link" href="menu.html">
+        <iconify-icon icon="material-symbols:arrow-back"></iconify-icon>
+        <span id="back-to-home-page-text">VOLTAR</span>
+      </a>
     </div>
 
-    <h1 id="brand-title">TETRIS</h1>
+    <h1 class="brand-title">TETRIS</h1>
     <figure id="profile-game-image-container">
       <img src="/images/game-image.png" alt="Imagem representando uma partida do jogo de Mirror Tetris">
     </figure>
@@ -30,13 +31,13 @@
 
   <div id="profile-container">
     <div id="profile-title-container">
-      <h1 id="profile-title">Perfil de Usuário</h1>
+      <h2 id="profile-title">Perfil de Usuário</h2>
     </div>
 
     <div id="profile-form-container">
 
       <form id="profile-form">
-        
+
         <div class="edit-input">
           <label for="full-name-input"></label>
           <input id="full-name-input" type="text" placeholder="Zezinho Da Silva" required>
@@ -44,36 +45,36 @@
         </div>
 
         <div class="edit-input">
-        <label for="birth-date-input"></label>
-        <input id="birth-date-input" type="text" placeholder="01/01/2000" required readonly>
-        </div>
-        
-        <div class="edit-input">
-        <label for="cpf-input"></label>
-        <input id="cpf-input" type="text" placeholder="12345678838" required readonly>
-        </div>
-        
-        <div class="edit-input">
-        <label for="telephone-input"></label>
-        <input id="telephone-input" type="tel" placeholder="88 887163145" required >
-        <iconify-icon icon="ic:outline-edit"></iconify-icon>
-        </div>
-        
-        <div class="edit-input">
-        <label for="email-input"></label>
-        <input id="email-input" type="email" placeholder="zezinhodasilva@gmail.com" required>
-        <iconify-icon icon="ic:outline-edit"></iconify-icon>
+          <label for="birth-date-input"></label>
+          <input id="birth-date-input" type="text" placeholder="01/01/2000" required readonly>
         </div>
 
         <div class="edit-input">
-        <label for="username-input"></label>
-        <input id="username-input" type="text" placeholder="Zezinho" required readonly>
+          <label for="cpf-input"></label>
+          <input id="cpf-input" type="text" placeholder="12345678838" required readonly>
         </div>
 
         <div class="edit-input">
-        <label for="password-input"></label>
-        <input id="password-input" type="password" placeholder="********" required>
-        <iconify-icon icon="ic:outline-edit"></iconify-icon>
+          <label for="telephone-input"></label>
+          <input id="telephone-input" type="tel" placeholder="88 887163145" required>
+          <iconify-icon icon="ic:outline-edit"></iconify-icon>
+        </div>
+
+        <div class="edit-input">
+          <label for="email-input"></label>
+          <input id="email-input" type="email" placeholder="zezinhodasilva@gmail.com" required>
+          <iconify-icon icon="ic:outline-edit"></iconify-icon>
+        </div>
+
+        <div class="edit-input">
+          <label for="username-input"></label>
+          <input id="username-input" type="text" placeholder="Zezinho" required readonly>
+        </div>
+
+        <div class="edit-input">
+          <label for="password-input"></label>
+          <input id="password-input" type="password" placeholder="********" required>
+          <iconify-icon icon="ic:outline-edit"></iconify-icon>
         </div>
 
         <button type="button" id="save-button">

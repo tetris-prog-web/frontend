@@ -6,35 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ranking Jogo Estendido - Mirror Tetris</title>
   <link rel="icon" type="image/x-icon" href="/images/logo.png">
-  <link rel="stylesheet" href="css/ranking-page-extended.css">
+  <link rel="stylesheet" href="css/ranking-page.css">
   <link rel="stylesheet" href="css/global.css">
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 
 <body>
-<nav id="game-navbar">
-  <a href="menu.html"><iconify-icon icon="mingcute:exit-fill"></iconify-icon></a>
-    
-  <a href="menu.html"><h1 id="brand-title">TETRIS</h1></a>
-    
-  <a href="profile.html"><iconify-icon icon="mingcute:user-4-line"></iconify-icon></a>
+<nav class="game-navbar">
+  <a href="menu.html">
+    <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
+  </a>
+
+  <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
+
+  <a href="profile.html">
+    <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
+  </a>
 </nav>
 
 <div id="ranking-container">
   <div id="ranking-back">
-    <h1>Ranking Modo Estendido</h1>
+    <h2>Ranking Modo Estendido</h2>
 
-    
     <div id="ranking-lines-box">
       <div id="ranking-table-header">
         <p class="position-indicator"></p>
         <div>
           <h3>Jogador</h3>
-          </div>
-          <div>
+        </div>
+        <div>
           <h3>Pontuação</h3>
-          </div>
-          <div>
+        </div>
+        <div>
           <h3>Nível Máximo</h3>
         </div>
       </div>
@@ -97,10 +100,10 @@
         <div class="ranking-line">&nbsp;</div>
       </div>
       <div>
-        <div id="your-max-score" class="position-indicator">
+        <div class="position-indicator your-max-score">
           <span>X</span>
         </div>
-        <div id="your-max-score" class="ranking-line">
+        <div class="ranking-line your-max-score">
           <p>Zezinho</p>
           <p>1000</p>
           <p>3</p>
