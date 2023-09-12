@@ -13,4 +13,13 @@
     --current-player-ranking: rgba(209, 14, 14);
     --default-container-background-color: #000000b6;
     --default-player-color: #18FF22;
+    --default-text-shadow-color: rgba(221, 221, 221, 0.40);
+}
+
+#brand-title {
+    text-shadow: 0 7px 5px var(--default-text-shadow-color);
+    font-family: League Spartan, sans-serif;
+    font-size: 5rem;
+    font-style: normal;
+    line-height: normal;
 }

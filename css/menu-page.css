@@ -28,7 +28,7 @@ body{
 }
 
 #brand-title {
-    text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
+    text-shadow: 0 7px 5px var(--default-text-shadow-color);
     font-family: League Spartan, sans-serif;
     font-size: 60px;
     
