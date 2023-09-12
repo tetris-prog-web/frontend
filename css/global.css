@@ -16,6 +16,11 @@
     --default-text-shadow-color: rgba(221, 221, 221, 0.40);
 }
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 .brand-title {
     color: var(--brand-title-color);
     text-shadow: 0 7px 5px var(--default-text-shadow-color);
