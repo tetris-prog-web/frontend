@@ -45,7 +45,7 @@ body{
     align-items: center;
     height: 91.15vh;
     position: relative;
-    background-image: url('../images/menu-screen-background.png'); 
+    background-image: url('../images/backgrounds/forest-river.png');
     background-size: cover;
     background-position: center;
 }

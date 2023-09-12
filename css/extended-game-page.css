@@ -37,7 +37,7 @@ body {
 
 #game-screen {
   height: 90%;
-  background-image: url("/images/game-screen-background.jpg");
+  background-image: url("/images/backgrounds/fire-watch-day.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -56,7 +56,7 @@ body {
   background-color: var(--default-container-background-color);
   height: 100%;
   width: 35%;
-  background-image: url("/images/gameblocks44x22.png");
+  background-image: url("/images/mock-game/gameblocks44x22.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
