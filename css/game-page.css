@@ -18,7 +18,7 @@
   align-content: center;
 }
 
-#game-section-container {
+#game-area-container {
   width: 60%;
   margin: 1%;
   padding: 1%;
@@ -26,14 +26,14 @@
   justify-content: center;
 }
 
-#game-section {
+#game-area {
   background-color: var(--default-container-background-color);
   height: 100%;
   width: 35%;
   border-radius: 10px;
 }
 
-#game-section img {
+#game-area img {
   height: 100%;
   width: 100%;
 }
