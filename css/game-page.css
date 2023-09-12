@@ -21,6 +21,7 @@
 #game-section-container {
   width: 60%;
   margin: 1%;
+  padding: 1%;
   display: flex;
   justify-content: center;
 }
@@ -29,10 +30,12 @@
   background-color: var(--default-container-background-color);
   height: 100%;
   width: 35%;
-  background-image: url("/images/mock-game/gameblocks10x20.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: 10px;
+}
+
+#game-section img {
+  height: 100%;
+  width: 100%;
 }
 
 #game-information {
