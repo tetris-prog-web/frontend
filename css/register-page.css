@@ -172,7 +172,7 @@ body {
   line-height: normal;
 }
 
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 795px) {
   #main-container {
     width: 100%;
     height: 100%;
@@ -192,7 +192,7 @@ body {
 
 }
 
-@media screen and (max-width: 1180px) and (min-width: 875px) {
+@media screen and (max-width: 1180px) and (min-width: 796px) {
   #register-game-image-container > img{
     width: 65%;
     height: 50%;
