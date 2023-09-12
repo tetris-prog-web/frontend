@@ -11,4 +11,6 @@
     --button-shadow-color: rgba(0, 0, 0, 0.5);
     --default-player-ranking: rgba(69, 78, 74, 0.637);
     --current-player-ranking: rgba(209, 14, 14);
+    --default-container-background-color: #000000b6;
+    --default-player-color: #18FF22;
 }

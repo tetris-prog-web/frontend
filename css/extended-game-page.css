@@ -30,7 +30,7 @@ body {
   align-items: center;
 }
 
-#game-navbar a{
+#game-navbar a {
   text-decoration: none;
   color: var(--brand-title-color);
 }
@@ -53,8 +53,7 @@ body {
   align-content: center;
 }
 
-#game-section-container
-{
+#game-section-container {
   width: 60%;
   margin: 1%;
   display: flex;
@@ -62,7 +61,7 @@ body {
 }
 
 #game-section {
-  background-color: #000000b6;
+  background-color: var(--default-container-background-color);
   height: 100%;
   width: 35%;
   background-image: url("/images/gameblocks44x22.png");
@@ -82,7 +81,7 @@ body {
 }
 
 .data-container {
-  background-color: #000000b6;
+  background-color: var(--default-container-background-color);
   border-radius: 5%;
   width: 50%;
   margin: 1%;
@@ -101,21 +100,21 @@ body {
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 2rem;
-  color: #FFF;
+  color: var(--secondary-title-color);
 }
 
 #current-score {
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 3.5rem;
-  color: #FFF;
+  color: var(--secondary-title-color);
 }
 
 #current-game-difficulty {
   font-weight: bold;
   font-family: League Spartan, sans-serif;
   font-size: 1.2rem;
-  color: #FFF;
+  color: var(--secondary-title-color);
 }
 
 #next-piece {
@@ -126,7 +125,7 @@ body {
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 1.5rem;
-  color: #FFF;
+  color: var(--secondary-title-color);
 }
 
 #second-data-container {
@@ -138,7 +137,7 @@ body {
   justify-content: space-evenly;
 
   font-family: League Spartan, sans-serif;
-  color: #FFF;
+  color: var(--secondary-title-color);
 }
 
 #current-score {
@@ -183,7 +182,7 @@ body {
   align-items: center;
 }
 
-.player-position > p{
+.player-position > p {
   margin: 0;
   display: grid;
   text-align: center;
@@ -193,8 +192,8 @@ body {
   width: 100%;
 }
 
-#username{
-  color: #FFF;
+#username {
+  color: var(--secondary-title-color);
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 2rem;
@@ -221,7 +220,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  color: #FFF;
+  color: var(--secondary-title-color);
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 1.5rem;
@@ -239,44 +238,47 @@ body {
   width: 33.3%;
 }
 
-@media screen and (max-width: 1155px){
+@media screen and (max-width: 1155px) {
 
-  #game-section{
+  #game-section {
     width: 45%;
   }
 
-  .player-position{
+  .player-position {
     font-size: 1.5rem;
   }
 }
 
-@media screen and (max-width: 945px){
-  #game-section{
+@media screen and (max-width: 945px) {
+  #game-section {
     width: 55%;
-  } 
-  #current-score{
-  font-size: 2.4rem;
   }
-  .player-position{
+
+  #current-score {
+    font-size: 2.4rem;
+  }
+
+  .player-position {
     font-size: 1.1rem;
   }
 
-  #game-mode{
+  #game-mode {
     font-size: 0.8rem;
-    }
+  }
 
 }
 
-@media screen and (max-width: 760px){
-  
-  #game-section{
+@media screen and (max-width: 760px) {
+
+  #game-section {
     width: 65%;
-  } 
-  
-  #game-mode{
-  font-size: 0.57rem;
   }
-  .player-position{
+
+  #game-mode {
+    font-size: 0.57rem;
+  }
+
+  .player-position {
     font-size: 0.9rem;
   }
 }

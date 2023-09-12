@@ -166,7 +166,7 @@ body {
 }
 
 #your-max-score {
-  color: #18FF22;
+  color: var(--default-player-color);
 }
 
 @media screen and (max-width: 1065px) {

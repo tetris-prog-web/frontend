@@ -57,7 +57,7 @@ dialog button{
     width: 180px;
     height: 40px;
     background: rgba(186, 12, 12, 1);
-    color: #fff;
+    color: var(--secondary-title-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;

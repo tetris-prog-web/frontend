@@ -95,7 +95,7 @@ body {
 }
 
 #register-title {
-  color: #000;
+  color: var(--main-title-color);
 
   font-family: League Spartan, sans-serif;
   font-size: 60px;
