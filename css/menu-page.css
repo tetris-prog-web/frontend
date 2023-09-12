@@ -64,9 +64,3 @@
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
-
-@media screen and (max-width: 785px) {
-  #options a {
-    width: 500px;
-  }
-}

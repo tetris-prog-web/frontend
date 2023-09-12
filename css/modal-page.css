@@ -57,17 +57,3 @@ dialog button:hover{
     box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
-
-@media screen and (max-width: 1065px) {
-    dialog {
-        width: 80%;
-    }
-    
-    dialog p {
-        font-size: 25px; 
-    }
-    
-    dialog button {
-        font-size: 35px; 
-    }
-}

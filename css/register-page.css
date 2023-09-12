@@ -146,32 +146,3 @@
   font-weight: 700;
   line-height: normal;
 }
-
-@media screen and (max-width: 795px) {
-  #main-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #register-button {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  #register-game-image-container > img {
-    width: 55%;
-    height: 70%;
-  }
-
-}
-
-@media screen and (max-width: 1180px) and (min-width: 796px) {
-  #register-game-image-container > img {
-    width: 65%;
-    height: 50%;
-  }
-}
-
-
