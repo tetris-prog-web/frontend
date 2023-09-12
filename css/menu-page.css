@@ -11,15 +11,40 @@ body{
 }
 
 #conteiner1 {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    font-size: 4rem;
+    
     background: var(--main-background-color);
+    
     color: var(--brand-title-color);
-    padding-top: 7px;
+}
+
+#conteiner1 a{
+    text-decoration: none;
+    color: var(--brand-title-color);
+}
+
+#brand-title {
+    text-shadow: 0 7px 5px rgba(221, 221, 221, 0.40);
     font-family: League Spartan, sans-serif;
-    font-size: 30px;
+    font-size: 5rem;
     font-style: normal;
-    font-weight: 700;
     line-height: normal;
+}
+
+  
+#name {
+    display: flex;
+    align-items: center;
+    margin-left: -9%;
+    font-size: 30px;
+}
+
+#name iconify-icon{
+    font-size: 40px;
 }
 
 #conteiner2 {
@@ -35,29 +60,6 @@ body{
 }
 
 
-#name {
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-decoration: none;
-}
-
-#name a{
-    text-decoration: none;
-}
-
-#name h3{
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: 20px;
-    padding-top: 10px;
-    color: #fff;
-    
-    text-align: center;
-    font-size: 30px;
-    height: 50px;
-    width: 400px;
-    border-radius: 20px;
-}
 
 #options{
     display: flex;
