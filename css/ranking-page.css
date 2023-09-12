@@ -25,7 +25,7 @@
   background: rgba(0, 0, 0, 0.70);
 }
 
-#ranking-back h1 {
+#ranking-back h2 {
   color: var(--secondary-title-color);
   font-family: League Spartan, sans-serif;
   font-size: 4rem;
