@@ -9,7 +9,7 @@
 #game-screen {
   height: 90%;
 
-  background-image: url("/images/backgrounds/fire-watch-day.jpg");
+  background-image: url("../images/backgrounds/fire-watch-day.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
