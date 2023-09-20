@@ -20,6 +20,11 @@ function mostrarModal() {
 
 // modal
 
+const gridWidth = 10;
+
+const colors = [ "yellow"]
+
+
 const iPosition = [
     [0, grid, grid*2, grid*3],
     [0, 1, 2, 3],
@@ -63,8 +68,21 @@ const uPosition = [
 ]
 
 const positions = [uPosition,yPosition,lPosition,tPosition,oPosition, iPosition]
-
+let start = 10
 let Rotation = 0
 let random = Math.floor(Math.random() * positions.length)
-let Shape = positions[random][Rotation]
-let $grid = Array.from(document.querySelectorAll(".next-piece"))
+let shape = positions[random][Rotation]
+let $grid = Array.from(document.querySelectorAll(".game-area div"))
+
+function draw() {
+  shape.forEach(index => {
+    $grid[index + start].classList.add("shapePainted", `${colors}`)
+  })
+}
+draw()
+
+function undraw() {
+  shape.forEach(index => {
+    $grid[index + start].classList.remove("shapePainted", `${colors}`)
+  })
+}
