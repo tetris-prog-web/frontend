@@ -1,3 +1,25 @@
+// modal
+function mostrarModal() {
+    const modal = document.getElementById('modal');
+    
+  }
+  function fecharModal() {
+    const modal = document.querySelector('#background');
+    modal.style.display = 'none';
+  
+    const botoes = document.querySelectorAll('button');
+    botoes.forEach((botao) => {
+      botao.disabled = false;
+    });
+  }
+  
+  const fecharBotao = document.querySelector('#fechar-modal');
+  if (fecharBotao) {
+    fecharBotao.addEventListener('click', fecharModal);
+  }
+
+// modal
+
 const iPosition = [
     [0, grid, grid*2, grid*3],
     [0, 1, 2, 3],
