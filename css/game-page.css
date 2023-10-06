@@ -18,25 +18,32 @@
   align-content: center;
 }
 
-#game-area-container {
-  width: 60%;
-  margin: 1%;
-  padding: 1%;
+.game-area-container {
+  
   display: flex;
   justify-content: center;
 }
 
-#game-area {
-  background-color: var(--default-container-background-color);
-  height: 100%;
-  width: 35%;
-  border-radius: 10px;
+.game-area {
+ 
+  width: 200px;
+  height: 400px;
+  background-color: black;
+  display: flex;
+   flex-wrap: wrap;
+
 }
 
-#game-area img {
-  height: 100%;
-  width: 100%;
+.game-area div {
+  width: 20px;
+  height: 20px;
 }
+
+.shapePainted {
+  background: red;
+  border: 2px solid black;
+}
+
 
 #game-information {
   height: 100%;
