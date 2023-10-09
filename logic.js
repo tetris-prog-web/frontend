@@ -33,14 +33,6 @@
     let currentColor = Math.floor(Math.random() * colors.length);
     const grid = 10;
 
-    const color = ['yellow','orange',
-    'red'];
-
-    const transparency = 0.45;
-
-    const transparentColor = [
-      `rgba(255, 255, 0, ${transparency})`,
-    ]
     const iPosition = [
       [0, grid, grid*2, grid*3],
       [0, 1, 2, 3],
@@ -83,7 +75,6 @@
       [1, 0, grid, grid*2, grid*2 + 1],
   ]
 
-
     const positions = [uPosition, yPosition, lPosition, tPosition, oPosition, iPosition];
     let random = randomShape(); 
     let start = 10;
@@ -104,7 +95,7 @@
 
     function undraw() {
       current.forEach(index => {
-        squares[start + index].classList.add("shapePainted", `${colors[currentColor]}`);
+        squares[start + index].classList.remove("shapePainted", `${colors[currentColor]}`);
       });
     }
 
@@ -158,7 +149,7 @@
       
       $startStopButton.addEventListener("click", () => {
         if (timerId) {
-          clearInterval(timerId); // Pausa o jogo se já estiver em execução
+          clearInterval(timerId); 
           timerId = null;
         } else {
           timerId = setInterval(moveDown, 1000); // Inicia o jogo e movimenta as peças para baixo a cada segundo (ajuste o intervalo conforme necessário)
@@ -169,7 +160,7 @@
         
       
         undraw()
-        start += 10
+        start += 10 
         draw()
       }
   });
