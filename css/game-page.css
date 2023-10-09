@@ -32,17 +32,20 @@
 }
 
 .game-area-container {
+  width: 60%;
+  margin: 1%;
+  padding: 1%;
   display: flex;
   justify-content: center;
 }
 
 .game-area {
-  width: 200px;
-  height: 400px;
-  background-color: black;
+  height: 100%;
+  width: 35%;
+  border-radius: 10px;
+  background-color: green;
   display: flex;
-   flex-wrap: wrap;
-
+  flex-wrap: wrap;
 }
 
 .game-area div {
