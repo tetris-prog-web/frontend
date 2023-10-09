@@ -19,17 +19,17 @@
 }
 
 .game-area-container {
-  width: 60%;
-  margin: 1%;
-  padding: 1%;
+  width: 100%;
+  
+ 
   display: flex;
   justify-content: center;
   
 }
 
 .game-area {
-  height: 100%;
-  width: 35%;
+  width: 200px;
+  height: 400px;
   border-radius: 10px;
   background-color: green;
   display: flex;
