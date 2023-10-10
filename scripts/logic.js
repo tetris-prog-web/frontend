@@ -5,45 +5,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const grid = 10;
 
     const iPosition = [
-        [0, grid, grid * 2, grid * 3],
-        [0, 1, 2, 3],
-        [0, grid, grid * 2, grid * 3],
-        [0, 1, 2, 3],
+        [-10, grid - 10, grid * 2 - 10, grid * 3 - 10],
+        [-10, -9, -8, -7],
+        [-10, grid - 10,grid * 2 - 10, grid * 3 - 10],
+        [-10, -9, -8, -7],
     ]
 
-    const oPosition = [
-        [0, 1, grid, grid + 1],
-        [0, 1, grid, grid + 1],
-        [0, 1, grid, grid + 1],
-        [0, 1, grid, grid + 1],
+    const oPosition = [ 
+        [-10, -9, grid - 10, grid - 9],
+        [-10, -9, grid - 10, grid - 9],
+        [-10, -9, grid - 10, grid - 9],
+        [-10, -9, grid - 10, grid - 9],
     ]
 
     const tPosition = [
-        [1, 2, grid + 1, grid * 2 + 1],
-        [grid, grid + 1, grid + 2, grid * 2 + 2],
-        [1, grid + 1, grid * 2, grid * 2 + 1],
-        [grid, grid * 2, grid * 2 + 1, grid * 2 + 2]
+        [-10, -9, grid -10, grid * 2 - 10],
+        [-10, grid - 10, grid - 9, grid - 8],
+        [-9, grid - 9, grid * 2 - 9, grid * 2 - 10],
+        [-10, -9, -8, grid - 8  ]
     ]
 
     const lPosition = [
-        [0, grid, grid * 2, grid * 2 + 1],
-        [grid, grid + 1, grid + 2, 2],
-        [0, 1, grid + 1, grid * 2 + 1],
-        [0, 1, 2, grid],
+        [-10, grid - 10, grid * 2 - 10, grid * 2 - 9],
+        [grid - 10, grid - 9, grid - 8, -8],
+        [-10, -9, grid - 9, grid * 2 - 9],
+        [-10, -9, -8, grid - 10],
     ]
 
     const yPosition = [
-        [grid, grid + 1, grid + 2, 1],
-        [1, grid + 1, grid * 2 + 1, grid],
-        [0, 1, 2, grid + 1],
-        [0, grid, grid * 2, grid + 1],
+        [-9, grid - 10, grid - 9, grid - 8],
+        [-9, grid - 9, grid * 2 - 9, grid - 10],
+        [-10, -9, -8, grid - 9],
+        [-10, grid - 10, grid * 2 - 10, grid - 9],
     ]
 
     const uPosition = [
-        [0, grid, grid + 1, grid + 2, 2],
-        [0, 1, grid + 1, grid * 2 + 1, grid * 2],
-        [grid, 0, 1, 2, grid + 2],
-        [1, 0, grid, grid * 2, grid * 2 + 1],
+        [-10, grid - 10, grid - 9, grid - 8, -8],
+        [-10, -9, grid - 9, grid * 2 - 9, grid * 2 - 10],
+        [grid - 10, -10, -9, -8, grid - 8],
+        [-9, -10, grid - 10, grid * 2 - 10, grid * 2 - 9],
     ]
 
     const positions = [uPosition, yPosition, lPosition, tPosition, oPosition, iPosition];
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    document.addEventListener('keydown', (event) => { //TODO quando a linha com a peça especial for eliminada, inverter a ordem das peças
+    document.addEventListener('keydown', (event) => { 
         if (event.key === 'ArrowLeft') {
             moveLeft();
         } else if (event.key === 'ArrowRight') {
@@ -92,26 +92,28 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(timerId);
             timerId = null;
         } else {
-            timerId = setInterval(moveDown, 1000); // Inicia o jogo e movimenta as peças para baixo a cada segundo (ajuste o intervalo conforme necessário)
+            timerId = setInterval(moveDown, 1000); 
         }
     });
 
+    const $restartButton = document.getElementById("restart-button")
+    $restartButton.addEventListener("click", () => {
+    window.location.reload()
+})
+
     function moveLeft() {
         undraw();
-
-        const isAtLeftEdge = current.some(index => (start - index + 1) % grid === 0);
+        
+        const isAtLeftEdge = current.some(index => (start + index) % grid === 0);
 
         if (!isAtLeftEdge) {
-            start -= 1;
-        }
-
-        if (current.some(index => squares[start + index].classList.contains("shapePainted"))) {
-            start += 1;
+            if (!current.some(index => squares[start + index - 1].classList.contains("shapePainted"))) {
+                start -= 1;
+            }
         }
 
         draw();
     }
-
     function moveRight() {
         undraw();
         const isAtRightEdge = current.some(index => (start + index + 1) % grid === 0);
