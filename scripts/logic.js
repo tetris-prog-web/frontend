@@ -130,13 +130,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveDown() {
+        stop()
+
         undraw()
         start += 10
         draw()
     }
 
+
     function rotate() {
         undraw();
+        
 
         let newRotation = (Rotation + 1) % positions[random].length;
 
@@ -150,5 +154,44 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         draw();
+    }
+
+    function checkIfRowIsFilled() {
+        for (let row = 0; row < grid; row++) {
+            const rowIndices = [];
+    
+            for (let col = 0; col < grid; col++) {
+                rowIndices.push(row * grid + col);
+            }
+    
+            const isRowPainted = rowIndices.every(squareIndex =>
+                squares[squareIndex].classList.contains("shapePainted")
+            );
+    
+            if (isRowPainted) {
+                // Remove classes das células da linha
+                rowIndices.forEach(squareIndex => squares[squareIndex].classList.remove("shapePainted"));
+    
+                // Remove as células da linha da matriz
+                squares.splice(row * grid, grid);
+    
+                // Adicione as células de volta na parte superior
+                for (let i = 0; i < grid; i++) {
+                    squares.unshift(document.createElement("div"));
+                    gameArea.appendChild(squares[i]);
+                }
+            }
+        }
+    }
+    
+    function stop() {
+            if (current.some(index => 
+                squares[start + index + grid].classList.contains("busy")
+              )) {
+                currentShape.forEach(start => squares[start + index].classList.add("busy"))
+            
+            checkIfRowIsFilled();
+            draw();
+        }
     }
 });
