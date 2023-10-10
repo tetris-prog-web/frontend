@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="css/global.css">
 
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  
+  <script defer src="scripts/logic.js"></script>
+  <script defer src="scripts/modal.js"></script>
 </head>
 <body>
 <main id="main-container">
@@ -280,21 +281,18 @@
     </div>
   </div>
 </main>
-<!-- modal -->
-<div id="background">
-  <div id="modal">
-    <dialog >
-      <p>
-        Velum modale, quod fenestra modalis vel simpliciter modalis notum est, interface usoris est qui obducit
-        principale contentum paginae vel applicationis mobilis, specialem focum in speciali munere vel notitiarum copia
-        creans.
-      </p>
-      <button class="fechar" id="fechar-modal">Entendi!</button>
 
-    </dialog>
-  </div>
+<div id="modal-background">
+  <dialog id="modal">
+    <p>
+      Velum modale, quod fenestra modalis vel simpliciter modalis notum est, interface usoris est qui obducit
+      principale contentum paginae vel applicationis mobilis, specialem focum in speciali munere vel notitiarum copia
+      creans.
+    </p>
+    <button id="close-modal-button">Entendi!</button>
+
+  </dialog>
 </div>
-<!-- modal -->
-<script src="logic.js"></script>
+
 </body>
 </html>
