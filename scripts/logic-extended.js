@@ -70,33 +70,28 @@ const uPosition = [
             squares[start + index].classList.remove("shapePainted", `${colors[currentColor]}`);
         });
     }
-const minisquares = document.querySelectorAll(".next-piece div");
-const miniWidth = 4;
-let nextPosition = 2;
-
-const nextShapeIndices = [
-    [1, 2, miniWidth + 1, miniWidth * 2 + 1], // Forma 0
-    [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1], // Forma 1
-    [1, miniWidth, miniWidth + 1, miniWidth + 2], // Forma 2
-    [0, 1, miniWidth, miniWidth + 1], // Forma 3
-    [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1] // Forma 4
+    const minisquares = document.querySelectorAll(".next-piece div");
+    const miniWidth = 4;
+    const nextPosition = 2;
+    const nextShapeIndices = [
+    [1, 2, miniWidth + 1, miniWidth * 2 + 1], 
+    [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1], 
+    [1, miniWidth, miniWidth + 1, miniWidth + 2], 
+    [0, 1, miniWidth, miniWidth + 1], 
+    [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1] 
 ];
-
-    let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+    
     function displayNextShape() {
-        minisquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
-        nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
-        nextColor = Math.floor(Math.random() * colors.length)
+        let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
         const nextShape = nextShapeIndices[nextRandomShape]
         nextShape.forEach(squareIndex => 
-        minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
+            minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted")  
         )
     }
 
     document.getElementById("start-button").addEventListener("click", () => {
         if (!gameStarted) {
             gameStarted = true;
-            startGame();
         }
     });
     
@@ -247,7 +242,4 @@ const nextShapeIndices = [
             scoreElement.innerHTML = "GAME OVER";
         }
     }
-    
-    
-
 });
