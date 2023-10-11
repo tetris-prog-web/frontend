@@ -16,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
+    align-items: center;
   }
   
   .game-area-container {
@@ -23,26 +24,61 @@
     
     display: flex;
     justify-content: center;
-    
+    align-items: center;
   }
   
   .game-area {
-    width: 880px;
-    height: 440px;
+    width: 374px; 
+    height: 748px; 
     border-radius: 10px;
     background-color: green;
-    display: flex; 
-    flex-wrap: wrap;
-   
-  }
-  
-  .game-area div {
-    width: 20px;
-    height: 20px;
+    display: grid; 
+    grid-template-columns: repeat(22, 17px); 
+    grid-template-rows: repeat(44, 17px); 
+}
 
-    box-sizing: border-box; 
+.game-area div {
+    box-sizing: border-box;
+}
+
+.buttons-containe{
+   width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#start-button,
+#restart-button{
+   
+        
+        align-items: center;
+        justify-content: space-evenly;
+        text-decoration: none;
+        background: var(--main-background-color);
+        box-shadow: 0 4px var(--button-shadow-color);
+      
+        border: var(--main-background-color);
+        border-radius: 20px;
+      
+        width: 250px;
+        height: 50px;
+
+        font-size: 20px;
+
+        
+        color: white;
+    
+        cursor: pointer;
+}
+
+#start-button:hover,
+#restart-button:hover {
+    box-shadow: 0 2px var(--button-shadow-color);
+    transform: translateY(2px);
   }
-  
+
   
   .shapePainted {
     background: red;

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const squares = Array.from(document.querySelectorAll(".game-area div"));
     const colors = ["blue", "yellow", "red", "orange", "pink"]
     let currentColor = Math.floor(Math.random() * colors.length);
-    const grid = 44;  
+    const grid = 22;  
 
 const iPosition = [
     [0, grid, grid * 2, grid * 3],
@@ -49,7 +49,7 @@ const uPosition = [
 
     const positions = [uPosition, yPosition, lPosition, tPosition, oPosition, iPosition];
     let random = randomShape();
-    let start = 0;
+    let start = 10;
     let Rotation = 0;
 
     let currentRot = 0;
@@ -134,7 +134,7 @@ const uPosition = [
         stop()
 
         undraw()
-        start += 44
+        start += 22
         draw()
     }
 
