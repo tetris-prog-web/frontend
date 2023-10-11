@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const colors = ["blue", "yellow", "red", "orange", "pink"]
     let currentColor = Math.floor(Math.random() * colors.length);
     const grid = 10;
+    let gameStarted = false;
 
     const iPosition = [
         [-10, grid - 10, grid * 2 - 10, grid * 3 - 10],
@@ -90,16 +91,25 @@ const nextShapeIndices = [
         minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
         )
     }
+
+    document.getElementById("start-button").addEventListener("click", () => {
+        if (!gameStarted) {
+            gameStarted = true;
+            startGame();
+        }
+    });
     
-    document.addEventListener('keydown', (event) => { 
-        if (event.key === 'ArrowLeft') {
-            moveLeft();
-        } else if (event.key === 'ArrowRight') {
-            moveRight();
-        } else if (event.key === 'ArrowDown') {
-            moveDown();
-        } else if (event.key === 'ArrowUp') {
-            rotate();
+    document.addEventListener("keydown", (event) => {
+        if (gameStarted) {
+            if (event.key === "ArrowLeft") {
+                moveLeft();
+            } else if (event.key === "ArrowRight") {
+                moveRight();
+            } else if (event.key === "ArrowDown") {
+                moveDown();
+            } else if (event.key === "ArrowUp") {
+                rotate();
+            }
         }
     }, false);
 
@@ -167,20 +177,21 @@ const nextShapeIndices = [
     function rotate() {
         undraw();
         
-
-        let newRotation = (Rotation + 1) % positions[random].length;
-
+        const newRotation = (Rotation + 1) % positions[random].length;
         const newShape = positions[random][newRotation];
-
-        const hasCollision = newShape.some(index => squares[start + index].classList.contains("shapePainted"));
-
-        if (!hasCollision) {
+        
+        const isLeftEdgeLimit = newShape.some(index => (start + index) % grid === -1);
+        const isRightEdgeLimit = newShape.some(index => (start + index) % grid === 9);
+        const isFilled = newShape.some(index => squares[start + index].classList.contains("busy"));
+    
+        if (!isLeftEdgeLimit && !isRightEdgeLimit && !isFilled) {
             Rotation = newRotation;
             current = newShape;
         }
-
+        
         draw();
     }
+    
 
     function checkIfRowIsFilled() {
         for (let row = 0; row < grid; row++) {
