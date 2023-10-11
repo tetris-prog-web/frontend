@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const squares = Array.from(document.querySelectorAll(".game-area div"));
     const colors = ["blue", "yellow", "red", "orange", "pink"]
     let currentColor = Math.floor(Math.random() * colors.length);
+    let nextColor = Math.floor(Math.random() * colors.length)
     const grid = 22;  
 
 const iPosition = [
@@ -68,7 +69,29 @@ const uPosition = [
             squares[start + index].classList.remove("shapePainted", `${colors[currentColor]}`);
         });
     }
+const minisquares = document.querySelectorAll(".next-piece div");
+const miniWidth = 4;
+let nextPosition = 2;
 
+const nextShapeIndices = [
+    [1, 2, miniWidth + 1, miniWidth * 2 + 1], // Forma 0
+    [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1], // Forma 1
+    [1, miniWidth, miniWidth + 1, miniWidth + 2], // Forma 2
+    [0, 1, miniWidth, miniWidth + 1], // Forma 3
+    [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1] // Forma 4
+];
+
+    let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+    function displayNextShape() {
+        minisquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
+        nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+        nextColor = Math.floor(Math.random() * colors.length)
+        const nextShape = nextShapeIndices[nextRandomShape]
+        nextShape.forEach(squareIndex => 
+        minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
+        )
+    }
+    
     document.addEventListener('keydown', (event) => { 
         if (event.key === 'ArrowLeft') {
             moveLeft();
@@ -93,6 +116,7 @@ const uPosition = [
             clearInterval(timerId);
             timerId = null;
         } else {
+            moveDown();
             timerId = setInterval(moveDown, 1000); 
         }
     });
@@ -186,13 +210,34 @@ const uPosition = [
     }
     
     function stop() {
-            if (current.some(index => 
-                squares[start + index + grid].classList.contains("busy")
-              )) {
-                currentShape.forEach(start => squares[start + index].classList.add("busy"))
-            
-            checkIfRowIsFilled();
+
+        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+            current.forEach(index => {
+                squares[start + index].classList.add("busy", "shapePainted", `${colors[currentColor]}`);
+            });
+
+            start = 10;
+            Rotation = 0;
+            random = randomShape();
+            current = positions[random][Rotation];
+            currentColor = nextColor;
+    
             draw();
+            checkIfRowIsFilled();
+            displayNextShape();
+            gameOver();
         }
     }
+
+    function gameOver() {
+        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+            clearInterval(timerId);
+            startStopButton.disabled = true;
+            alert("Game Over! Click 'Restart' to play again.");
+            scoreElement.innerHTML = "GAME OVER";
+        }
+    }
+    
+    
+
 });

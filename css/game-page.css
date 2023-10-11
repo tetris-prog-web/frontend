@@ -90,6 +90,18 @@
    transform: translateY(2px);
  }
 
+ #next-piece {
+  width: 70px;
+  height: 70px;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#next-piece div {
+  width: 20px;
+  height: 20px;
+}
 
 .shapePainted {
   background: red;

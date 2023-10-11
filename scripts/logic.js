@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         [-9, -10, grid - 10, grid * 2 - 10, grid * 2 - 9],
     ]
 
+    
     const positions = [uPosition, yPosition, lPosition, tPosition, oPosition, iPosition];
     let random = randomShape();
     let start = 10;
@@ -67,7 +68,29 @@ document.addEventListener("DOMContentLoaded", function () {
             squares[start + index].classList.remove("shapePainted", `${colors[currentColor]}`);
         });
     }
+const minisquares = document.querySelectorAll(".next-piece div");
+const miniWidth = 4;
+let nextPosition = 2;
 
+const nextShapeIndices = [
+    [1, 2, miniWidth + 1, miniWidth * 2 + 1], 
+    [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1], 
+    [1, miniWidth, miniWidth + 1, miniWidth + 2],
+    [0, 1, miniWidth, miniWidth + 1],
+    [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1]
+];
+
+    let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+    function displayNextShape() {
+        minisquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
+        nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+        nextColor = Math.floor(Math.random() * colors.length)
+        const nextShape = nextShapeIndices[nextRandomShape]
+        nextShape.forEach(squareIndex => 
+        minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
+        )
+    }
+    
     document.addEventListener('keydown', (event) => { 
         if (event.key === 'ArrowLeft') {
             moveLeft();
@@ -92,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(timerId);
             timerId = null;
         } else {
+            moveDown();
             timerId = setInterval(moveDown, 1000); 
         }
     });
@@ -130,13 +154,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveDown() {
-        stop()
-
-        undraw()
-        start += 10
-        draw()
+        undraw();
+        
+        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+            stop();
+        } else {
+            start += grid;
+            draw();
+        }
     }
-
 
     function rotate() {
         undraw();
@@ -169,13 +195,10 @@ document.addEventListener("DOMContentLoaded", function () {
             );
     
             if (isRowPainted) {
-                // Remove classes das células da linha
                 rowIndices.forEach(squareIndex => squares[squareIndex].classList.remove("shapePainted"));
-    
-                // Remove as células da linha da matriz
+
                 squares.splice(row * grid, grid);
     
-                // Adicione as células de volta na parte superior
                 for (let i = 0; i < grid; i++) {
                     squares.unshift(document.createElement("div"));
                     gameArea.appendChild(squares[i]);
@@ -185,13 +208,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     function stop() {
-            if (current.some(index => 
-                squares[start + index + grid].classList.contains("busy")
-              )) {
-                currentShape.forEach(start => squares[start + index].classList.add("busy"))
-            
-            checkIfRowIsFilled();
+
+        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+            current.forEach(index => {
+                squares[start + index].classList.add("busy", "shapePainted", `${colors[currentColor]}`);
+            });
+
+            start = 10;
+            Rotation = 0;
+            random = randomShape();
+            current = positions[random][Rotation];
+            currentColor = nextColor;
+    
             draw();
+            checkIfRowIsFilled();
+            displayNextShape();
+            gameOver();
         }
     }
+
+    function gameOver() {
+        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+            clearInterval(timerId);
+            startStopButton.disabled = true;
+            alert("Game Over! Click 'Restart' to play again.");
+        }
+    }
+    
+    
 });

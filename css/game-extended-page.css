@@ -79,7 +79,19 @@
     transform: translateY(2px);
   }
 
+  #next-piece {
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+  }
   
+  #next-piece div {
+    width: 20px;
+    height: 20px;
+  }
+
   .shapePainted {
     background: red;
     border: 2px solid black;
@@ -119,9 +131,6 @@
     color: var(--secondary-title-color);
   }
   
-  #next-piece {
-    width: 80%;
-  }
   
   #lines-eliminated {
     text-align: center;
