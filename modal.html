@@ -9,12 +9,27 @@
 </head>
 <body>
 <div id="background">
-  <div id="modal">
+  <div id="open-modal"></div>
+  <div id="modal" class="open">
     <dialog open>
       <p>
-        Velum modale, quod fenestra modalis vel simpliciter modalis notum est, interface usoris est qui obducit
-        principale contentum paginae vel applicationis mobilis, specialem focum in speciali munere vel notitiarum copia
-        creans.
+        O Mirror Tetris segue as regras clássicas do Tetris, porém, ao longo da partida e de maneira aleatória 
+        podem surgir peças especiais que, quando compõem uma linha eliminada, provocam o espelhamento do tabuleiro, 
+        além dos controles que ficam invertidos (esquerda e direita), este comportamento se repete toda vez que uma 
+        peça especial esteja presente em uma linha eliminada. <br><br>
+
+        A peça especial é formada por uma única célula no tabuleiro (quadradinho) e de cor diferente das demais.<br><br>
+
+        O controle do jogo se dá pelas quatro setas do teclado.<br><br>
+
+        Sobre a pontuação, cada linha eliminada gerará uma soma de 10 pontos no placar total do usuário e o bônus 
+        corresponderá à multiplicação dos pontos gerados em uma eliminação pelo número de linhas eliminadas simultaneamente. 
+        Por exemplo, se o jogador eliminar 3 linhas simultaneamente, será adicionado ao seu placar (10 + 10 + 10) x 3 = 90 pontos.<br><br>
+
+        Sobre a dificuldade, a velocidade em que a peça desce pelo tabuleiro será aumentada a cada 300 pontos conquistados.<br><br>
+
+        Sobre os tabuleiros, você pode escolher entre os dois tipos de tabuleiros, o normal com dimensões de 10x20, 
+        e o estendido com dimensões de 22x44.<br><br>
       </p>
       <button>Entendi!</button>
     </dialog>

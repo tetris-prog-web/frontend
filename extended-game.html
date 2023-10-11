@@ -7,11 +7,44 @@
   <link rel="icon" type="image/x-icon" href="/images/logo.png">
   <link rel="stylesheet" href="css/game-page.css">
   <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/modal-page.css">
 
+  <script src="scripts/modal.js" defer></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 <main id="main-container">
+  
+  <div id="fade"></div>
+  <div id="modal">
+      <div class="modal-header">
+        <h2>Instruções</h2>
+      </div>
+        <div id="modal-body">
+          <p>
+            O Mirror Tetris segue as regras clássicas do Tetris, porém, ao longo da partida e de maneira aleatória 
+            podem surgir peças especiais que, quando compõem uma linha eliminada, provocam o espelhamento do tabuleiro, 
+            além dos controles que ficam invertidos (esquerda e direita), este comportamento se repete toda vez que uma 
+            peça especial esteja presente em uma linha eliminada. <br><br>
+
+            A peça especial é formada por uma única célula no tabuleiro (quadradinho) e de cor diferente das demais.<br><br>
+
+            O controle do jogo se dá pelas quatro setas do teclado.<br><br>
+
+            Sobre a pontuação, cada linha eliminada gerará uma soma de 10 pontos no placar total do usuário e o bônus 
+            corresponderá à multiplicação dos pontos gerados em uma eliminação pelo número de linhas eliminadas simultaneamente. 
+            Por exemplo, se o jogador eliminar 3 linhas simultaneamente, será adicionado ao seu placar (10 + 10 + 10) x 3 = 90 pontos.<br><br>
+
+            Sobre a dificuldade, a velocidade em que a peça desce pelo tabuleiro será aumentada a cada 300 pontos conquistados.<br><br>
+
+            Sobre os tabuleiros, você pode escolher entre os dois tipos de tabuleiros, o normal com dimensões de 10x20, 
+            e o estendido com dimensões de 22x44.<br><br>
+          </p>
+      </div>
+      <button id="close-modal">Entendi!</button>
+      <label style="position:relative; z-index:10;"><input type="checkbox" name="instructions" id="dont-show" value="1" >Não mostrar novamente</label>
+  </div>
+
   <nav class="game-navbar">
     <a href="menu.html">
       <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
@@ -25,6 +58,9 @@
   </nav>
 
   <div id="game-screen">
+    <button id="open-modal">
+      <iconify-icon icon="material-symbols:help" width="50" height="50"></iconify-icon>
+    </button>
     <div id="game-area-container">
       <div id="game-area">
         <img src="./images/mock-game/gameblocks44x22.png" alt="Tela do jogo">
