@@ -1,21 +1,21 @@
-  <!DOCTYPE html>
-  <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo - Mirror Tetris</title>
-    <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <link rel="stylesheet" href="css/game-page.css">
-    <link rel="stylesheet" href="css/global.css">
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jogo - Mirror Tetris</title>
+      <link rel="icon" type="image/x-icon" href="/images/logo.png">
+      <link rel="stylesheet" href="css/game-page.css">
+      <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/instructions-modal.css">
 
-    <script src="scripts/modal.js" defer></script>
+      <script src="scripts/modal.js" defer></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script defer src="scripts/logic.js"></script>
-    <script defer src="scripts/modal.js"></script>
-  </head>
-  <body>
-  <main id="main-container"><div id="modal-background"></div>
+      <script defer src="scripts/logic.js"></script>
+      <script defer src="scripts/modal.js"></script>
+    </head>
+    <body>
+    <main id="main-container"><div id="modal-background"></div>
   <div id="modal">
     <div class="modal-header">
       <h2>Instruções</h2>
@@ -49,298 +49,298 @@
       <input type="checkbox" name="instructions" id="dont-show-modal-again">Não mostrar novamente
     </label>
   </div>
-    <nav class="game-navbar">
-      <a href="menu.html">
-        <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
-      </a>
+      <nav class="game-navbar">
+        <a href="menu.html">
+          <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
+        </a>
 
-      <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
+        <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
 
-      <a href="profile.html">
-        <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
-      </a>
-    </nav>
+        <a href="profile.html">
+          <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
+        </a>
+      </nav>
 
-    <div class="buttons-container">
-      <button id="start-button">Começar/Pausar</button>
-      <button id="restart-button">Restart</button>
-    </div>
+      <div class="buttons-container">
+        <button id="start-button">Começar/Pausar</button>
+        <button id="restart-button">Restart</button>
+      </div>
 
-    <div id="game-screen">
-      <button id="open-modal-button">
+      <div id="game-screen">
+        <button id="open-modal-button">
       <iconify-icon icon="material-symbols:help" width="50" height="50"></iconify-icon>
     </button>
     <div class="game-area-container">
-        <div class="game-area">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-          <div class="busy"></div>
-        </div>
-      </div>
-
-      <div id="game-information">
-        <div id="first-data-container" class="data-container">
-          <div id="current-score">00000</div>
-          <div id="current-game-time">Tempo: 00:00</div>
-          <div id="current-game-difficulty">Nível: 1</div>
-          <div id="next-piece"></div>
-          <div id="lines-eliminated">Linhas eliminadas: 88</div>
-        </div>
-
-        <div id="second-data-container" class="data-container">
-          <div id="username">Zezinho</div>
-          <div id="ranking-table-header">
-            <p>Pontos</p>
-            <p>Nível</p>
-            <p>Tempo</p>
+          <div class="game-area">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
+            <div class="busy"></div>
           </div>
-          <div id="player-ranking-list">
-            <div class="player-position">
-              <p>1000</p>
-              <p>13</p>
-              <p>23:30</p>
-            </div>
-            <div class="player-position">
-              <p>10000</p>
-              <p>130</p>
-              <p>22:30</p>
-            </div>
-            <div class="player-position">
-              <p>100</p>
-              <p>3</p>
-              <p>21:30</p>
-            </div>
-            <div class="player-position">
-              <p>10</p>
-              <p>1</p>
-              <p>2:30</p>
-            </div>
-            <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
+        </div>
+
+        <div id="game-information">
+          <div id="first-data-container" class="data-container">
+            <div id="current-score">00000</div>
+            <div id="current-game-time">Tempo: 00:00</div>
+            <div id="current-game-difficulty">Nível: 1</div>
+            <div id="next-piece"></div>
+            <div id="lines-eliminated">Linhas eliminadas: 88</div>
           </div>
 
+          <div id="second-data-container" class="data-container">
+            <div id="username">Zezinho</div>
+            <div id="ranking-table-header">
+              <p>Pontos</p>
+              <p>Nível</p>
+              <p>Tempo</p>
+            </div>
+            <div id="player-ranking-list">
+              <div class="player-position">
+                <p>1000</p>
+                <p>13</p>
+                <p>23:30</p>
+              </div>
+              <div class="player-position">
+                <p>10000</p>
+                <p>130</p>
+                <p>22:30</p>
+              </div>
+              <div class="player-position">
+                <p>100</p>
+                <p>3</p>
+                <p>21:30</p>
+              </div>
+              <div class="player-position">
+                <p>10</p>
+                <p>1</p>
+                <p>2:30</p>
+              </div>
+              <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
+            </div>
+
+          </div>
         </div>
       </div>
+    </main>
+
+    <div id="modal-background">
+      <dialog id="modal">
+        <p>
+          Velum modale, quod fenestra modalis vel simpliciter modalis notum est, interface usoris est qui obducit
+          principale contentum paginae vel applicationis mobilis, specialem focum in speciali munere vel notitiarum copia
+          creans.
+        </p>
+        <button id="close-modal-button">Entendi!</button>
+
+      </dialog>
     </div>
-  </main>
 
-  <div id="modal-background">
-    <dialog id="modal">
-      <p>
-        Velum modale, quod fenestra modalis vel simpliciter modalis notum est, interface usoris est qui obducit
-        principale contentum paginae vel applicationis mobilis, specialem focum in speciali munere vel notitiarum copia
-        creans.
-      </p>
-      <button id="close-modal-button">Entendi!</button>
-
-    </dialog>
-  </div>
-
-  </body>
-  </html>
+    </body>
+    </html>
