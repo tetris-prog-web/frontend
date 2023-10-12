@@ -18,6 +18,19 @@
   align-content: center;
 }
 
+#open-modal-button {
+  padding-top: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
 #game-area-container {
   width: 60%;
   margin: 1%;
