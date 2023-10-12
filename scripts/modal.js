@@ -1,23 +1,24 @@
-const openModal = document.querySelector("#open-modal");
-const closeModalButton = document.querySelector("#close-modal");
+const openModalButton = document.querySelector("#open-modal-button");
+const closeModalButton = document.querySelector("#close-modal-button");
 const modal = document.querySelector("#modal");
-const fade = document.querySelector("#fade");
-const doNotShowCheckBox = document.querySelector("#dont-show");
+const modalBackground = document.querySelector("#modal-background");
+const doNotShowModalAgainCheckBox = document.querySelector("#dont-show-modal-again");
 
 const showModal = () => {
-    doNotShowCheckBox.checked = localStorage.getItem('shouldShowModal') === 'true' ? false : true;
-    [modal, fade].forEach((el) => el.classList.toggle("show"));
+    doNotShowModalAgainCheckBox.checked = localStorage.getItem('shouldShowModal') !== 'true';
+    [modal, modalBackground].forEach((el) => el.classList.toggle("show"));
 };
 
-[openModal, closeModalButton, fade].forEach((el) => {
+[openModalButton, closeModalButton, modalBackground].forEach((el) => {
     el.addEventListener("click", () => showModal());
 });
 
-doNotShowCheckBox.onclick = () => {
-    localStorage.setItem('shouldShowModal', !doNotShowCheckBox.checked);
+doNotShowModalAgainCheckBox.onclick = () => {
+    const value = doNotShowModalAgainCheckBox.checked ? 'false' : 'true';
+    localStorage.setItem('shouldShowModal', value);
 }
 
 window.addEventListener('load', () => {
-    if(localStorage.getItem('shouldShowModal') === 'false') return;
+    if (localStorage.getItem('shouldShowModal') === 'false') return;
     showModal();
 });
