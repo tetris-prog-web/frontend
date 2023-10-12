@@ -1,94 +1,137 @@
+let gridSize = 10;
+
+class Piece {
+    constructor(color, shape) {
+        this.color = color;
+        this.shape = this.formatShape(shape);
+    }
+
+    formatShape = (shape) => {
+        const newShape = [[], [], [], []];
+        for (let line = 0; line < shape.length; line++) {
+            for (let column = 0; column < shape[line].length; column++) {
+                if (line === 0 && column === 0) {
+                    newShape[line].push(shape[line][column])
+                } else {
+                    newShape[line].push(shape[line][column] * (gridSize * line + column + 1))
+                }
+            }
+        }
+        return newShape;
+    }
+}
+
+const iPiece = new Piece("purple", [
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+])
+
+const oPiece = new Piece("orange", [
+    [0, 0, 0, 0],
+    [1, 1, 0, 0],
+    [1, 1, 0, 0],
+    [0, 0, 0, 0],
+])
+
+const tPiece = new Piece("pink", [
+    [0, 0, 0, 0],
+    [0, 1, 0, 0],
+    [1, 1, 1, 0],
+    [0, 0, 0, 0]
+])
+
+const lLeftPiece = new Piece("green", [
+    [0, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 1, 0, 0],
+])
+
+const lRightPiece = new Piece("green", [
+    [0, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 1, 0, 0],
+])
+
+const specialPiece = new Piece("yellow", [
+    [0, 0, 0, 0],
+    [1, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+])
+
+const uPiece = new Piece("blue", [
+    [0, 0, 0, 0],
+    [1, 0, 1, 0],
+    [1, 1, 1, 0],
+    [0, 0, 0, 0],
+])
+
+function randomChoosePiece(pieces) {
+    console.log(pieces)
+    const random = Math.floor(Math.random() * pieces.length);
+    return pieces[random];
+}
+
+const draw = () => {
+    currentPiece.shape.forEach(row => {
+        row.forEach(index => {
+            if (index > 0) {
+                console.log(index)
+                squares[index - 1].classList.add("shapePainted")
+                squares[index - 1].style.backgroundColor = currentPiece.color
+            }
+        })
+    })
+}
+
+function undraw() {
+    currentPiece.shape.forEach(row => {
+        row.forEach(index => {
+            if (index > 0) {
+                console.log(index)
+                squares[index - 1].classList.remove("shapePainted")
+                squares[index - 1].style.removeProperty("backgroundColor")
+            }
+        })
+    });
+}
+
+const squares = Array.from(document.querySelectorAll(".game-area div")); //TODO generate the divs dynamically
+let gameStarted = false;
+const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, uPiece];
+let currentPiece = randomChoosePiece(pieces);
+
 document.addEventListener("DOMContentLoaded", function () {
-    const squares = Array.from(document.querySelectorAll(".game-area div"));
-    const colors = ["blue", "yellow", "red", "orange", "pink"]
-    let currentColor = Math.floor(Math.random() * colors.length);
-    const grid = 10;
-    let gameStarted = false;
-
-    const iPosition = [
-        [-10, grid - 10, grid * 2 - 10, grid * 3 - 10],
-        [-10, -9, -8, -7],
-        [-10, grid - 10,grid * 2 - 10, grid * 3 - 10],
-        [-10, -9, -8, -7],
-    ]
-
-    const oPosition = [ 
-        [-10, -9, grid - 10, grid - 9],
-        [-10, -9, grid - 10, grid - 9],
-        [-10, -9, grid - 10, grid - 9],
-        [-10, -9, grid - 10, grid - 9],
-    ]
-
-    const tPosition = [
-        [-10, -9, grid -10, grid * 2 - 10],
-        [-10, grid - 10, grid - 9, grid - 8],
-        [-9, grid - 9, grid * 2 - 9, grid * 2 - 10],
-        [-10, -9, -8, grid - 8  ]
-    ]
-
-    const lPosition = [
-        [-10, grid - 10, grid * 2 - 10, grid * 2 - 9],
-        [grid - 10, grid - 9, grid - 8, -8],
-        [-10, -9, grid - 9, grid * 2 - 9],
-        [-10, -9, -8, grid - 10],
-    ]
-
-    const yPosition = [
-        [-9, grid - 10, grid - 9, grid - 8],
-        [-9, grid - 9, grid * 2 - 9, grid - 10],
-        [-10, -9, -8, grid - 9],
-        [-10, grid - 10, grid * 2 - 10, grid - 9],
-    ]
-
-    const uPosition = [
-        [-10, grid - 10, grid - 9, grid - 8, -8],
-        [-10, -9, grid - 9, grid * 2 - 9, grid * 2 - 10],
-        [grid - 10, -10, -9, -8, grid - 8],
-        [-9, -10, grid - 10, grid * 2 - 10, grid * 2 - 9],
-    ]
-
-    
-    const positions = [uPosition, yPosition, lPosition, tPosition, oPosition, iPosition];
-    let random = randomShape();
+    let random = randomChoosePiece(pieces);
     let start = 10;
     let Rotation = 0;
 
-    let currentRot = 0;
-    let current = positions[random][currentRot];
-
-    function draw() {
-        current.forEach(index => {
-            squares[start + index].classList.add("shapePainted", `${colors[currentColor]}`);
-        });
-    }
-
     draw();
 
-    function undraw() {
-        current.forEach(index => {
-            squares[start + index].classList.remove("shapePainted", `${colors[currentColor]}`);
-        });
-    }
-const minisquares = document.querySelectorAll(".next-piece div");
-const miniWidth = 4;
-let nextPosition = 2;
+    const minisquares = document.querySelectorAll(".next-piece div");
+    const miniWidth = 4;
+    let nextPosition = 2;
 
-const nextShapeIndices = [
-    [1, 2, miniWidth + 1, miniWidth * 2 + 1], 
-    [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1], 
-    [1, miniWidth, miniWidth + 1, miniWidth + 2],
-    [0, 1, miniWidth, miniWidth + 1],
-    [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1]
-];
+    const nextShapeIndices = [
+        [1, 2, miniWidth + 1, miniWidth * 2 + 1],
+        [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1],
+        [1, miniWidth, miniWidth + 1, miniWidth + 2],
+        [0, 1, miniWidth, miniWidth + 1],
+        [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1]
+    ];
 
     let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
+
     function displayNextShape() {
-        minisquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
+        minisquares.forEach(square => square.classList.remove("shapePainted"))
         nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
-        nextColor = Math.floor(Math.random() * colors.length)
         const nextShape = nextShapeIndices[nextRandomShape]
-        nextShape.forEach(squareIndex => 
-        minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
+        nextShape.forEach(squareIndex =>
+            minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted")
         )
     }
 
@@ -98,7 +141,7 @@ const nextShapeIndices = [
             startGame();
         }
     });
-    
+
     document.addEventListener("keydown", (event) => {
         if (gameStarted) {
             if (event.key === "ArrowLeft") {
@@ -113,10 +156,6 @@ const nextShapeIndices = [
         }
     }, false);
 
-    function randomShape() {
-        return Math.floor(Math.random() * positions.length);
-    }
-
     const startStopButton = document.getElementById("start-button");
     let timerId;
 
@@ -126,37 +165,38 @@ const nextShapeIndices = [
             timerId = null;
         } else {
             moveDown();
-            timerId = setInterval(moveDown, 1000); 
+            timerId = setInterval(moveDown, 1000);
         }
     });
 
     const $restartButton = document.getElementById("restart-button")
     $restartButton.addEventListener("click", () => {
-    window.location.reload()
-})
+        window.location.reload()
+    })
 
     function moveLeft() {
         undraw();
-        
-        const isAtLeftEdge = current.some(index => (start + index) % grid === 0);
+
+        const isAtLeftEdge = currentPiece.some(index => (start + index) % gridSize === 0);
 
         if (!isAtLeftEdge) {
-            if (!current.some(index => squares[start + index - 1].classList.contains("shapePainted"))) {
+            if (!currentPiece.some(index => squares[start + index - 1].classList.contains("shapePainted"))) {
                 start -= 1;
             }
         }
 
         draw();
     }
+
     function moveRight() {
         undraw();
-        const isAtRightEdge = current.some(index => (start + index + 1) % grid === 0);
+        const isAtRightEdge = currentPiece.some(index => (start + index + 1) % gridSize === 0);
 
         if (!isAtRightEdge) {
             start += 1;
         }
 
-        if (current.some(index => squares[start + index].classList.contains("shapePainted"))) {
+        if (currentPiece.some(index => squares[start + index].classList.contains("shapePainted"))) {
             start -= 1;
         }
 
@@ -165,72 +205,71 @@ const nextShapeIndices = [
 
     function moveDown() {
         undraw();
-        
-        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+
+        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
             stop();
         } else {
-            start += grid;
+            start += gridSize;
             draw();
         }
     }
 
     function rotate() {
         undraw();
-        
-        const newRotation = (Rotation + 1) % positions[random].length;
-        const newShape = positions[random][newRotation];
-        
-        const isLeftEdgeLimit = newShape.some(index => (start + index) % grid === -1);
-        const isRightEdgeLimit = newShape.some(index => (start + index) % grid === 9);
+
+        const newRotation = (Rotation + 1) % pieces[random].length;
+        const newShape = pieces[random][newRotation];
+
+        const isLeftEdgeLimit = newShape.some(index => (start + index) % gridSize === -1);
+        const isRightEdgeLimit = newShape.some(index => (start + index) % gridSize === 9);
         const isFilled = newShape.some(index => squares[start + index].classList.contains("busy"));
-    
+
         if (!isLeftEdgeLimit && !isRightEdgeLimit && !isFilled) {
             Rotation = newRotation;
-            current = newShape;
+            currentPiece = newShape;
         }
-        
+
         draw();
     }
-    
+
 
     function checkIfRowIsFilled() {
-        for (let row = 0; row < grid; row++) {
+        for (let row = 0; row < gridSize; row++) {
             const rowIndices = [];
-    
-            for (let col = 0; col < grid; col++) {
-                rowIndices.push(row * grid + col);
+
+            for (let col = 0; col < gridSize; col++) {
+                rowIndices.push(row * gridSize + col);
             }
-    
+
             const isRowPainted = rowIndices.every(squareIndex =>
                 squares[squareIndex].classList.contains("shapePainted")
             );
-    
+
             if (isRowPainted) {
                 rowIndices.forEach(squareIndex => squares[squareIndex].classList.remove("shapePainted"));
 
-                squares.splice(row * grid, grid);
-    
-                for (let i = 0; i < grid; i++) {
+                squares.splice(row * gridSize, gridSize);
+
+                for (let i = 0; i < gridSize; i++) {
                     squares.unshift(document.createElement("div"));
                     gameArea.appendChild(squares[i]);
                 }
             }
         }
     }
-    
+
     function stop() {
 
-        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
-            current.forEach(index => {
-                squares[start + index].classList.add("busy", "shapePainted", `${colors[currentColor]}`);
+        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
+            currentPiece.forEach(index => {
+                squares[start + index].classList.add("busy", "shapePainted");
             });
 
             start = 10;
             Rotation = 0;
-            random = randomShape();
-            current = positions[random][Rotation];
-            currentColor = nextColor;
-    
+            random = randomChoosePiece(pieces);
+            currentPiece = pieces[random][Rotation];
+
             draw();
             checkIfRowIsFilled();
             displayNextShape();
@@ -239,12 +278,10 @@ const nextShapeIndices = [
     }
 
     function gameOver() {
-        if (current.some(index => squares[start + index + grid].classList.contains("busy"))) {
+        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
             clearInterval(timerId);
             startStopButton.disabled = true;
             alert("Game Over! Click 'Restart' to play again.");
         }
     }
-    
-    
 });
