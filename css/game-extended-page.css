@@ -1,317 +1,348 @@
 #main-container {
-    width: 100%;
-    height: 100%;
-  
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #game-screen {
-    height: 90%;
-  
-    background-image: url("../images/backgrounds/fire-watch-day.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-  }
-  
-  .game-area-container {
-    width: 100%;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .game-area {
-    width: 374px; 
-    height: 748px; 
-    border-radius: 10px;
-    background-color: green;
-    display: grid; 
-    grid-template-columns: repeat(22, 17px); 
-    grid-template-rows: repeat(44, 17px); 
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#open-modal-button {
+  padding-top: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+#game-screen {
+  height: 90%;
+
+  background-image: url("../images/backgrounds/fire-watch-day.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+
+#controls-area {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#instructions-button-container {
+
+}
+
+#buttons-container {
+
+}
+
+.game-area-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-area {
+  width: 374px;
+  height: 748px;
+  border-radius: 10px;
+  background-color: green;
+  display: grid;
+  grid-template-columns: repeat(22, 17px);
+  grid-template-rows: repeat(44, 17px);
 }
 
 .game-area div {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.buttons-containe{
-   width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.buttons-containe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #start-button,
-#restart-button{
-   
-        
-        align-items: center;
-        justify-content: space-evenly;
-        text-decoration: none;
-        background: var(--main-background-color);
-        box-shadow: 0 4px var(--button-shadow-color);
-      
-        border: var(--main-background-color);
-        border-radius: 20px;
-      
-        width: 250px;
-        height: 50px;
+#restart-button {
 
-        font-size: 20px;
 
-        
-        color: white;
-    
-        cursor: pointer;
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+  background: var(--main-background-color);
+  box-shadow: 0 4px var(--button-shadow-color);
+
+  border: var(--main-background-color);
+  border-radius: 20px;
+
+  width: 250px;
+  height: 50px;
+
+  font-size: 20px;
+
+
+  color: white;
+
+  cursor: pointer;
 }
 
 #start-button:hover,
 #restart-button:hover {
-    box-shadow: 0 2px var(--button-shadow-color);
-    transform: translateY(2px);
-  }
+  box-shadow: 0 2px var(--button-shadow-color);
+  transform: translateY(2px);
+}
 
-  #next-piece {
-    width: 120px;
-    height: 120px;
-    background-color: green;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  #next-piece div {
-    width: 20px;
-    height: 20px;
-  }
-  
+#next-piece {
+  width: 120px;
+  height: 120px;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .shapePainted {
-    background: red;
-    border: 2px solid black;
-  }
-  
-  
-  #game-information {
-    height: 100%;
-    width: 40%;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .data-container {
-    background-color: var(--default-container-background-color);
-    border-radius: 5%;
-    width: 50%;
-    margin: 1%;
-  }
-  
-  #first-data-container {
-    height: 40%;
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-  
-  #current-game-time {
-    text-align: center;
-    font-family: League Spartan, sans-serif;
-    font-size: 2rem;
-    color: var(--secondary-title-color);
-  }
-  
-  
-  #lines-eliminated {
-    text-align: center;
-    font-family: League Spartan, sans-serif;
-    font-size: 1.5rem;
-    color: var(--secondary-title-color);
-  }
-  
-  #second-data-container {
-    height: 60%;
-    padding: 20px 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-  
-    font-family: League Spartan, sans-serif;
-    color: var(--secondary-title-color);
-  }
-  
-  #current-score {
-    text-align: center;
-    font-family: League Spartan, sans-serif;
-    font-size: 3.5rem;
-    color: var(--secondary-title-color);
-  }
-  
-  
-  #current-game-difficulty {
-    font-weight: bold;
-    font-family: League Spartan, sans-serif;
-    font-size: 1.2rem;
-    color: var(--secondary-title-color);
-  }
-  
-  #player-ranking-list {
-    width: 100%;
-    height: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    overflow: auto;
-  }
-  
-  .player-position {
-    width: 80%;
-    height: 10%;
-    max-height: 10%;
-  
-    margin: 10px;
-  
-    border-radius: 15px;
-    background-color: var(--default-player-ranking);
-    font-size: 1rem;
-    font-weight: 500;
-  
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    align-items: center;
-  }
-  
-  .player-position > p {
-    margin: 0;
-    display: grid;
-    text-align: center;
-  
-    align-items: center;
-    justify-self: center;
-    align-self: center;
-    width: 100%;
-  }
-  
-  #username {
-    color: var(--secondary-title-color);
-    text-align: center;
-    font-family: League Spartan, sans-serif;
-    font-size: 2rem;
-  }
-  
-  #current-player-position {
-    background-color: var(--current-player-ranking);
-  }
-  
-  #game-mode {
-    text-shadow: 0 7px 5px var(--default-text-shadow-color);
-    font-family: League Spartan, sans-serif;
-    font-size: 1rem;
-  
-    position: relative;
-  }
-  
-  #ranking-table-header {
-    width: 80%;
-    height: 20%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-  
-    color: var(--secondary-title-color);
-    text-align: center;
-    font-family: League Spartan, sans-serif;
-    font-size: 1.5rem;
-  }
-  
-  #ranking-table-header > p {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    justify-self: center;
-    align-self: center;
-  
-    width: 33.3%;
-  }
-  
-  #modal-background {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
-    z-index: 2000;
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    height: 100%;
-    width: 100%;
-  
-    background-color: rgba(0, 0, 0, 0.65);
-  }
-  
-  #modal {
-    width: 45%;
-    height: 35%;
-  
-    border: none;
-    border-radius: 10px;
-  
-    box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
-    background: var(--secondary-title-color);
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #modal p {
-    font-size: 25px;
-    text-align: center;
-    margin: auto;
-  }
-  
-  #modal button {
-    font-size: 35px;
-    font-weight: 700;
-  
-    padding-top: 5px;
-    margin-top: auto;
-  
-    width: 180px;
-    height: 40px;
-  
-    background: rgba(186, 12, 12, 1);
-    color: var(--secondary-title-color);
-  
-    border: none;
-    border-radius: 4px;
-  
-    cursor: pointer;
-  }
-  
-  #modal button:hover {
-    box-shadow: 0 2px var(--button-shadow-color);
-  
-    transform: translateY(2px);
-  }
+#next-piece div {
+  width: 20px;
+  height: 20px;
+}
+
+
+.shapePainted {
+  background: red;
+  border: 2px solid black;
+}
+
+
+#game-information {
+  height: 100%;
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.data-container {
+  background-color: var(--default-container-background-color);
+  border-radius: 5%;
+  width: 50%;
+  margin: 1%;
+}
+
+#first-data-container {
+  height: 40%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#current-game-time {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 2rem;
+  color: var(--secondary-title-color);
+}
+
+
+#lines-eliminated {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 1.5rem;
+  color: var(--secondary-title-color);
+}
+
+#second-data-container {
+  height: 60%;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  font-family: League Spartan, sans-serif;
+  color: var(--secondary-title-color);
+}
+
+#current-score {
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 3.5rem;
+  color: var(--secondary-title-color);
+}
+
+
+#current-game-difficulty {
+  font-weight: bold;
+  font-family: League Spartan, sans-serif;
+  font-size: 1.2rem;
+  color: var(--secondary-title-color);
+}
+
+#player-ranking-list {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: auto;
+}
+
+.player-position {
+  width: 80%;
+  height: 10%;
+  max-height: 10%;
+
+  margin: 10px;
+
+  border-radius: 15px;
+  background-color: var(--default-player-ranking);
+  font-size: 1rem;
+  font-weight: 500;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  align-items: center;
+}
+
+.player-position > p {
+  margin: 0;
+  display: grid;
+  text-align: center;
+
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+}
+
+#username {
+  color: var(--secondary-title-color);
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 2rem;
+}
+
+#current-player-position {
+  background-color: var(--current-player-ranking);
+}
+
+#game-mode {
+  text-shadow: 0 7px 5px var(--default-text-shadow-color);
+  font-family: League Spartan, sans-serif;
+  font-size: 1rem;
+
+  position: relative;
+}
+
+#ranking-table-header {
+  width: 80%;
+  height: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--secondary-title-color);
+  text-align: center;
+  font-family: League Spartan, sans-serif;
+  font-size: 1.5rem;
+}
+
+#ranking-table-header > p {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+
+  width: 33.3%;
+}
+
+#modal-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+#modal {
+  width: 45%;
+  height: 35%;
+
+  border: none;
+  border-radius: 10px;
+
+  box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
+  background: var(--secondary-title-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modal p {
+  font-size: 25px;
+  text-align: center;
+  margin: auto;
+}
+
+#modal button {
+  font-size: 35px;
+  font-weight: 700;
+
+  padding-top: 5px;
+  margin-top: auto;
+
+  width: 180px;
+  height: 40px;
+
+  background: rgba(186, 12, 12, 1);
+  color: var(--secondary-title-color);
+
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+#modal button:hover {
+  box-shadow: 0 2px var(--button-shadow-color);
+
+  transform: translateY(2px);
+}
   

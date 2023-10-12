@@ -7,7 +7,10 @@
 }
 
 #open-modal-button {
-  padding-top: 15px;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 15px;
   display: flex;
   height: 40px;
   width: 40px;
@@ -27,9 +30,26 @@
   background-size: 100% 100%;
 
   display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+#controls-area {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#instructions-button-container {
+
+}
+
+#buttons-container {
+
 }
 
 .game-area-container {
@@ -52,45 +72,45 @@
   height: 25px;
 }
 
-.buttons-containe{
+.buttons-containe {
   width: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #start-button,
-#restart-button{
-  
-       
-       align-items: center;
-       justify-content: space-evenly;
-       text-decoration: none;
-       background: var(--main-background-color);
-       box-shadow: 0 4px var(--button-shadow-color);
-     
-       border: var(--main-background-color);
-       border-radius: 20px;
-     
-       width: 250px;
-       height: 50px;
+#restart-button {
 
-       font-size: 20px;
 
-       
-       color: white;
-   
-       cursor: pointer;
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+  background: var(--main-background-color);
+  box-shadow: 0 4px var(--button-shadow-color);
+
+  border: var(--main-background-color);
+  border-radius: 20px;
+
+  width: 250px;
+  height: 50px;
+
+  font-size: 20px;
+
+
+  color: white;
+
+  cursor: pointer;
 }
 
 #start-button:hover,
 #restart-button:hover {
-   box-shadow: 0 2px var(--button-shadow-color);
-   transform: translateY(2px);
- }
+  box-shadow: 0 2px var(--button-shadow-color);
+  transform: translateY(2px);
+}
 
- #next-piece {
+#next-piece {
   width: 120px;
   height: 120px;
   background-color: green;
