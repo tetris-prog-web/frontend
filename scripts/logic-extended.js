@@ -116,8 +116,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const startStopButton = document.getElementById("start-button");
     let timerId;
-
+    let cronometer;
+    let loading = false;
+    let seconds = 0;
+    let minutes = 0;
+    
     startStopButton.addEventListener("click", () => {
+        var divGameTime = document.getElementById("current-game-time");
+
+        if(!loading)
+        {
+            cronometer = setInterval(function(){
+                seconds++;
+                if(seconds === 60)
+                {
+                    seconds = 0;
+                    minutes++;
+                }
+
+                divGameTime.innerText = `Tempo: ${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            }, 1000);
+            loading = true;
+        }
+        else
+        {
+            clearInterval(cronometer);
+            loading = false;
+        }
+
         if (timerId) {
             clearInterval(timerId);
             timerId = null;
