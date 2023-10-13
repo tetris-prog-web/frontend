@@ -1,5 +1,28 @@
 let gridSize = 10;
 
+let tableGameContainer = document.getElementsByClassName("game-area-container")[0];
+
+for(let i = 0; i <20; i++)
+{
+    let rowContainer = document.createElement('div');
+    
+    rowContainer.classList.add('row');
+
+    tableGameContainer.appendChild(rowContainer);
+    
+    for(let j = 0; j<10; j++)
+    {
+        
+        let atualRow = document.getElementsByClassName('row')[i];
+
+        let columnContainer = document.createElement('div');
+        
+        columnContainer.classList.add('column');
+
+        atualRow.appendChild(columnContainer);
+    }
+}
+
 class Piece {
     constructor(color, shape) {
         this.color = color;

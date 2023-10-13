@@ -53,9 +53,24 @@
 }
 
 .game-area-container {
+  width: 400px;
+  height: 800px;
+}
+
+.game-area-container .row
+{
   width: 100%;
+  height: 5%;
+
   display: flex;
-  justify-content: center;
+}
+
+.row .column
+{
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--default-container-background-color);
 }
 
 .game-area {
