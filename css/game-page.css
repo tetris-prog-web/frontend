@@ -44,14 +44,6 @@
   align-items: flex-start;
 }
 
-#instructions-button-container {
-
-}
-
-#buttons-container {
-
-}
-
 .game-area-container {
   width: 400px;
   height: 800px;
@@ -139,8 +131,9 @@
 }
 
 .shapePainted {
-  /*background: red;*/
-  border: 2px solid black;
+  border: 1px solid black;
+  
+  overflow: hidden;
 }
 
 #game-information {

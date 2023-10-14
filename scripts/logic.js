@@ -1,336 +1,226 @@
-let gridSize = 10;
-
 let tableGameContainer = document.getElementsByClassName("game-area-container")[0];
 
-for(let i = 0; i <20; i++)
+for(let i = 0; i < 20; i++)
 {
     let rowContainer = document.createElement('div');
-    
+
     rowContainer.classList.add('row');
 
     tableGameContainer.appendChild(rowContainer);
-    
-    for(let j = 0; j<10; j++)
+
+    for(let j = 0; j < 10; j++)
     {
-        
+
         let atualRow = document.getElementsByClassName('row')[i];
 
         let columnContainer = document.createElement('div');
-        
+
         columnContainer.classList.add('column');
 
         atualRow.appendChild(columnContainer);
     }
 }
 
-class Piece {
-    constructor(color, shape) {
-        this.color = color;
-        this.shape = this.formatShape(shape);
-    }
+const gridSize = 10;
+const numRows = 20;
+const numCols = 10;
 
-    formatShape = (shape) => {
-        const newShape = [[], [], [], []];
-        for (let line = 0; line < shape.length; line++) {
-            for (let column = 0; column < shape[line].length; column++) {
-                if (line === 0 && column === 0) {
-                    newShape[line].push(shape[line][column])
-                } else {
-                    newShape[line].push(shape[line][column] * (gridSize * line + column + 1))
+class Piece{
+    constructor(color, shape)
+    {
+        this.color = color;
+        this.shape = shape;
+    }
+}
+
+const iPiece = new Piece("rgb(130,106,210)", [[1, 1, 1, 1]]);
+const oPiece = new Piece ("rgb(246,109,21)", [[1,1], [1,1]]);
+const tPiece = new Piece("rgb(95,203,175)", [[1, 1, 1], [0, 1, 0]]);
+const lLeftPiece = new Piece("rgb(176,126,74)", [[1, 1, 1], [1, 0, 0]]);
+const lRightPiece = new Piece("rgb(85,250,125)", [[1, 1, 1], [0, 0, 1]]);
+const specialPiece = new Piece("rgb(234,194,24)",[[1]]);
+const uPiece = new Piece("rgb(59,169,209)", [[1, 0, 1], [1, 1, 1]]);
+
+const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, uPiece];
+
+let currentPiece;
+let x = 0;
+let y = 0;
+let timerId;
+let isPlaying = false;
+
+const gameArea = document.querySelector(".game-area-container");
+
+function draw() {
+    if (currentPiece) {
+        for (let row = 0; row < currentPiece.shape.length; row++) {
+            for (let col = 0; col < currentPiece.shape[row].length; col++) {
+                if (currentPiece.shape[row][col]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+                    cell.style.backgroundColor = currentPiece.color;
+                    cell.classList.add("shapePainted");
                 }
             }
         }
-        return newShape;
     }
-}
-
-const iPiece = new Piece("purple", [
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-])
-
-const oPiece = new Piece("orange", [
-    [0, 0, 0, 0],
-    [1, 1, 0, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0],
-])
-
-const tPiece = new Piece("pink", [
-    [0, 0, 0, 0],
-    [0, 1, 0, 0],
-    [1, 1, 1, 0],
-    [0, 0, 0, 0]
-])
-
-const lLeftPiece = new Piece("green", [
-    [0, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 1, 0, 0],
-])
-
-const lRightPiece = new Piece("green", [
-    [0, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 1, 0, 0],
-])
-
-const specialPiece = new Piece("yellow", [
-    [0, 0, 0, 0],
-    [1, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-])
-
-const uPiece = new Piece("blue", [
-    [0, 0, 0, 0],
-    [1, 0, 1, 0],
-    [1, 1, 1, 0],
-    [0, 0, 0, 0],
-])
-
-function randomChoosePiece(pieces) {
-    console.log(pieces)
-    const random = Math.floor(Math.random() * pieces.length);
-    return pieces[random];
-}
-
-const draw = () => {
-    currentPiece.shape.forEach(row => {
-        row.forEach(index => {
-            if (index > 0) {
-                console.log(index)
-                squares[index - 1].classList.add("shapePainted")
-                squares[index - 1].style.backgroundColor = currentPiece.color
-            }
-        })
-    })
 }
 
 function undraw() {
-    currentPiece.shape.forEach(row => {
-        row.forEach(index => {
-            if (index > 0) {
-                console.log(index)
-                squares[index - 1].classList.remove("shapePainted")
-                squares[index - 1].style.removeProperty("backgroundColor")
+    if (currentPiece) {
+        for (let row = 0; row < currentPiece.shape.length; row++) {
+            for (let col = 0; col < currentPiece.shape[row].length; col++) {
+                if (currentPiece.shape[row][col]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+                    cell.style.backgroundColor = "";
+                    cell.classList.remove("shapePainted");
+                }
             }
-        })
-    });
+        }
+    }
 }
 
-const squares = Array.from(document.querySelectorAll(".game-area div")); //TODO generate the divs dynamically
-let gameStarted = false;
-const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, uPiece];
-let currentPiece = randomChoosePiece(pieces);
-
-document.addEventListener("DOMContentLoaded", function () {
-    let random = randomChoosePiece(pieces);
-    let start = 10;
-    let Rotation = 0;
-
+function rotate() {
+    undraw();
+    const previousPiece = currentPiece;
+    currentPiece = new Piece(currentPiece.color, currentPiece.shape[0].map((_, i) =>
+        currentPiece.shape.map((row) => row[i]).reverse()
+    ));
+    if (checkCollision()) {
+        currentPiece = previousPiece;
+    }
     draw();
+}
 
-    const minisquares = document.querySelectorAll(".next-piece div");
-    const miniWidth = 4;
-    let nextPosition = 2;
-
-    const nextShapeIndices = [
-        [1, 2, miniWidth + 1, miniWidth * 2 + 1],
-        [miniWidth + 1, miniWidth + 2, miniWidth * 2, miniWidth * 2 + 1],
-        [1, miniWidth, miniWidth + 1, miniWidth + 2],
-        [0, 1, miniWidth, miniWidth + 1],
-        [1, miniWidth + 1, miniWidth * 2 + 1, miniWidth * 3 + 1]
-    ];
-
-    let nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
-
-    function displayNextShape() {
-        minisquares.forEach(square => square.classList.remove("shapePainted"))
-        nextRandomShape = Math.floor(Math.random() * nextShapeIndices.length)
-        const nextShape = nextShapeIndices[nextRandomShape]
-        nextShape.forEach(squareIndex =>
-            minisquares[squareIndex + nextPosition + miniWidth].classList.add("shapePainted")
-        )
+function moveDown() {
+    undraw();
+    y++;
+    if (checkCollision()) {
+        y--;
+        setPiece();
+        draw();
+        currentPiece = randomPiece();
+        x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
+        y = 0;
     }
+    draw();
+}
 
-    document.getElementById("start-button").addEventListener("click", () => {
-        if (!gameStarted) {
-            gameStarted = true;
-            startGame();
-        }
-    });
+function moveLeft() {
+    undraw();
+    x--;
+    if (checkCollision()) {
+        x++;
+    }
+    draw();
+}
 
-    document.addEventListener("keydown", (event) => {
-        if (gameStarted) {
-            if (event.key === "ArrowLeft") {
-                moveLeft();
-            } else if (event.key === "ArrowRight") {
-                moveRight();
-            } else if (event.key === "ArrowDown") {
-                moveDown();
-            } else if (event.key === "ArrowUp") {
-                rotate();
+function moveRight() {
+    undraw();
+    x++;
+    if (checkCollision()) {
+        x--;
+    }
+    draw();
+}
+
+function checkCollision() {
+    if (currentPiece) {
+        for (let row = 0; row < currentPiece.shape.length; row++) {
+            for (let col = 0; col < currentPiece.shape[row].length; col++) {
+                if (currentPiece.shape[row][col]) {
+                    if (
+                        x + col < 0 ||
+                        x + col >= numCols ||
+                        y + row >= numRows
+                    ) {
+                        return true;
+                    }
+                    // Verificar colisão com peças existentes no tabuleiro
+                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1})`);
+                    if (cell && cell.style.backgroundColor !== "") {
+                        return true;
+                    }
+                }
             }
         }
-    }, false);
+    }
+    return false;
+}
 
-    const startStopButton = document.getElementById("start-button");
-    let timerId;
-    let cronometer;
-    let loading = false;
-    let seconds = 0;
-    let minutes = 0;
-    
-    startStopButton.addEventListener("click", () => {
-        var divGameTime = document.getElementById("current-game-time");
-
-        if(!loading)
-        {
-            cronometer = setInterval(function(){
-                seconds++;
-                if(seconds === 60)
-                {
-                    seconds = 0;
-                    minutes++;
+function setPiece() {
+    if (currentPiece) {
+        for (let row = 0; row < currentPiece.shape.length; row++) {
+            for (let col = 0; col < currentPiece.shape[row].length; col++) {
+                if (currentPiece.shape[row][col]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+                    cell.style.backgroundColor = currentPiece.color;
                 }
-
-                divGameTime.innerText = `Tempo: ${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-            }, 1000);
-            loading = true;
+            }
         }
-        else
-        {
-            clearInterval(cronometer);
-            loading = false;
-        }
+    }
+}
 
-        if (timerId) {
-            clearInterval(timerId);
-            timerId = null;
-        } else {
+function randomPiece() {
+    return pieces[Math.floor(Math.random() * pieces.length)];
+}
+
+function startGame() {
+    if (!isPlaying) {
+        isPlaying = true;
+        currentPiece = randomPiece();
+        x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
+        y = 0;
+        draw();
+        timerId = setInterval(moveDown, 1000);
+    }
+}
+
+function stopGame() {
+    if (isPlaying) {
+        isPlaying = false;
+        clearInterval(timerId);
+    }
+}
+
+let cronometer;
+let gameStarted = false;
+let seconds = 0;
+let minutes = 0;
+
+function cronometerGame() {
+    const divGameTime = document.getElementById("current-game-time");
+
+    if (!gameStarted) {
+        cronometer = setInterval(() => {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+
+            divGameTime.innerText = `Tempo: ${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }, 1000);
+    }
+}
+document.getElementById("start-button").addEventListener("click", () => {
+    cronometerGame();
+    startGame();
+});
+
+document.getElementById("restart-button").addEventListener("click", () => {
+    location.reload();
+});
+
+document.addEventListener("keydown", (event) => {
+    if (isPlaying) {
+        if (event.key === "ArrowLeft") {
+            moveLeft();
+        } else if (event.key === "ArrowRight") {
+            moveRight();
+        } else if (event.key === "ArrowDown") {
             moveDown();
-            timerId = setInterval(moveDown, 1000);
-        }
-    });
-
-    const $restartButton = document.getElementById("restart-button")
-    $restartButton.addEventListener("click", () => {
-        window.location.reload()
-    })
-
-    function moveLeft() {
-        undraw();
-
-        const isAtLeftEdge = currentPiece.some(index => (start + index) % gridSize === 0);
-
-        if (!isAtLeftEdge) {
-            if (!currentPiece.some(index => squares[start + index - 1].classList.contains("shapePainted"))) {
-                start -= 1;
-            }
-        }
-
-        draw();
-    }
-
-    function moveRight() {
-        undraw();
-        const isAtRightEdge = currentPiece.some(index => (start + index + 1) % gridSize === 0);
-
-        if (!isAtRightEdge) {
-            start += 1;
-        }
-
-        if (currentPiece.some(index => squares[start + index].classList.contains("shapePainted"))) {
-            start -= 1;
-        }
-
-        draw();
-    }
-
-    function moveDown() {
-        undraw();
-
-        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
-            stop();
-        } else {
-            start += gridSize;
-            draw();
-        }
-    }
-
-    function rotate() {
-        undraw();
-
-        const newRotation = (Rotation + 1) % pieces[random].length;
-        const newShape = pieces[random][newRotation];
-
-        const isLeftEdgeLimit = newShape.some(index => (start + index) % gridSize === -1);
-        const isRightEdgeLimit = newShape.some(index => (start + index) % gridSize === 9);
-        const isFilled = newShape.some(index => squares[start + index].classList.contains("busy"));
-
-        if (!isLeftEdgeLimit && !isRightEdgeLimit && !isFilled) {
-            Rotation = newRotation;
-            currentPiece = newShape;
-        }
-
-        draw();
-    }
-
-
-    function checkIfRowIsFilled() {
-        for (let row = 0; row < gridSize; row++) {
-            const rowIndices = [];
-
-            for (let col = 0; col < gridSize; col++) {
-                rowIndices.push(row * gridSize + col);
-            }
-
-            const isRowPainted = rowIndices.every(squareIndex =>
-                squares[squareIndex].classList.contains("shapePainted")
-            );
-
-            if (isRowPainted) {
-                rowIndices.forEach(squareIndex => squares[squareIndex].classList.remove("shapePainted"));
-
-                squares.splice(row * gridSize, gridSize);
-
-                for (let i = 0; i < gridSize; i++) {
-                    squares.unshift(document.createElement("div"));
-                    gameArea.appendChild(squares[i]);
-                }
-            }
-        }
-    }
-
-    function stop() {
-
-        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
-            currentPiece.forEach(index => {
-                squares[start + index].classList.add("busy", "shapePainted");
-            });
-
-            start = 10;
-            Rotation = 0;
-            random = randomChoosePiece(pieces);
-            currentPiece = pieces[random][Rotation];
-
-            draw();
-            checkIfRowIsFilled();
-            displayNextShape();
-            gameOver();
-        }
-    }
-
-    function gameOver() {
-        if (currentPiece.some(index => squares[start + index + gridSize].classList.contains("busy"))) {
-            clearInterval(timerId);
-            startStopButton.disabled = true;
-            alert("Game Over! Click 'Restart' to play again.");
+        } else if (event.key === "ArrowUp") {
+            rotate();
         }
     }
 });
