@@ -57,7 +57,7 @@ const lRightPiece = new Piece("rgb(85,250,125)", [[1, 1, 1], [0, 0, 1]]);
 const specialPiece = new Piece("rgb(234,194,24)", [[1]]);
 const uPiece = new Piece("rgb(59,169,209)", [[1, 0, 1], [1, 1, 1]]);
 
-const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, uPiece];
+const pieces = [iPiece];
 
 let currentPiece = randomPiece();
 let nextPiece = randomPiece();
@@ -68,6 +68,8 @@ let x = 0;
 let y = 0;
 let timerId;
 let isPlaying = false;
+
+let isMirrored = false;
 
 const gameArea = document.querySelector(".game-area-container");
 
@@ -225,6 +227,16 @@ function checkRowIsFilled() {
     }
 }
 
+function checkRowToRemoveHasSpecialPiece(row) {
+    for (let col = 1; col <= 10; col++) {
+        const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
+        if (cell && cell.style.backgroundColor === specialPiece.color) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function addPoints(eliminatedRows) {
     totalPoints += eliminatedRows * eliminatedRows * 10
 
@@ -257,6 +269,34 @@ function removeFilledRow(row) {
     }
 
     document.getElementById("eliminated-rows").innerHTML = `Linhas eliminadas: ${++totalEliminatedRows}`
+
+    // if(checkRowToRemoveHasSpecialPiece(row)) {
+    isMirrored = !isMirrored
+    invertGameArea()
+    // }
+}
+
+function invertGameArea() {
+    for (let i = 1; i <= 20; i++) {
+        for (let j = 1; j <= 5; j++) {
+            const cell = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${j})`);
+            const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${5 - j - 1})`);
+            // if(!cellToInvert)console.log("Row: " + i + ", col: " + j)
+            if (cell && cellToInvert) {
+                const aux = cell
+                cell.style.backgroundColor = cellToInvert.style.backgroundColor;
+                cellToInvert.style.backgroundColor = aux.style.backgroundColor;
+                if (cell.classList.contains("shapePainted") && !cellToInvert.classList.contains("shapePainted")) {
+                    cellToInvert.classList.add("shapePainted");
+                } else if (cellToInvert.classList.contains("shapePainted")) cellToInvert.classList.remove("shapePainted");
+
+                if (cellToInvert.classList.contains("shapePainted") && !cell.classList.contains("shapePainted")) {
+                    cell.classList.add("shapePainted");
+                } else if (cell.classList.contains("shapePainted")) cell.classList.remove("shapePainted");
+
+            }
+        }
+    }
 }
 
 function setPiece() {
@@ -329,13 +369,15 @@ document.getElementById("restart-button").addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
     if (isPlaying) {
         if (event.key === "ArrowLeft") {
-            moveLeft();
+            if (isMirrored) moveRight()
+            else moveLeft()
         } else if (event.key === "ArrowRight") {
-            moveRight();
+            if (isMirrored) moveLeft()
+            else moveRight()
         } else if (event.key === "ArrowDown") {
-            moveDown();
+            moveDown()
         } else if (event.key === "ArrowUp") {
-            rotate();
+            rotate()
         }
     }
 });
