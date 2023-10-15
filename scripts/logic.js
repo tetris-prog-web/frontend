@@ -217,8 +217,8 @@ function checkRowIsFilled() {
         }
         if (eliminatedRows !== 0) {
             addPoints(eliminatedRows);
-            if (totalPoints !== 0 && totalPoints % 50 === 0) {
-                level++;
+            if (totalPoints !== 0 && totalPoints % 300 === 0) {
+                level += 0.5
                 setSpeed()
             }
         }
