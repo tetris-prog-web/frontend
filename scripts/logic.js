@@ -215,8 +215,13 @@ function checkRowIsFilled() {
                 removeFilledRow(row)
             }
         }
-        addPoints(eliminatedRows);
-        if (totalPoints % 100 === 0) level++;
+        if (eliminatedRows !== 0) {
+            addPoints(eliminatedRows);
+            if (totalPoints !== 0 && totalPoints % 50 === 0) {
+                level++;
+                setSpeed()
+            }
+        }
     }
 }
 
@@ -276,8 +281,13 @@ function startGame() {
     drawNextPiece();
     draw();
     cronometerGame();
+    setSpeed()
+}
+
+function setSpeed() {
     moveDown()
-    timerId = setInterval(moveDown, 1000/level);
+    clearInterval(timerId);
+    timerId = setInterval(moveDown, 1000 / level);
 }
 
 function stopGame() {
