@@ -63,6 +63,7 @@ let currentPiece = randomPiece();
 let nextPiece = randomPiece();
 let totalEliminatedRows = 0;
 let totalPoints = 0;
+let level = 1;
 let x = 0;
 let y = 0;
 let timerId;
@@ -215,6 +216,7 @@ function checkRowIsFilled() {
             }
         }
         addPoints(eliminatedRows);
+        if (totalPoints % 100 === 0) level++;
     }
 }
 
@@ -275,7 +277,7 @@ function startGame() {
     draw();
     cronometerGame();
     moveDown()
-    timerId = setInterval(moveDown, 1000);
+    timerId = setInterval(moveDown, 1000/level);
 }
 
 function stopGame() {
