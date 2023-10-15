@@ -163,8 +163,7 @@
   color: var(--secondary-title-color);
 }
 
-
-#lines-eliminated {
+#eliminated-rows {
   text-align: center;
   font-family: League Spartan, sans-serif;
   font-size: 1.5rem;

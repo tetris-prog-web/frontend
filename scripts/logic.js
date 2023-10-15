@@ -61,6 +61,8 @@ const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, u
 
 let currentPiece = randomPiece();
 let nextPiece = randomPiece();
+let totalEliminatedRows = 0;
+let totalPoints = 0;
 let x = 0;
 let y = 0;
 let timerId;
@@ -149,6 +151,7 @@ function moveDown() {
         drawNextPiece();
         x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
         y = 0;
+        checkRowIsFilled()
     }
     draw();
 }
@@ -193,6 +196,60 @@ function checkCollision() {
         }
     }
     return false;
+}
+
+function checkRowIsFilled() {
+    if (currentPiece) {
+        let eliminatedRows = 0;
+        for (let row = 1; row <= 20; row++) {
+            let rowFilledColumns = 0;
+            for (let col = 1; col <= 10; col++) {
+                const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
+                if (cell && cell.style.backgroundColor !== "") {
+                    rowFilledColumns++;
+                }
+            }
+            if (rowFilledColumns === 10) {
+                eliminatedRows++;
+                removeFilledRow(row)
+            }
+        }
+        addPoints(eliminatedRows);
+    }
+}
+
+function addPoints(eliminatedRows) {
+    totalPoints += eliminatedRows * eliminatedRows * 10
+
+    let formattedPoints
+    if (totalPoints < 10) {
+        formattedPoints = `0000${totalPoints}`
+    } else if (totalPoints < 100) {
+        formattedPoints = `000${totalPoints}`
+    } else if (totalPoints < 1000) {
+        formattedPoints = `00${totalPoints}`
+    } else if (totalPoints < 10000) {
+        formattedPoints = `0${totalPoints}`
+    }
+
+    document.getElementById("current-score").innerHTML = formattedPoints;
+}
+
+function removeFilledRow(row) {
+    document.querySelector(`.row:nth-child(${row})`).remove();
+
+    // cria uma nova linha no topo do tabuleiro
+    let rowContainer = document.createElement('div');
+    rowContainer.classList.add('row');
+    tableGameContainer.prepend(rowContainer);
+    for (let j = 0; j < 10; j++) {
+        let atualRow = document.getElementsByClassName('row')[0];
+        let columnContainer = document.createElement('div');
+        columnContainer.classList.add('column');
+        atualRow.appendChild(columnContainer);
+    }
+
+    document.getElementById("eliminated-rows").innerHTML = `Linhas eliminadas: ${++totalEliminatedRows}`
 }
 
 function setPiece() {
