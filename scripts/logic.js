@@ -18,6 +18,26 @@ for (let i = 0; i < 20; i++) {
     }
 }
 
+let nextPieceContainer = document.getElementById("next-piece-container");
+
+for (let i = 0; i < 5; i++) {
+    let rowContainer = document.createElement('div');
+
+    rowContainer.classList.add('next-piece-row');
+
+    nextPieceContainer.appendChild(rowContainer);
+
+    for (let j = 0; j < 5; j++) {
+
+        let atualRow = document.getElementsByClassName('next-piece-row')[i];
+
+        let columnContainer = document.createElement('div');
+
+        columnContainer.classList.add('next-piece-column');
+        atualRow.appendChild(columnContainer);
+    }
+}
+
 const gridSize = 10;
 const numRows = 20;
 const numCols = 10;
@@ -40,6 +60,7 @@ const uPiece = new Piece("rgb(59,169,209)", [[1, 0, 1], [1, 1, 1]]);
 const pieces = [iPiece, oPiece, tPiece, lLeftPiece, lRightPiece, specialPiece, uPiece];
 
 let currentPiece = randomPiece();
+let nextPiece = randomPiece();
 let x = 0;
 let y = 0;
 let timerId;
@@ -75,6 +96,34 @@ function undraw() {
     }
 }
 
+function drawNextPiece() {
+    if (nextPiece) {
+        for (let row = 0; row < nextPiece.shape.length; row++) {
+            for (let col = 0; col < nextPiece.shape[row].length; col++) {
+                if (nextPiece.shape[row][col]) {
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${row + 1}) .next-piece-column:nth-child(${col + 1}`);
+                    cell.style.backgroundColor = nextPiece.color;
+                    cell.classList.add("shapePainted");
+                }
+            }
+        }
+    }
+}
+
+function undrawNextPiece() {
+    if (nextPiece) {
+        for (let row = 0; row < nextPiece.shape.length; row++) {
+            for (let col = 0; col < nextPiece.shape[row].length; col++) {
+                if (nextPiece.shape[row][col]) {
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${row + 1}) .next-piece-column:nth-child(${col + 1}`);
+                    cell.style.backgroundColor = "";
+                    cell.classList.remove("shapePainted");
+                }
+            }
+        }
+    }
+}
+
 function rotate() {
     undraw();
     const previousPiece = currentPiece;
@@ -94,7 +143,10 @@ function moveDown() {
         y--;
         setPiece();
         draw();
-        currentPiece = randomPiece();
+        undrawNextPiece();
+        currentPiece = nextPiece;
+        nextPiece = randomPiece();
+        drawNextPiece();
         x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
         y = 0;
     }
@@ -162,6 +214,7 @@ function randomPiece() {
 
 function startGame() {
     isPlaying = true;
+    drawNextPiece();
     draw();
     cronometerGame();
     moveDown()
@@ -175,7 +228,6 @@ function stopGame() {
 }
 
 let cronometer;
-let gameStarted = false;
 let seconds = 0;
 let minutes = 0;
 

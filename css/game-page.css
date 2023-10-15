@@ -117,17 +117,17 @@
   transform: translateY(2px);
 }
 
-#next-piece {
-  width: 120px;
-  height: 120px;
+#next-piece-container {
+  width: 160px;
+  height: 160px;
   background-color: var(--main-background-color);
   display: flex;
   flex-wrap: wrap;
 }
 
-#next-piece div {
-  width: 20px;
-  height: 20px;
+#next-piece-container div {
+  width: 40px;
+  height: 40px;
 }
 
 .shapePainted {
@@ -169,10 +169,6 @@
   font-family: League Spartan, sans-serif;
   font-size: 2rem;
   color: var(--secondary-title-color);
-}
-
-#next-piece {
-  width: 80%;
 }
 
 #lines-eliminated {
