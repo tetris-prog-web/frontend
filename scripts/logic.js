@@ -236,7 +236,7 @@ function checkRowIsFilled() {
         if (eliminatedRows !== 0) {
             addPoints(eliminatedRows);
             if (totalPoints !== 0 && totalPoints % 300 === 0) {
-                level += 0.5
+                level += 1
                 setSpeed()
             }
         }
@@ -254,7 +254,7 @@ function checkRowToRemoveHasSpecialPiece(row) {
 }
 
 function addPoints(eliminatedRows) {
-    totalPoints += eliminatedRows * eliminatedRows * 100
+    totalPoints += eliminatedRows * eliminatedRows * 10
 
     let formattedPoints
     if (totalPoints < 10) {
