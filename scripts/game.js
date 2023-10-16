@@ -150,17 +150,26 @@ function rotate() {
     draw();
 }
 
+const nameErrorPopup = document.getElementById("nameErrorPopup");
+const resetButton = document.getElementById("resetButton");
+const menuButton = document.getElementById("menuButton");
 function showGameOverAlert() {
     stopGame();
-    const playAgain = confirm("Você perdeu o jogo! Deseja jogar novamente?");
-
-    if (playAgain) {
-        location.reload();
-    } else {
-        window.location.href = "menu.html";
-    }
+    nameErrorPopup.style.display = "block";
+    return;
 }
 
+// Adicionar um evento ao botão "Menu" para voltar ao menu
+menuButton.addEventListener("click", function () {
+    // Redirecionar para a página do menu (substitua 'menu.html' pelo URL do seu menu)
+    window.location.href = 'menu.html';
+});
+
+// Adicionar um evento ao botão "Reset" para recarregar a página
+resetButton.addEventListener("click", function () {
+    // Recarregar a página atual
+    location.reload();
+});
 function moveDown() {
     undraw();
     y++;
@@ -288,7 +297,6 @@ function removeFilledRow(row) {
 
     document.querySelector(`.row:nth-child(${row})`).remove();
 
-    // cria uma nova linha no topo do tabuleiro
     let rowContainer = document.createElement('div');
     rowContainer.classList.add('row');
     tableGameContainer.prepend(rowContainer);
@@ -410,4 +418,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+closePopupButton.addEventListener("click", function () {
+    nameErrorPopup.style.display = "none";
+});
 document.querySelector("#open-modal-button").addEventListener("click", () => stopGame());
