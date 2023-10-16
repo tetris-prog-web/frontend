@@ -87,10 +87,10 @@ const gameArea = document.querySelector(".game-area-container");
 
 function draw() {
     if (currentPiece) {
-        for (let row = 0; row < currentPiece.shape.length; row++) {
-            for (let col = 0; col < currentPiece.shape[row].length; col++) {
-                if (currentPiece.shape[row][col]) {
-                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+        for (let row = 1; row <= currentPiece.shape.length; row++) {
+            for (let col = 1; col <= currentPiece.shape[row - 1].length; col++) {
+                if (currentPiece.shape[row - 1][col - 1]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row}) .column:nth-child(${x + col}`);
                     cell.style.backgroundColor = currentPiece.color;
                     cell.classList.add("shapePainted");
                 }
@@ -101,10 +101,10 @@ function draw() {
 
 function undraw() {
     if (currentPiece) {
-        for (let row = 0; row < currentPiece.shape.length; row++) {
-            for (let col = 0; col < currentPiece.shape[row].length; col++) {
-                if (currentPiece.shape[row][col]) {
-                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+        for (let row = 1; row <= currentPiece.shape.length; row++) {
+            for (let col = 1; col <= currentPiece.shape[row - 1].length; col++) {
+                if (currentPiece.shape[row - 1][col - 1]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row}) .column:nth-child(${x + col}`);
                     cell.style.backgroundColor = "";
                     cell.classList.remove("shapePainted");
                 }
@@ -115,10 +115,10 @@ function undraw() {
 
 function drawNextPiece() {
     if (nextPiece) {
-        for (let row = 0; row < nextPiece.shape.length; row++) {
-            for (let col = 0; col < nextPiece.shape[row].length; col++) {
-                if (nextPiece.shape[row][col]) {
-                    const cell = document.querySelector(`.next-piece-row:nth-child(${row + 1}) .next-piece-column:nth-child(${col + 1}`);
+        for (let row = 1; row <= nextPiece.shape.length; row++) {
+            for (let col = 1; col <= nextPiece.shape[row - 1].length; col++) {
+                if (nextPiece.shape[row - 1][col - 1]) {
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${row}) .next-piece-column:nth-child(${col}`);
                     cell.style.backgroundColor = nextPiece.color;
                     cell.classList.add("shapePainted");
                 }
@@ -129,10 +129,10 @@ function drawNextPiece() {
 
 function undrawNextPiece() {
     if (nextPiece) {
-        for (let row = 0; row < nextPiece.shape.length; row++) {
-            for (let col = 0; col < nextPiece.shape[row].length; col++) {
-                if (nextPiece.shape[row][col]) {
-                    const cell = document.querySelector(`.next-piece-row:nth-child(${row + 1}) .next-piece-column:nth-child(${col + 1}`);
+        for (let row = 1; row <= nextPiece.shape.length; row++) {
+            for (let col = 1; col <= nextPiece.shape[row - 1].length; col++) {
+                if (nextPiece.shape[row - 1][col - 1]) {
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${row}) .next-piece-column:nth-child(${col}`);
                     cell.style.backgroundColor = "";
                     cell.classList.remove("shapePainted");
                 }
@@ -209,17 +209,17 @@ function moveRight() {
 
 function checkCollision() {
     if (currentPiece) {
-        for (let row = 0; row < currentPiece.shape.length; row++) {
-            for (let col = 0; col < currentPiece.shape[row].length; col++) {
-                if (currentPiece.shape[row][col]) {
+        for (let row = 1; row <= currentPiece.shape.length; row++) {
+            for (let col = 1; col <= currentPiece.shape[row - 1].length; col++) {
+                if (currentPiece.shape[row - 1][col - 1]) {
                     if (
-                        x + col < 0 ||
-                        x + col >= numCols ||
-                        y + row >= numRows
+                        x + col <= 0 ||
+                        x + col > numCols ||
+                        y + row > numRows
                     ) {
                         return true;
                     }
-                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1})`);
+                    const cell = document.querySelector(`.row:nth-child(${y + row}) .column:nth-child(${x + col})`);
                     if (cell && cell.style.backgroundColor !== "") {
                         return true;
                     }
@@ -331,10 +331,10 @@ function invertGameArea() {
 
 function setPiece() {
     if (currentPiece) {
-        for (let row = 0; row < currentPiece.shape.length; row++) {
-            for (let col = 0; col < currentPiece.shape[row].length; col++) {
-                if (currentPiece.shape[row][col]) {
-                    const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
+        for (let row = 1; row <= currentPiece.shape.length; row++) {
+            for (let col = 1; col <= currentPiece.shape[row - 1].length; col++) {
+                if (currentPiece.shape[row - 1][col - 1]) {
+                    const cell = document.querySelector(`.row:nth-child(${y + row}) .column:nth-child(${x + col}`);
                     cell.style.backgroundColor = currentPiece.color;
                     if (currentPiece.color === specialPiece.color) cell.classList.add("specialPiece");
                 }
