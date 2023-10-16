@@ -1,42 +1,55 @@
 let tableGameContainer = document.getElementsByClassName("game-area-container")[0];
 
-for (let i = 0; i < 20; i++) {
-    let rowContainer = document.createElement('div');
+let grid = {
+    width: 0,
+    height: 0
+}
 
-    rowContainer.classList.add('row');
+if (window.location.pathname.includes("extended")) {
+    grid.width = 22
+    grid.height = 44
+} else {
+    grid.width = 10
+    grid.height = 20
+}
 
-    tableGameContainer.appendChild(rowContainer);
+const generateTable = () => {
+    for (let i = 0; i < grid.height; i++) {
+        let rowContainer = document.createElement('div');
+        rowContainer.classList.add('row');
+        tableGameContainer.appendChild(rowContainer);
 
-    for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < grid.width; j++) {
+            let atualRow = document.getElementsByClassName('row')[i];
 
-        let atualRow = document.getElementsByClassName('row')[i];
-
-        let columnContainer = document.createElement('div');
-
-        columnContainer.classList.add('column');
-        atualRow.appendChild(columnContainer);
+            let columnContainer = document.createElement('div');
+            columnContainer.classList.add('column');
+            atualRow.appendChild(columnContainer);
+        }
     }
 }
 
-let nextPieceContainer = document.getElementById("next-piece-container");
+generateTable()
 
-for (let i = 0; i < 5; i++) {
-    let rowContainer = document.createElement('div');
+const generateNextPieceTable = () => {
+    let nextPieceContainer = document.getElementById("next-piece-container");
 
-    rowContainer.classList.add('next-piece-row');
+    for (let i = 0; i < 5; i++) {
+        let rowContainer = document.createElement('div');
+        rowContainer.classList.add('next-piece-row');
+        nextPieceContainer.appendChild(rowContainer);
 
-    nextPieceContainer.appendChild(rowContainer);
+        for (let j = 0; j < 5; j++) {
+            let atualRow = document.getElementsByClassName('next-piece-row')[i];
 
-    for (let j = 0; j < 5; j++) {
-
-        let atualRow = document.getElementsByClassName('next-piece-row')[i];
-
-        let columnContainer = document.createElement('div');
-
-        columnContainer.classList.add('next-piece-column');
-        atualRow.appendChild(columnContainer);
+            let columnContainer = document.createElement('div');
+            columnContainer.classList.add('next-piece-column');
+            atualRow.appendChild(columnContainer);
+        }
     }
 }
+
+generateNextPieceTable()
 
 const numRows = 20;
 const numCols = 10;
