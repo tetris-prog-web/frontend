@@ -15,6 +15,7 @@
 </head>
 <body>
 <main id="main-container">
+  
   <div id="modal-background"></div>
   <div id="modal">
     <div class="modal-header">
@@ -43,12 +44,14 @@
         Sobre os tabuleiros, você pode escolher entre os dois tipos de tabuleiros, o normal com dimensões de 10x20,
         e o estendido com dimensões de 22x44.<br><br>
       </p>
+
+      <div id="control-modal">
+        <button id="close-modal-button">Entendi!</button>
+        <label style="position:relative; z-index:10;"><input type="checkbox" name="instructions" id="dont-show-modal-again">Não mostrar novamente</label>
+      </div>
     </div>
-    <button id="close-modal-button">Entendi!</button>
-    <label style="position:relative; z-index:10;">
-      <input type="checkbox" name="instructions" id="dont-show-modal-again">Não mostrar novamente
-    </label>
   </div>
+  
   <nav class="game-navbar">
     <a href="menu.html">
       <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
@@ -62,12 +65,10 @@
   </nav>
 
   <div id="game-screen">
+
     <div id="controls-area">
-      <div id="instructions-button-container">
-        <button id="open-modal-button">
-          <iconify-icon icon="material-symbols:help" width="50" height="50"></iconify-icon>
-        </button>
-      </div>
+
+      <iconify-icon icon="material-symbols:help" id="open-modal-button" width="50" height="50"></iconify-icon>
 
       <div class="buttons-container">
         <button id="start-button">Começar/Pausar</button>
