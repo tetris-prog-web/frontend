@@ -51,9 +51,6 @@ const generateNextPieceTable = () => {
 
 generateNextPieceTable()
 
-const numRows = 20;
-const numCols = 10;
-
 class Piece {
     constructor(color, shape) {
         this.color = color;
@@ -168,7 +165,6 @@ function moveDown() {
     undraw();
     y++;
     if (checkCollision()) {
-
         y--;
         setPiece();
         draw();
@@ -176,7 +172,7 @@ function moveDown() {
         currentPiece = nextPiece;
         nextPiece = randomPiece();
         drawNextPiece();
-        x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
+        x = Math.floor((grid.width - currentPiece.shape[0].length) / 2);
         y = 0;
         checkRowIsFilled();
     }
@@ -214,8 +210,8 @@ function checkCollision() {
                 if (currentPiece.shape[row - 1][col - 1]) {
                     if (
                         x + col <= 0 ||
-                        x + col > numCols ||
-                        y + row > numRows
+                        x + col > grid.width ||
+                        y + row > grid.height
                     ) {
                         return true;
                     }
@@ -233,15 +229,15 @@ function checkCollision() {
 function checkRowIsFilled() {
     if (currentPiece) {
         let eliminatedRows = 0;
-        for (let row = 1; row <= 20; row++) {
+        for (let row = 1; row <= grid.height; row++) {
             let rowFilledColumns = 0;
-            for (let col = 1; col <= 10; col++) {
+            for (let col = 1; col <= grid.width; col++) {
                 const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
                 if (cell && cell.style.backgroundColor !== "") {
                     rowFilledColumns++;
                 }
             }
-            if (rowFilledColumns === 10) {
+            if (rowFilledColumns === grid.width) {
                 eliminatedRows++;
                 removeFilledRow(row)
             }
@@ -257,7 +253,7 @@ function checkRowIsFilled() {
 }
 
 function checkRowToRemoveHasSpecialPiece(row) {
-    for (let col = 1; col <= 10; col++) {
+    for (let col = 1; col <= grid.width; col++) {
         const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
         if (cell && cell.classList.contains("specialPiece")) {
             return true;
@@ -295,7 +291,7 @@ function removeFilledRow(row) {
     let rowContainer = document.createElement('div');
     rowContainer.classList.add('row');
     tableGameContainer.prepend(rowContainer);
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < grid.width; j++) {
         let atualRow = document.getElementsByClassName('row')[0];
         let columnContainer = document.createElement('div');
         columnContainer.classList.add('column');
@@ -307,10 +303,10 @@ function removeFilledRow(row) {
 }
 
 function invertGameArea() {
-    for (let i = 1; i <= 20; i++) {
-        for (let j = 1; j <= 5; j++) {
+    for (let i = 1; i <= grid.height; i++) {
+        for (let j = 1; j < grid.width / 2; j++) {
             const cell = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${j})`);
-            const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${11 - j})`);
+            const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${grid.width - j})`);
 
             if (cell && cellToInvert) {
                 const aux = cell.style.backgroundColor;
