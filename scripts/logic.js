@@ -38,7 +38,6 @@ for (let i = 0; i < 5; i++) {
     }
 }
 
-const gridSize = 10;
 const numRows = 20;
 const numCols = 10;
 
@@ -141,6 +140,17 @@ function rotate() {
     draw();
 }
 
+function showGameOverAlert() {
+    stopGame();
+    const playAgain = confirm("Você perdeu o jogo! Deseja jogar novamente?");
+    
+    if (playAgain) {
+        location.reload();
+    } else {
+        window.location.href = "menu.html";
+    }
+}
+
 function moveDown() {
     undraw();
     y++;
@@ -154,7 +164,13 @@ function moveDown() {
         drawNextPiece();
         x = Math.floor((numCols - currentPiece.shape[0].length) / 2);
         y = 0;
-        checkRowIsFilled()
+        checkRowIsFilled();
+    }
+    if (checkCollision() || y >= 20) {
+        y--;
+        y = 0;
+        checkRowIsFilled();
+        showGameOverAlert(); 
     }
     draw();
 }
@@ -189,7 +205,6 @@ function checkCollision() {
                     ) {
                         return true;
                     }
-                    // Verificar colisão com peças existentes no tabuleiro
                     const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1})`);
                     if (cell && cell.style.backgroundColor !== "") {
                         return true;
@@ -232,6 +247,7 @@ function checkRowToRemoveHasSpecialPiece(row) {
         const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
         console.log(cell.classList)
         if (cell && cell.classList.contains("specialPiece")) {
+            console.log("PASSOU AQUI");
             return true;
         }
     }
@@ -256,6 +272,11 @@ function addPoints(eliminatedRows) {
 }
 
 function removeFilledRow(row) {
+    if (checkRowToRemoveHasSpecialPiece(row)) {
+        isMirrored = !isMirrored
+        invertGameArea()
+    }
+    
     document.querySelector(`.row:nth-child(${row})`).remove();
 
     // cria uma nova linha no topo do tabuleiro
@@ -271,10 +292,6 @@ function removeFilledRow(row) {
 
     document.getElementById("eliminated-rows").innerHTML = `Linhas eliminadas: ${++totalEliminatedRows}`
 
-    if (checkRowToRemoveHasSpecialPiece(row)) {
-        isMirrored = !isMirrored
-        invertGameArea()
-    }
 }
 
 function invertGameArea() {
@@ -282,6 +299,7 @@ function invertGameArea() {
         for (let j = 1; j <= 5; j++) {
             const cell = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${j})`);
             const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${11 - j})`);
+
             if (cell && cellToInvert) {
                 const aux = cell.style.backgroundColor;
                 cell.style.backgroundColor = cellToInvert.style.backgroundColor;
@@ -289,12 +307,12 @@ function invertGameArea() {
 
                 if (cell.classList.contains("shapePainted") && !cellToInvert.classList.contains("shapePainted")) {
                     cellToInvert.classList.add("shapePainted");
-                } else if (cellToInvert.classList.contains("shapePainted")) cellToInvert.classList.remove("shapePainted");
-
-                if (cellToInvert.classList.contains("shapePainted") && !cell.classList.contains("shapePainted")) {
+                    cell.classList.remove("shapePainted");
+                } else if(cellToInvert.classList.contains("shapePainted") && !cell.classList.contains("shapePainted"))
+                {
+                    cellToInvert.classList.remove("shapePainted");
                     cell.classList.add("shapePainted");
-                } else if (cell.classList.contains("shapePainted")) cell.classList.remove("shapePainted");
-
+                }
             }
         }
     }
@@ -383,3 +401,5 @@ document.addEventListener("keydown", (event) => {
         }
     }
 });
+
+document.querySelector("#open-modal-button").addEventListener("click", () => stopGame());
