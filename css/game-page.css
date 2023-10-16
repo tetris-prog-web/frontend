@@ -131,7 +131,7 @@
 }
 
 .shapePainted {
-  border: 1px solid yellow;
+  border: 1px solid black;
   box-sizing: border-box;
   max-width: 40px;
   max-height: 40px;
