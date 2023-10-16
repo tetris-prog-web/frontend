@@ -11,11 +11,10 @@
 
   <script src="scripts/modal.js" defer></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script defer src="scripts/logic.js"></script>
 </head>
 <body>
-
 <main id="main-container">
-
   <div id="modal-background"></div>
   <div id="modal">
     <div class="modal-header">
@@ -50,7 +49,6 @@
       <input type="checkbox" name="instructions" id="dont-show-modal-again">Não mostrar novamente
     </label>
   </div>
-
   <nav class="game-navbar">
     <a href="menu.html">
       <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
@@ -64,13 +62,21 @@
   </nav>
 
   <div id="game-screen">
-    <button id="open-modal-button">
-      <iconify-icon icon="material-symbols:help" width="50" height="50"></iconify-icon>
-    </button>
-    <div id="game-area-container">
-      <div id="game-area">
-        <img src="./images/mock-game/gameblocks10x20.png" alt="Tela do jogo">
+    <div id="controls-area">
+      <div id="instructions-button-container">
+        <button id="open-modal-button">
+          <iconify-icon icon="material-symbols:help" width="50" height="50"></iconify-icon>
+        </button>
       </div>
+
+      <div class="buttons-container">
+        <button id="start-button">Começar/Pausar</button>
+        <button id="restart-button">Restart</button>
+      </div>
+    </div>
+
+    <div class="game-area-container">
+
     </div>
 
     <div id="game-information">
@@ -78,8 +84,11 @@
         <div id="current-score">00000</div>
         <div id="current-game-time">Tempo: 00:00</div>
         <div id="current-game-difficulty">Nível: 1</div>
-        <img id="next-piece" src="images/game-pieces/square-piece.png" alt="Próxima peça">
-        <div id="lines-eliminated">Linhas eliminadas: 88</div>
+        <div id="next-piece-container">
+
+        </div>
+
+        <div id="eliminated-rows">Linhas eliminadas: 0</div>
       </div>
 
       <div id="second-data-container" class="data-container">

@@ -7,10 +7,7 @@
 }
 
 #open-modal-button {
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-top: 15px;
+  padding-top: 15px;
   display: flex;
   height: 40px;
   width: 40px;
@@ -35,6 +32,7 @@
   align-items: center;
 }
 
+
 #controls-area {
   height: 100%;
 
@@ -44,57 +42,48 @@
   align-items: flex-start;
 }
 
-.game-area-container {
-  width: 400px;
-  height: 800px;
-}
-
-.game-area-container .row {
-  width: 100%;
-  height: 5%;
-
-  display: flex;
-}
-
-.row .column {
-  height: 100%;
-  width: 100%;
-
-  background-color: var(--default-container-background-color);
-}
-
-.game-area {
-  width: 250px;
-  height: 500px;
-  border-radius: 10px;
-  background-color: var(--main-background-color);
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.game-area div {
-  width: 25px;
-  height: 25px;
-}
-
 #instructions-button-container {
-  width: 100%;
-  height: 60px;
+
 }
 
-.buttons-container {
-  gap: 20px;
+#buttons-container {
 
-  height: 50%;
+}
+
+.game-area-container {
   width: 100%;
 
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
-#start-button, #restart-button {
+.game-area {
+  width: 374px;
+  height: 748px;
+  border-radius: 10px;
+  background-color: green;
+  display: grid;
+  grid-template-columns: repeat(22, 17px);
+  grid-template-rows: repeat(44, 17px);
+}
+
+.game-area div {
+  box-sizing: border-box;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#start-button,
+#restart-button {
+
+
   align-items: center;
   justify-content: space-evenly;
   text-decoration: none;
@@ -109,6 +98,7 @@
 
   font-size: 20px;
 
+
   color: white;
 
   cursor: pointer;
@@ -121,25 +111,24 @@
 }
 
 #next-piece-container {
-  width: 160px;
-  height: 160px;
-  background-color: var(--main-background-color);
+  width: 120px;
+  height: 120px;
+  background-color: green;
   display: flex;
   flex-wrap: wrap;
 }
 
 #next-piece-container div {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 }
 
+
 .shapePainted {
-  border: 1px solid black;
-  box-sizing: border-box;
-  max-width: 40px;
-  max-height: 40px;
-  overflow: hidden;
+  /*background: red;*/
+  border: 2px solid black;
 }
+
 
 #game-information {
   height: 100%;
@@ -355,3 +344,4 @@
 
   transform: translateY(2px);
 }
+  
