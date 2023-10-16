@@ -72,7 +72,7 @@
   box-sizing: border-box;
 }
 
-.buttons-containe {
+.buttons-container {
   width: 100%;
   display: flex;
   flex-direction: column;

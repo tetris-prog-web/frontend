@@ -49,16 +49,14 @@
   height: 800px;
 }
 
-.game-area-container .row
-{
+.game-area-container .row {
   width: 100%;
   height: 5%;
 
   display: flex;
 }
 
-.row .column
-{
+.row .column {
   height: 100%;
   width: 100%;
 
@@ -79,18 +77,24 @@
   height: 25px;
 }
 
-.buttons-containe {
+#instructions-button-container {
   width: 100%;
+  height: 60px;
+}
+
+.buttons-container {
+  gap: 20px;
+
+  height: 50%;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
-#start-button,
-#restart-button {
-
-
+#start-button, #restart-button {
   align-items: center;
   justify-content: space-evenly;
   text-decoration: none;
@@ -104,7 +108,6 @@
   height: 50px;
 
   font-size: 20px;
-
 
   color: white;
 

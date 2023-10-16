@@ -143,7 +143,7 @@ function rotate() {
 function showGameOverAlert() {
     stopGame();
     const playAgain = confirm("Você perdeu o jogo! Deseja jogar novamente?");
-    
+
     if (playAgain) {
         location.reload();
     } else {
@@ -155,7 +155,7 @@ function moveDown() {
     undraw();
     y++;
     if (checkCollision()) {
-        
+
         y--;
         setPiece();
         draw();
@@ -167,11 +167,11 @@ function moveDown() {
         y = 0;
         checkRowIsFilled();
     }
-    if (checkCollision() && y == 0) {
+    if (checkCollision() && y === 0) {
         y--;
         y = 0;
         checkRowIsFilled();
-        showGameOverAlert(); 
+        showGameOverAlert();
     }
     draw();
 }
@@ -275,7 +275,7 @@ function removeFilledRow(row) {
         isMirrored = !isMirrored
         invertGameArea()
     }
-    
+
     document.querySelector(`.row:nth-child(${row})`).remove();
 
     // cria uma nova linha no topo do tabuleiro
@@ -307,8 +307,7 @@ function invertGameArea() {
                 if (cell.classList.contains("shapePainted") && !cellToInvert.classList.contains("shapePainted")) {
                     cellToInvert.classList.add("shapePainted");
                     cell.classList.remove("shapePainted");
-                } else if(cellToInvert.classList.contains("shapePainted") && !cell.classList.contains("shapePainted"))
-                {
+                } else if (cellToInvert.classList.contains("shapePainted") && !cell.classList.contains("shapePainted")) {
                     cellToInvert.classList.remove("shapePainted");
                     cell.classList.add("shapePainted");
                 }
@@ -324,7 +323,7 @@ function setPiece() {
                 if (currentPiece.shape[row][col]) {
                     const cell = document.querySelector(`.row:nth-child(${y + row + 1}) .column:nth-child(${x + col + 1}`);
                     cell.style.backgroundColor = currentPiece.color;
-                    if(currentPiece.color === specialPiece.color) cell.classList.add("specialPiece");
+                    if (currentPiece.color === specialPiece.color) cell.classList.add("specialPiece");
                 }
             }
         }
@@ -345,7 +344,7 @@ function startGame() {
 
 function setSpeed() {
     moveDown()
-    console.log(1000/level);
+    console.log(1000 / level);
     clearInterval(timerId);
     timerId = setInterval(moveDown, 1000 / level);
 }
