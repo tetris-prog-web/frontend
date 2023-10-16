@@ -155,6 +155,7 @@ function moveDown() {
     undraw();
     y++;
     if (checkCollision()) {
+        
         y--;
         setPiece();
         draw();
@@ -166,7 +167,7 @@ function moveDown() {
         y = 0;
         checkRowIsFilled();
     }
-    if (checkCollision() || y >= 20) {
+    if (checkCollision() && y == 0) {
         y--;
         y = 0;
         checkRowIsFilled();
@@ -245,9 +246,7 @@ function checkRowIsFilled() {
 function checkRowToRemoveHasSpecialPiece(row) {
     for (let col = 1; col <= 10; col++) {
         const cell = document.querySelector(`.row:nth-child(${row}) .column:nth-child(${col})`);
-        console.log(cell.classList)
         if (cell && cell.classList.contains("specialPiece")) {
-            console.log("PASSOU AQUI");
             return true;
         }
     }
@@ -255,7 +254,7 @@ function checkRowToRemoveHasSpecialPiece(row) {
 }
 
 function addPoints(eliminatedRows) {
-    totalPoints += eliminatedRows * eliminatedRows * 10
+    totalPoints += eliminatedRows * eliminatedRows * 100
 
     let formattedPoints
     if (totalPoints < 10) {
@@ -346,6 +345,7 @@ function startGame() {
 
 function setSpeed() {
     moveDown()
+    console.log(1000/level);
     clearInterval(timerId);
     timerId = setInterval(moveDown, 1000 / level);
 }
