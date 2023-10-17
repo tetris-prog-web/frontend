@@ -351,3 +351,44 @@
 
   transform: translateY(2px);
 }
+
+.popup {
+  display: none;
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 4px rgba(64, 148, 208, 0.377);
+  z-index: 999;
+  text-align: center;
+  color: #ffffff;
+}
+
+.popup p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+#resetButton, #menuButton {
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+  background: var(--main-background-color);
+  box-shadow: 0 4px var(--button-shadow-color);
+  border: var(--main-background-color);
+  border-radius: 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#resetButton:hover, #menuButton:hover {
+  box-shadow: 0 2px var(--button-shadow-color);
+  transform: translateY(2px);
+}

@@ -150,16 +150,20 @@ function rotate() {
     draw();
 }
 
+const nameErrorPopup = document.getElementById("nameErrorPopup");
+const resetButton = document.getElementById("resetButton");
+const menuButton = document.getElementById("menuButton");
 function showGameOverAlert() {
     stopGame();
-    const playAgain = confirm("Você perdeu o jogo! Deseja jogar novamente?");
-
-    if (playAgain) {
-        location.reload();
-    } else {
-        window.location.href = "menu.html";
-    }
+    nameErrorPopup.style.display = "block";
+    return;
 }
+menuButton.addEventListener("click", function () {
+    window.location.href = 'menu.html';
+});
+resetButton.addEventListener("click", function () {
+    location.reload();
+});
 
 function moveDown() {
     undraw();
@@ -288,7 +292,6 @@ function removeFilledRow(row) {
 
     document.querySelector(`.row:nth-child(${row})`).remove();
 
-    // cria uma nova linha no topo do tabuleiro
     let rowContainer = document.createElement('div');
     rowContainer.classList.add('row');
     tableGameContainer.prepend(rowContainer);
