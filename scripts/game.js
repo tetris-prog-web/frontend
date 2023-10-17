@@ -164,6 +164,7 @@ menuButton.addEventListener("click", function () {
 resetButton.addEventListener("click", function () {
     location.reload();
 });
+
 function moveDown() {
     undraw();
     y++;
