@@ -158,16 +158,10 @@ function showGameOverAlert() {
     nameErrorPopup.style.display = "block";
     return;
 }
-
-// Adicionar um evento ao botão "Menu" para voltar ao menu
 menuButton.addEventListener("click", function () {
-    // Redirecionar para a página do menu (substitua 'menu.html' pelo URL do seu menu)
     window.location.href = 'menu.html';
 });
-
-// Adicionar um evento ao botão "Reset" para recarregar a página
 resetButton.addEventListener("click", function () {
-    // Recarregar a página atual
     location.reload();
 });
 function moveDown() {
@@ -418,7 +412,4 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-closePopupButton.addEventListener("click", function () {
-    nameErrorPopup.style.display = "none";
-});
 document.querySelector("#open-modal-button").addEventListener("click", () => stopGame());
