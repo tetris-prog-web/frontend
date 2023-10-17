@@ -7,7 +7,10 @@
 }
 
 #open-modal-button {
-  padding-top: 15px;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 15px;
   display: flex;
   height: 40px;
   width: 40px;
@@ -32,7 +35,6 @@
   align-items: center;
 }
 
-
 #controls-area {
   height: 100%;
 
@@ -42,48 +44,43 @@
   align-items: flex-start;
 }
 
-#instructions-button-container {
-
-}
-
-#buttons-container {
-
-}
-
 .game-area-container {
-  width: 100%;
+  width: 330px;
+  height: 660px;
+}
+
+.game-area-container .row {
+  width: 330px;
+  height: 15px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.game-area {
-  width: 374px;
-  height: 748px;
-  border-radius: 10px;
-  background-color: green;
-  display: grid;
-  grid-template-columns: repeat(22, 17px);
-  grid-template-rows: repeat(44, 17px);
+.row .column {
+  height: 15px;
+  width: 15px;
+
+  background-color: var(--default-container-background-color);
 }
 
-.game-area div {
-  box-sizing: border-box;
+#instructions-button-container {
+  width: 100%;
+  height: 60px;
 }
 
 .buttons-container {
+  gap: 20px;
+
+  height: 50%;
   width: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
-#start-button,
-#restart-button {
-
-
+#start-button, #restart-button {
   align-items: center;
   justify-content: space-evenly;
   text-decoration: none;
@@ -98,7 +95,6 @@
 
   font-size: 20px;
 
-
   color: white;
 
   cursor: pointer;
@@ -111,24 +107,25 @@
 }
 
 #next-piece-container {
-  width: 120px;
-  height: 120px;
-  background-color: green;
+  width: 160px;
+  height: 160px;
+  background-color: var(--main-background-color);
   display: flex;
   flex-wrap: wrap;
 }
 
 #next-piece-container div {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
-
 
 .shapePainted {
-  /*background: red;*/
-  border: 2px solid black;
+  border: 1px solid black;
+  box-sizing: border-box;
+  max-width: 40px;
+  max-height: 40px;
+  overflow: hidden;
 }
-
 
 #game-information {
   height: 100%;
@@ -354,4 +351,3 @@
 
   transform: translateY(2px);
 }
-  
