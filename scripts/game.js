@@ -244,8 +244,9 @@ function checkRowIsFilled() {
         }
         if (eliminatedRows !== 0) {
             addPoints(eliminatedRows);
-            if (totalPoints !== 0 && totalPoints % 300 === 0) {
+            if (totalPoints !== 0 && totalPoints / 300 >= level) {
                 level += 1
+                document.getElementById("current-game-difficulty").innerHTML = `Nível: ${level}`
                 setSpeed()
             }
         }
@@ -353,7 +354,6 @@ function startGame() {
 
 function setSpeed() {
     moveDown()
-    console.log(1000 / level);
     clearInterval(timerId);
     timerId = setInterval(moveDown, 1000 / level);
 }
