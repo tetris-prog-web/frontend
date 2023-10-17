@@ -1,20 +1,19 @@
 const playersData = [
-  { jogador: "Flamengo", pontuacao: 10000000, nivel: 13 },
-  { jogador: "Segundo Lugar", pontuacao: 900000111110, nivel: 12 },
-  { jogador: "Terceiro Lugar", pontuacao: 8000000, nivel: 11 },
-  { jogador: "TerceaaaLugar", pontuacao: 8000000, nivel: 11 },
-  { jogador: "Segundo Lugar", pontuacao: 900000111110, nivel: 12 },
-  { jogador: "Terceiro Lugar", pontuacao: 8000000, nivel: 11 },
-  { jogador: "TerceaaaLugar", pontuacao: 8000000, nivel: 11 },
-  { jogador: "Segundo Lugar", pontuacao: 900000111110, nivel: 12 },
-  { jogador: "Terceiro Lugar", pontuacao: 8000000, nivel: 11 },
-  { jogador: "ultimo", pontuacao: 1, nivel: 11 },
-  { jogador: "ultimo", pontuacao: 2, nivel: 11 },
+  { jogador: "Flamengo", pontuacao: 20000 , nivel: 66 },
+  { jogador: "rafaelCaleffi", pontuacao: 3000 , nivel: 10 },
+  { jogador: "mitsuoMiyazato", pontuacao: 11111 , nivel: 37  },
+  { jogador: "brunoCorrea", pontuacao: 2222, nivel: 7 },
+  { jogador: "viníciuslutaka", pontuacao: 444 , nivel: 2 },
+  { jogador: "guilhermePalermoCoelho", pontuacao: 19999 , nivel: 66 },
+  { jogador: "oMen", pontuacao: 122, nivel: 1 },
+  { jogador: "yoda", pontuacao: 666 , nivel: 2 },
+  { jogador: "nicolasAndreatti", pontuacao: 1 , nivel: 1 },
+  { jogador: "penultimo", pontuacao: 2, nivel: 1 },
 ];
 
 const userBestScore = [
-  { userName: "Zezinho", pontuacao: 0, nivel: 5 },
-  { userName: "Zezinho", pontuacao: 1000, nivel: 2 },
+  { userName: "Zezinho", pontuacao: 0, nivel: 0 },
+  { userName: "Zezinho", pontuacao: 1000, nivel: 4 },
   { userName: "Zezinho", pontuacao: 100, nivel: 1 },
 ];
 function sortByScore(players) {
