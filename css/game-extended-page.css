@@ -351,6 +351,7 @@
 
   transform: translateY(2px);
 }
+
 .popup {
   display: none;
   position: fixed;
