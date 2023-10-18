@@ -80,8 +80,6 @@ let isPlaying = false;
 
 let isMirrored = false;
 
-const gameArea = document.querySelector(".game-area-container");
-
 function draw() {
     if (currentPiece) {
         for (let row = 1; row <= currentPiece.shape.length; row++) {
@@ -115,7 +113,7 @@ function drawNextPiece() {
         for (let row = 1; row <= nextPiece.shape.length; row++) {
             for (let col = 1; col <= nextPiece.shape[row - 1].length; col++) {
                 if (nextPiece.shape[row - 1][col - 1]) {
-                    const cell = document.querySelector(`.next-piece-row:nth-child(${row}) .next-piece-column:nth-child(${col}`);
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${col}) .next-piece-column:nth-child(${row}`);
                     cell.style.backgroundColor = nextPiece.color;
                     cell.classList.add("shapePainted");
                 }
@@ -129,7 +127,7 @@ function undrawNextPiece() {
         for (let row = 1; row <= nextPiece.shape.length; row++) {
             for (let col = 1; col <= nextPiece.shape[row - 1].length; col++) {
                 if (nextPiece.shape[row - 1][col - 1]) {
-                    const cell = document.querySelector(`.next-piece-row:nth-child(${row}) .next-piece-column:nth-child(${col}`);
+                    const cell = document.querySelector(`.next-piece-row:nth-child(${col}) .next-piece-column:nth-child(${row}`);
                     cell.style.backgroundColor = "";
                     cell.classList.remove("shapePainted");
                 }
@@ -153,11 +151,13 @@ function rotate() {
 const nameErrorPopup = document.getElementById("nameErrorPopup");
 const resetButton = document.getElementById("resetButton");
 const menuButton = document.getElementById("menuButton");
+
 function showGameOverAlert() {
     stopGame();
     nameErrorPopup.style.display = "block";
     return;
 }
+
 menuButton.addEventListener("click", function () {
     window.location.href = 'menu.html';
 });
@@ -180,12 +180,13 @@ function moveDown() {
         y = 0;
         checkRowIsFilled();
     }
+
     if (checkCollision() && y === 0) {
-        y--;
         y = 0;
         checkRowIsFilled();
         showGameOverAlert();
     }
+
     draw();
 }
 
