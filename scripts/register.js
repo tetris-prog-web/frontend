@@ -10,81 +10,69 @@ const passwordInput = document.getElementById("password-input");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    if(fullName.value === ""){
+    if (fullName.value === "") {
         alert("Por favor, preencha seu nome");
         return;
-    }else{
+    } else {
         localStorage.setItem('NomeCompleto', fullName.value);
     }
 
-    if(emailInput.value === "" || !isEmailValid(emailInput.value)){
+    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
         alert("Por favor, preencha seu email corretamente");
         return;
-    }else{
+    } else {
         localStorage.setItem('Email', emailInput.value);
     }
 
-    if(!validatePassword(passwordInput.value, 8)){
+    if (!validatePassword(passwordInput.value, 8)) {
         alert("A senha precisa ter no mínimo 8 dígitos");
         return;
-    }else{
+    } else {
         localStorage.setItem('Senha', passwordInput.value);
     }
 
-    if(birthDate.value === "" || !isDateValid(birthDate.value)){
+    if (birthDate.value === "" || !isDateValid(birthDate.value)) {
         alert("Por favor, insira uma data válida");
         return;
-    }else{
+    } else {
         localStorage.setItem('DataNascimento', birthDate.value);
     }
 
     localStorage.setItem('Telefone', phoneNumber.value);
     localStorage.setItem('CPF', cpfInput.value);
 
-    if(!isUsernameUsed(usernameInput.value)){
+    if (!isUsernameUsed(usernameInput.value)) {
         alert("Nome de usuário já utilizado");
         return;
-    }else{
+    } else {
         localStorage.setItem('NomeUsuario', usernameInput.value);
     }
 
     form.submit();
 })
 
-function isEmailValid(email){
+function isEmailValid(email) {
     const emailRegex = new RegExp(
         /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
     );
 
-    if(emailRegex.test(email)) {
-        return true;
-    }
+    return emailRegex.test(email);
 
-    return false;
+
 }
 
-function isDateValid(date){
+function isDateValid(date) {
     const dateRegex = new RegExp(
         /^[0-9]+\/[0-9]+\/[0-9]/
     );
-    if(dateRegex.test(date)){
-        return true;
-    }
 
-    return false;
+    return dateRegex.test(date);
 }
 
-function isUsernameUsed(username){
-    if(usernameInput.value != localStorage.getItem('NomeUsuario')){
-        return false;
-    }
-    return true;
-    
+function isUsernameUsed(username) {
+    return username === localStorage.getItem('NomeUsuario');
 }
 
-function validatePassword(password, minDigits){
-    if(password.length >= minDigits){
-        return true;
-    }
-    return false;
+function validatePassword(password, minDigits) {
+    return password.length >= minDigits;
 }

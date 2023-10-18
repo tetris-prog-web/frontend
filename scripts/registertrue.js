@@ -12,7 +12,7 @@ const setLocalStorage = (dbUser) => localStorage.setItem("db_user", JSON.stringi
 
 const createUser = (user) => {
     const dbUser = getLocalStorage()
-    dbUser.push (user)
+    dbUser.push(user)
     setLocalStorage(dbUser)
 }
 
@@ -31,24 +31,26 @@ const deleteUser = (index) => {
 }
 
 const isValidFields = () => {
-    event.preventDefault();
-
-    if(fullName.value === ""){
+    if (fullName.value === "") {
+        fullName.focus()
         alert("Por favor, preencha seu nome");
         return;
     }
 
-    if(emailInput.value === "" || !isEmailValid(emailInput.value)){
+    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
+        emailInput.focus()
         alert("Por favor, preencha seu email corretamente");
         return;
     }
 
-    if(!validatePassword(passwordInput.value, 8)){
+    if (!validatePassword(passwordInput.value, 8)) {
+        passwordInput.focus()
         alert("A senha precisa ter no mínimo 8 dígitos");
         return;
     }
 
-    if(birthDate.value === "" || !isDateValid(birthDate.value)){
+    if (birthDate.value === "" || !isDateValid(birthDate.value)) {
+        birthDate.focus()
         alert("Por favor, insira uma data válida");
         return;
     }
@@ -61,8 +63,10 @@ const clearFields = () => {
     fields.forEach(field => field.value = "")
 }
 
-const saveUser = () => {
-    if(isValidFields()){
+const saveUser = (e) => {
+    e.preventDefault()
+
+    if (isValidFields()) {
         const user = {
             name: document.getElementById('full-name-input').value,
             date: document.getElementById('birth-date-input').value,
@@ -77,45 +81,23 @@ const saveUser = () => {
     }
 }
 
+document.getElementById('register-button').addEventListener('click', e => saveUser(e))
 
-const updateProfile = () => {
-    const dbUser = readUser()
-    dbUser.for(createProfile)
-}
-
-updateProfile()
-
-document.getElementById('register-button')
-    .addEventListener('click', saveUser)
-
-    
-function isEmailValid(email){
+function isEmailValid(email) {
     const emailRegex = new RegExp(
         /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
     );
 
-    if(emailRegex.test(email)) {
-        return true;
-    }
-
-    return false;
+    return emailRegex.test(email);
 }
 
-function isDateValid(date){
+function isDateValid(date) {
     const dateRegex = new RegExp(
         /^[0-9]+\/[0-9]+\/[0-9]/
     );
-    if(dateRegex.test(date)){
-        return true;
-    }
-
-    return false;
+    return dateRegex.test(date);
 }
 
-
-function validatePassword(password, minDigits){
-    if(password.length >= minDigits){
-        return true;
-    }
-    return false;
-}    
+function validatePassword(password, minDigits) {
+    return password.length >= minDigits;
+}

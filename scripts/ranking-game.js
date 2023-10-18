@@ -44,7 +44,6 @@ function showUserBestScore() {
             const maxUserScore = userBestScore[0];
 
             for (let i = 1; i <= playersData.length; i++) {
-                console.log(playersData[i - 1].score <= maxUserScore.score)
                 if (playersData[i - 1].score <= maxUserScore.score) {
                     document.getElementById("your-max-score-position").innerHTML = `<span>${i}</span>`
                     break
