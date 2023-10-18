@@ -99,9 +99,9 @@ function mascara_cpf(){
     }
 }
 
-function mascara_birth(){
-    if (birthDate.value.length === 2 || birthDate.value.length === 5 ) {
-       birthDate.value += "/"
+function mascara_birth() {
+    if (birthDate.value.length === 2 || birthDate.value.length === 5) {
+        birthDate.value += "/";
     }
 }
 
@@ -123,10 +123,26 @@ function mascara_phone() {
 }
 
 function isDateValid(date) {
-    const dateRegex = new RegExp(
-        /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[0-2])[/]\d{4}$/
-    );
-    return dateRegex.test(date);
+    const dateRegex = /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[0-2])[/]\d{4}$/;
+    
+    if (!dateRegex.test(date)) {
+        return false; 
+    }
+
+    const parts = date.split("/");
+    const userDay = parseInt(parts[0], 10);
+    const userMonth = parseInt(parts[1], 10) - 1; 
+    const userYear = parseInt(parts[2], 10);
+
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    return !(userYear < currentYear || (userYear === currentYear && userMonth < currentMonth) ||
+        (userYear === currentYear && userMonth === currentMonth && userDay === currentDay));
+
+
 }
 
 function validatePassword(password, minDigits) {
