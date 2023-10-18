@@ -36,13 +36,13 @@
         <input id="full-name-input" class="erase" type="text" placeholder="Nome completo" required/>
 
         <label for="birth-date-input"></label>
-        <input id="birth-date-input" class="erase" type="text" placeholder="Data de nascimento" required/>
+        <input id="birth-date-input" class="erase" type="text" placeholder="Data de nascimento" onkeyup="mascara_birth()" maxlength="10" required/>
 
         <label for="cpf-input"></label>
-        <input id="cpf-input" class="erase" type="text" placeholder="CPF" required/>
+        <input id="cpf-input" class="erase" type="text" placeholder="CPF" onkeyup="mascara_cpf()" maxlength="14"/>
 
         <label for="telephone-input"></label>
-        <input id="telephone-input" class="erase" type="tel" placeholder="Telefone" required/>
+        <input id="telephone-input" class="erase" type="tel" placeholder="Telefone" onkeyup="mascara_phone()" maxlength="15" required/>
 
         <label for="email-input"></label>
         <input id="email-input" class="erase" type="email" placeholder="E-mail" required/>

@@ -7,28 +7,28 @@ const emailInput = document.getElementById("email-input");
 const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_user')) ?? []
-const setLocalStorage = (dbUser) => localStorage.setItem("db_user", JSON.stringify(dbUser))
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_user')) ?? [];
+const setLocalStorage = (dbUser) => localStorage.setItem("db_user", JSON.stringify(dbUser));
 
 const createUser = (user) => {
-    const dbUser = getLocalStorage()
-    dbUser.push(user)
-    setLocalStorage(dbUser)
-}
+    const dbUser = getLocalStorage();
+    dbUser.push(user);
+    setLocalStorage(dbUser);
+};
 
-const readUser = () => getLocalStorage()
+const readUser = () => getLocalStorage();
 
 const updateUser = (index, user) => {
-    const dbUser = readUser()
-    dbUser[index] = user
-    setLocalStorage(dbUser)
-}
+    const dbUser = readUser();
+    dbUser[index] = user;
+    setLocalStorage(dbUser);
+};
 
 const deleteUser = (index) => {
-    const dbUser = readUser()
-    dbUser.splice(index, 1)
-    setLocalStorage(dbUser)
-}
+    const dbUser = readUser();
+    dbUser.splice(index, 1);
+    setLocalStorage(dbUser);
+};
 
 const isValidFields = () => {
     if (fullName.value === "") {
@@ -55,13 +55,13 @@ const isValidFields = () => {
         return;
     }
 
-    return document.getElementById('register-form').reportValidity()
-}
+    return document.getElementById('register-form').reportValidity();
+};
 
 const clearFields = () => {
-    const fields = document.querySelectorAll('.erase')
-    fields.forEach(field => field.value = "")
-}
+    const fields = document.querySelectorAll('.erase');
+    fields.forEach(field => field.value = "");
+};
 
 const saveUser = (e) => {
     e.preventDefault()
@@ -75,9 +75,9 @@ const saveUser = (e) => {
             email: document.getElementById('email-input').value,
             username: document.getElementById('username-input').value,
             password: document.getElementById('password-input').value
-        }
-        createUser(user)
-        clearFields()
+        };
+        createUser(user);
+        clearFields();
     }
 }
 
@@ -91,9 +91,40 @@ function isEmailValid(email) {
     return emailRegex.test(email);
 }
 
+function mascara_cpf(){
+    if(cpfInput.value.length === 3 || cpfInput.value.length === 7){
+        cpfInput.value += "."
+    } else if (cpfInput.value.length === 11){
+        cpfInput.value += "-"
+    }
+}
+
+function mascara_birth(){
+    if (birthDate.value.length === 2 || birthDate.value.length === 5 ) {
+       birthDate.value += "/"
+    }
+}
+
+function mascara_phone() {
+    const inputValue = phoneNumber.value.replace(/\D/g, "");
+    let formattedValue = "";
+
+    if (inputValue.length > 0) {
+        formattedValue += `(${inputValue.slice(0, 2)}`;
+    }
+    if (inputValue.length > 2) {
+        formattedValue += `) ${inputValue.slice(2, 7)}`;
+    }
+    if (inputValue.length > 7) {
+        formattedValue += `-${inputValue.slice(7, 11)}`;
+    }
+
+    phoneNumber.value = formattedValue;
+}
+
 function isDateValid(date) {
     const dateRegex = new RegExp(
-        /^[0-9]+\/[0-9]+\/[0-9]/
+        /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[0-2])[/]\d{4}$/
     );
     return dateRegex.test(date);
 }
