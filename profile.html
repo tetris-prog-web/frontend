@@ -47,17 +47,17 @@
 
         <div class="edit-input">
           <label for="birth-date-input"></label>
-          <input id="birth-date-input" type="text" placeholder="01/01/2000" required readonly>
+          <input id="birth-date-input" type="text" placeholder="01/01/2000"  onkeyup="mascara_birth()" maxlength="10"requiredy>
         </div>
 
         <div class="edit-input">
           <label for="cpf-input"></label>
-          <input id="cpf-input" type="text" placeholder="12345678838" required readonly>
+          <input id="cpf-input" type="text" placeholder="123.456.788-38"  onkeyup="mascara_cpf()" maxlength="14" required>
         </div>
 
         <div class="edit-input">
           <label for="telephone-input"></label>
-          <input id="telephone-input" type="tel" placeholder="88 887163145" required>
+          <input id="telephone-input" type="tel" placeholder="(88) 88716-3145"  onkeyup="mascara_phone()" maxlength="15" required>
           <iconify-icon icon="ic:outline-edit"></iconify-icon>
         </div>
 
@@ -69,7 +69,7 @@
 
         <div class="edit-input">
           <label for="username-input"></label>
-          <input id="username-input" type="text" placeholder="Zezinho" required readonly>
+          <input id="username-input" type="text" placeholder="Zezinho" required >
         </div>
 
         <div class="edit-input">
