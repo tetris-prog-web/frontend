@@ -45,7 +45,7 @@ const usernameExists = (username) => {
     return dbUsers.some(user => user.username === username);
 }
 
-const preencherCampos = () => {
+const fillFormFields = () => {
     const user = readUser()[0];
 
     if (user !== undefined) {
@@ -58,6 +58,6 @@ const preencherCampos = () => {
         passwordInput.value = user.password;
     }
 }
-preencherCampos();
+fillFormFields();
 
 document.getElementById('edit-user-button').addEventListener('click', e => saveUser(e))
