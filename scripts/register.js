@@ -1,20 +1,22 @@
 const form = document.getElementById("register-form");
-const fullName = document.getElementById("full-name-input");
-const birthDate = document.getElementById("birth-date-input");
+const fullNameInput = document.getElementById("full-name-input");
+const birthdateInput = document.getElementById("birthdate-input");
 const cpfInput = document.getElementById("cpf-input");
 const phoneNumber = document.getElementById("telephone-input");
 const emailInput = document.getElementById("email-input");
 const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
 
+//This file is a base to the register page, when the database is implemented, this file will be changed
+
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    if (fullName.value === "") {
+    if (fullNameInput.value === "") {
         alert("Por favor, preencha seu nome");
         return;
     } else {
-        localStorage.setItem('NomeCompleto', fullName.value);
+        localStorage.setItem('NomeCompleto', fullNameInput.value);
     }
 
     if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
@@ -24,18 +26,18 @@ form.addEventListener("submit", (event) => {
         localStorage.setItem('Email', emailInput.value);
     }
 
-    if (!validatePassword(passwordInput.value, 8)) {
+    if (!isPasswordValid(passwordInput.value, 8)) {
         alert("A senha precisa ter no mínimo 8 dígitos");
         return;
     } else {
         localStorage.setItem('Senha', passwordInput.value);
     }
 
-    if (birthDate.value === "" || !isDateValid(birthDate.value)) {
+    if (birthdateInput.value === "" || !isDateValid(birthdateInput.value)) {
         alert("Por favor, insira uma data válida");
         return;
     } else {
-        localStorage.setItem('DataNascimento', birthDate.value);
+        localStorage.setItem('DataNascimento', birthdateInput.value);
     }
 
     localStorage.setItem('Telefone', phoneNumber.value);
@@ -57,8 +59,6 @@ function isEmailValid(email) {
     );
 
     return emailRegex.test(email);
-
-
 }
 
 function isDateValid(date) {
@@ -73,6 +73,6 @@ function isUsernameUsed(username) {
     return username === localStorage.getItem('NomeUsuario');
 }
 
-function validatePassword(password, minDigits) {
+function isPasswordValid(password, minDigits) {
     return password.length >= minDigits;
 }

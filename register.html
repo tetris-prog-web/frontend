@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/register-page.css">
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="scripts/registertrue.js" defer></script>
+  <script src="scripts/register-local.js" defer></script>
+  <script src="scripts/format-and-validate.js" defer></script>
 </head>
 <body>
 <main id="main-container">
@@ -35,14 +36,16 @@
         <label for="full-name-input"></label>
         <input id="full-name-input" class="erase" type="text" placeholder="Nome completo" required/>
 
-        <label for="birth-date-input"></label>
-        <input id="birth-date-input" class="erase" type="text" placeholder="Data de nascimento" onkeyup="mascara_birth()" maxlength="10" required/>
+        <label for="birthdate-input"></label>
+        <input id="birthdate-input" class="erase" type="text" placeholder="Data de nascimento"
+               onkeyup="mask_birthdate()" maxlength="10" required/>
 
         <label for="cpf-input"></label>
-        <input id="cpf-input" class="erase" type="text" placeholder="CPF" onkeyup="mascara_cpf()" maxlength="14"/>
+        <input id="cpf-input" class="erase" type="text" placeholder="CPF" onkeyup="mask_cpf()" maxlength="14" required/>
 
         <label for="telephone-input"></label>
-        <input id="telephone-input" class="erase" type="tel" placeholder="Telefone" onkeyup="mascara_phone()" maxlength="15" required/>
+        <input id="telephone-input" class="erase" type="tel" placeholder="Telefone" onkeyup="mask_phone()"
+               maxlength="15" required/>
 
         <label for="email-input"></label>
         <input id="email-input" class="erase" type="email" placeholder="E-mail" required/>
