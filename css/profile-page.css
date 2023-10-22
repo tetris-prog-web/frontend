@@ -84,15 +84,15 @@
   width: 50%;
 }
 
-#profile-form{
+#profile-form {
   width: 100%;
   height: 100%;
-  
+
   color: var(--form-input-text-color);
 
   display: flex;
   flex-direction: column;
-  align-items:baseline;
+  align-items: baseline;
 }
 
 .edit-input {
@@ -106,25 +106,23 @@
   margin-bottom: 20px;
 }
 
-.edit-input > input
-{
+.edit-input > input {
   width: 90%;
   font-family: League Spartan, sans-serif;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  
+
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
 }
 
-.edit-input > iconify-icon
-{
+.edit-input > iconify-icon {
   font-size: 25px;
 }
 
-#save-button {
+#edit-user-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,12 +142,12 @@
   cursor: pointer;
 }
 
-#save-button:hover {
+#edit-user-button:hover {
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
 
-#save-button-text {
+#edit-user-button-text {
   color: var(--secondary-title-color);
 
   text-align: center;
