@@ -155,7 +155,6 @@ const menuButton = document.getElementById("menuButton");
 function showGameOverAlert() {
     stopGame();
     nameErrorPopup.style.display = "block";
-    return;
 }
 
 menuButton.addEventListener("click", function () {
