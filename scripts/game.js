@@ -310,7 +310,7 @@ function invertGameArea() {
     for (let i = 1; i <= grid.height; i++) {
         for (let j = 1; j < grid.width / 2; j++) {
             const cell = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${j})`);
-            const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${grid.width - j})`);
+            const cellToInvert = document.querySelector(`.row:nth-child(${i}) .column:nth-child(${grid.width - j + 1})`);
 
             if (cell && cellToInvert) {
                 const aux = cell.style.backgroundColor;
