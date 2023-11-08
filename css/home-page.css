@@ -182,3 +182,26 @@
   }
 }
 
+@media screen and (max-height: 758px) {
+
+  #main-container {
+    grid-template-columns: 1fr;
+  }
+  #login-title {
+    font-size: 50px;
+  }
+
+  #login-button{
+    width: 50%;
+  }
+
+  #login-button-text {
+    font-size: 36px;
+  }
+
+  #register-account-link {
+    font-size: 36px;
+    margin: 20px;
+  }
+}
+

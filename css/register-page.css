@@ -171,4 +171,19 @@
   }
 }
 
+@media screen and (max-height: 838px){
+  #main-container {
+    grid-template-columns: 1fr;
+  }
+
+  #register-game-image-container > img {
+    width: 60%; 
+    height: auto; 
+  }
+
+  #register-button {
+    margin: 10px;
+  }
+}
+
 
