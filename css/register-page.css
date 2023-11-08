@@ -69,6 +69,7 @@
   align-items: center;
 }
 
+
 #register-title {
   color: var(--main-title-color);
 
@@ -145,3 +146,29 @@
   font-weight: 700;
   line-height: normal;
 }
+
+@media screen and (max-width: 828px) {
+  #main-container {
+    grid-template-columns: 1fr;
+  }
+
+  #register-game-image-container > img {
+    width: 90%; 
+    height: auto; 
+  }
+
+  #register-form-container {
+    width: 80%; 
+    height: 100%;
+  }
+
+  #register-button {
+    margin: 10px;
+  }
+  
+  #register-button-text {
+    font-size: 30px; 
+  }
+}
+
+
