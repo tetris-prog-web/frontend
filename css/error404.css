@@ -1,0 +1,44 @@
+#main-container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-background-color);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  #error404-conteiner {
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #back-conteiner{
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #erro-title{
+    color: var(--secondary-title-color);
+    font-family: League Spartan, sans-serif;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  #search-title{
+    color: var(--secondary-title-color);
+    font-family: League Spartan, sans-serif;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+ 
