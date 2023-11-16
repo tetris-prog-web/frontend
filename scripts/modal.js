@@ -4,6 +4,7 @@ const modal = document.querySelector("#modal");
 const modalBackground = document.querySelector("#modal-background");
 const doNotShowModalAgainCheckBox = document.querySelector("#dont-show-modal-again");
 
+
 const showModal = () => {
     doNotShowModalAgainCheckBox.checked = localStorage.getItem('shouldShowModal') !== 'true';
     [modal, modalBackground].forEach((el) => el.classList.toggle("show"));
@@ -22,3 +23,8 @@ window.addEventListener('load', () => {
     if (localStorage.getItem('shouldShowModal') === 'false') return;
     showModal();
 });
+
+
+
+
+  
