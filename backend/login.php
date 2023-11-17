@@ -25,10 +25,12 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
         if (get_user($username, $password)) {
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
-            header("location:../frontend/menu.html"); //TODO change this when move the backend to outside this project (or don' move it?)
+            echo "Logged in";
             exit();
         } else {
+            header('HTTP/1.1 401 Unauthorized');
             echo "Invalid username or password";
+            exit();
         }
     } else {
         echo "No username or password provided";

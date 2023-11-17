@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="css/home-page.css">
   <link rel="stylesheet" href="css/global.css">
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="./scripts/login.js"></script>
 </head>
 <body>
 <main id="main-container">
@@ -23,21 +25,19 @@
     </div>
 
     <div id="login-form-container">
-      <form id="login-form" action="./backend/login.php" method="POST">
+      <form id="login-form">
         <label for="username-input"></label>
-        <input id="username-input" name="username" type="text" placeholder="Nome de usuário" required>
+        <input id="username-input" name="username" type="text" placeholder="Nome de usuário" class="normal-input-border" required>
 
         <label for="password-input"></label>
-        <input id="password-input" name="password" type="password" placeholder="Senha" required>
+        <input id="password-input" name="password" type="password" placeholder="Senha" class="normal-input-border" autocomplete required>
 
-        <button id="login-button" type="submit">
+        <span id="login-error-message"></span>
+
+        <button id="login-button" type="button">
             <span id="login-button-text">JOGAR</span>
             <iconify-icon icon="carbon:play-outline"></iconify-icon>
         </button>
-
-        <!-- <a id="login-button" href="menu.html"> -->
-          
-        </a>
       </form>
     </div>
       <a id="register-account-link" href="./register.html">CRIAR CONTA</a>
