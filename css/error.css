@@ -32,6 +32,9 @@
   justify-content: center;
   text-align: center;
   height: 100%;
+  top: 50%;
+    left: 50%;
+    transform: translate(0%, 0%);
 }
 
 #erro-title {
@@ -57,30 +60,38 @@
 
 #back-link {
   display: flex;
-  justify-content: Scenter;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
   width: 50%;
-  height: auto;
+  height: 10%;
 }
 
 #back-button-text {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   width: 100%;
   color: var(--secondary-title-color);
-  background-color: var(--form-input-text-color);
-
+  background-color: var(--primary-title-color);
+ 
   font-family: League Spartan, sans-serif;
   border-radius: 2rem;
   font-size: 2.5rem;
   font-style: normal;
   font-weight: 500;
 
-  padding-top: 5px;
+  
 }
 
 #back-button-text:hover {
-  background-color: var(--primary-title-color);
+  background-color: rgb(60, 105, 108);
   transition: 1s;
+}
+
+#restricted-area{
+  color: rgb(189, 40, 40);
+  text-shadow: 0 7px 5px rgb(67, 24, 24);
 }
 
 #TETRIS-title {
@@ -90,4 +101,25 @@
   font-size: 7rem;
   font-style: normal;
   line-height: normal;
+}
+
+@media screen and (max-width: 1280px) {
+
+  #legend-conteiner{
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, -12%);
+  }
+
+  #search-title{
+    font-size: 2.5rem;
+  }
+
+  #back-link {
+    width: 80%;
+  }
+
+  #back-button-text {
+    font-size: 2rem;
+  }
 }
