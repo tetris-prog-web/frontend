@@ -1,10 +1,8 @@
 $(document).ready(function () {
     $("#login-button").on("click", function () {
-        // Coletar dados do formulário
         var username = $("#username-input").val();
         var password = $("#password-input").val();
 
-        // Fazer solicitação Ajax
         $.ajax({
             type: "POST",
             url: "./backend/login.php",
