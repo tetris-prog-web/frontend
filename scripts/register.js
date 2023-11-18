@@ -9,76 +9,24 @@ const passwordInput = document.getElementById("password-input");
 
 //This file is a base to the register page, when the database is implemented, this file will be changed
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
+const listPlayers = async (page) => {
+    const data = await fetch("./list.php?page=" + page);
+    const response = await data.text();
+    tbody.innerHTML = response;
+}
 
-    const dadosForm = new FormData(cadForm);
-    dadosForm.append("add", 1);
-    await fetch ("cadastrar.php", {
+listPlayers(1);
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const dataForm = new FormData(form);
+    dataForm.append("add", 1);
+
+    const data = await fetch("backend/register.php", {
         method:"POST",
-        body: dadosForm
-    })
-    // if (fullNameInput.value === "") {
-    //     alert("Por favor, preencha seu nome");
-    //     return;
-    // } else {
-    //     localStorage.setItem('NomeCompleto', fullNameInput.value);
-    // }
+        body: dataForm,
+    });
 
-    // if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-    //     alert("Por favor, preencha seu email corretamente");
-    //     return;
-    // } else {
-    //     localStorage.setItem('Email', emailInput.value);
-    // }
-
-    // if (!isPasswordValid(passwordInput.value, 8)) {
-    //     alert("A senha precisa ter no mínimo 8 dígitos");
-    //     return;
-    // } else {
-    //     localStorage.setItem('Senha', passwordInput.value);
-    // }
-
-    // if (birthdateInput.value === "" || !isDateValid(birthdateInput.value)) {
-    //     alert("Por favor, insira uma data válida");
-    //     return;
-    // } else {
-    //     localStorage.setItem('DataNascimento', birthdateInput.value);
-    // }
-
-    // localStorage.setItem('Telefone', phoneNumber.value);
-    // localStorage.setItem('CPF', cpfInput.value);
-
-    // if (!isUsernameUsed(usernameInput.value)) {
-    //     alert("Nome de usuário já utilizado");
-    //     return;
-    // } else {
-    //     localStorage.setItem('NomeUsuario', usernameInput.value);
-    // }
-
-    form.submit();
-})
-
-function isEmailValid(email) {
-    const emailRegex = new RegExp(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
-    );
-
-    return emailRegex.test(email);
-}
-
-function isDateValid(date) {
-    const dateRegex = new RegExp(
-        /^[0-9]+\/[0-9]+\/[0-9]/
-    );
-
-    return dateRegex.test(date);
-}
-
-function isUsernameUsed(username) {
-    return username === localStorage.getItem('NomeUsuario');
-}
-
-function isPasswordValid(password, minDigits) {
-    return password.length >= minDigits;
-}
+    const response = await data.json();
+});
