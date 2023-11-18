@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr;
 }
 
-#error404-conteiner {
+#left-side-container {
   width: 100%;
   height: 100%;
 
@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-#back-conteiner {
+#right-side-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-#legend-conteiner {
+#error-message-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,11 +33,11 @@
   text-align: center;
   height: 100%;
   top: 50%;
-    left: 50%;
-    transform: translate(0%, 0%);
+  left: 50%;
+  transform: translate(0%, 0%);
 }
 
-#erro-title {
+#code-error-message {
   color: var(--secondary-title-color);
   font-family: League Spartan, sans-serif;
   font-size: 3.75rem;
@@ -45,7 +45,7 @@
   font-weight: 700;
 }
 
-#search-title {
+#error-message {
   color: var(--secondary-title-color);
   font-family: League Spartan, sans-serif;
   font-size: 3.75rem;
@@ -53,12 +53,12 @@
   font-weight: 700;
 }
 
-#home-page-game-image-container > img {
+#game-image-container > img {
   width: 100%;
   height: 100%;
 }
 
-#back-link {
+#back-to-login-link {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -67,34 +67,32 @@
   height: 10%;
 }
 
-#back-button-text {
+#back-to-login-link-text {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   width: 100%;
   color: var(--secondary-title-color);
   background-color: var(--primary-title-color);
- 
+
   font-family: League Spartan, sans-serif;
   border-radius: 2rem;
   font-size: 2.5rem;
   font-style: normal;
   font-weight: 500;
-
-  
 }
 
-#back-button-text:hover {
+#back-to-login-link-text:hover {
   background-color: rgb(60, 105, 108);
   transition: 1s;
 }
 
-#restricted-area{
+#restricted-area {
   color: rgb(189, 40, 40);
   text-shadow: 0 7px 5px rgb(67, 24, 24);
 }
 
-#TETRIS-title {
+#brand-title {
   color: var(--brand-title-color);
   text-shadow: 0 7px 5px var(--default-text-shadow-color);
   font-family: League Spartan, sans-serif;
@@ -105,21 +103,21 @@
 
 @media screen and (max-width: 1280px) {
 
-  #legend-conteiner{
+  #error-message-container {
     top: 50%;
     left: 50%;
     transform: translate(0%, -12%);
   }
 
-  #search-title{
+  #error-message {
     font-size: 2.5rem;
   }
 
-  #back-link {
+  #back-to-login-link {
     width: 80%;
   }
 
-  #back-button-text {
+  #back-to-login-link-text {
     font-size: 2rem;
   }
 }

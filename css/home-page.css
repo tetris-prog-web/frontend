@@ -56,12 +56,30 @@
   font-weight: 700;
   line-height: normal;
 
-  border: var(--form-input-background-color);
+  
   border-radius: 10px;
   background: var(--form-input-background-color);
 
   padding: 1.25rem 0.625rem;
   margin-bottom: 1.25rem;
+}
+
+#login-error-message {
+  color: var(--error-message-color);
+
+  font-family: League Spartan, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.normal-input-border {
+    border: var(--form-input-background-color);
+}
+
+.error-input-border {
+  border: 2px solid var(--error-message-color);
 }
 
 #login-button {
