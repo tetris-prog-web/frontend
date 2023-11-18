@@ -1,3 +1,5 @@
+const phoneNumberInput = document.getElementById("telephone-input");
+
 function isPasswordValid(password, minDigits) {
     return password.length >= minDigits;
 }
