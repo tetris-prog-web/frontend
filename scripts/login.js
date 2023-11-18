@@ -18,7 +18,9 @@ $(document).ready(function () {
                 console.log("Erro na solicitação Ajax: " + error);
                 if(error.status == 401){
                     changeInputBorders();
-                    $("#login-error-message").text("Usuário ou senha incorretos");
+                    $("#login-error-message").text("Usuário ou senha incorretos!");
+                } else {
+                    $("#login-error-message").text("Erro interno ao realizar login, tente novamente!");
                 }
             }
         });
