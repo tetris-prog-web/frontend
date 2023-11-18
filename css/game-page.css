@@ -286,7 +286,7 @@
   justify-content: center;
   align-items: center;
 
-  z-index: 2000;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -307,7 +307,8 @@
 
   box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
   background: var(--secondary-title-color);
-  overflow-y: auto;
+  
+  
 }
 
 #modal p {
@@ -403,6 +404,7 @@
   align-items: center;
   flex-direction: column;
   position: fixed;
+  z-index: 2000;
   height: 35%;
   width: 30%;
   top: 50%;
@@ -420,6 +422,9 @@
   margin: auto;
 }
 @media screen and (max-width: 1068px) {
+  #modal {
+    display: none !important;
+  }
 
   .buttons-container {
     display: none;
@@ -456,6 +461,10 @@
 }
 
 @media screen and (max-height: 800px){
+  #modal {
+    display: none !important;
+  }
+
   .buttons-container {
     display: none;
   }
