@@ -12,43 +12,49 @@ const passwordInput = document.getElementById("password-input");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    if (fullNameInput.value === "") {
-        alert("Por favor, preencha seu nome");
-        return;
-    } else {
-        localStorage.setItem('NomeCompleto', fullNameInput.value);
-    }
+    const dadosForm = new FormData(cadForm);
+    dadosForm.append("add", 1);
+    await fetch ("cadastrar.php", {
+        method:"POST",
+        body: dadosForm
+    })
+    // if (fullNameInput.value === "") {
+    //     alert("Por favor, preencha seu nome");
+    //     return;
+    // } else {
+    //     localStorage.setItem('NomeCompleto', fullNameInput.value);
+    // }
 
-    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-        alert("Por favor, preencha seu email corretamente");
-        return;
-    } else {
-        localStorage.setItem('Email', emailInput.value);
-    }
+    // if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
+    //     alert("Por favor, preencha seu email corretamente");
+    //     return;
+    // } else {
+    //     localStorage.setItem('Email', emailInput.value);
+    // }
 
-    if (!isPasswordValid(passwordInput.value, 8)) {
-        alert("A senha precisa ter no mínimo 8 dígitos");
-        return;
-    } else {
-        localStorage.setItem('Senha', passwordInput.value);
-    }
+    // if (!isPasswordValid(passwordInput.value, 8)) {
+    //     alert("A senha precisa ter no mínimo 8 dígitos");
+    //     return;
+    // } else {
+    //     localStorage.setItem('Senha', passwordInput.value);
+    // }
 
-    if (birthdateInput.value === "" || !isDateValid(birthdateInput.value)) {
-        alert("Por favor, insira uma data válida");
-        return;
-    } else {
-        localStorage.setItem('DataNascimento', birthdateInput.value);
-    }
+    // if (birthdateInput.value === "" || !isDateValid(birthdateInput.value)) {
+    //     alert("Por favor, insira uma data válida");
+    //     return;
+    // } else {
+    //     localStorage.setItem('DataNascimento', birthdateInput.value);
+    // }
 
-    localStorage.setItem('Telefone', phoneNumber.value);
-    localStorage.setItem('CPF', cpfInput.value);
+    // localStorage.setItem('Telefone', phoneNumber.value);
+    // localStorage.setItem('CPF', cpfInput.value);
 
-    if (!isUsernameUsed(usernameInput.value)) {
-        alert("Nome de usuário já utilizado");
-        return;
-    } else {
-        localStorage.setItem('NomeUsuario', usernameInput.value);
-    }
+    // if (!isUsernameUsed(usernameInput.value)) {
+    //     alert("Nome de usuário já utilizado");
+    //     return;
+    // } else {
+    //     localStorage.setItem('NomeUsuario', usernameInput.value);
+    // }
 
     form.submit();
 })
