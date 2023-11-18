@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 1.875rem;  
 }
 
 #name iconify-icon {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 
 #options-container {
@@ -36,9 +36,9 @@
   color: var(--secondary-title-color);
   text-decoration: none;
   text-align: center;
-  font-size: 50px;
+  font-size: 3.125rem;
   height: 50px;
-  width: 700px;
+  width: 650px;
   box-shadow: 0 4px var(--button-shadow-color);
   border-radius: 20px;
 }
@@ -47,3 +47,4 @@
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
+

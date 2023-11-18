@@ -45,8 +45,8 @@
 }
 
 .game-area-container {
-  width: 330px;
-  height: 660px;
+    width: 330px;
+    height: 660px;
 }
 
 .game-area-container .row {
@@ -391,4 +391,100 @@
 #resetButton:hover, #menuButton:hover {
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
+}
+
+
+.mensagem {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  height: 35%;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background: var(--secondary-title-color);
+  box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
+  
+}
+
+.mensagem p{
+  font-size: 1.5rem;
+  text-align: center;
+  margin: auto;
+}
+@media screen and (max-width: 1068px) {
+
+  .buttons-container {
+    display: none;
+  }
+  .mensagem {
+    display: flex;
+    flex-direction: column;
+  }
+  #close-mensagem-button {
+    font-size: 35px;
+    font-weight: 700;
+  
+    padding-top: 5px;
+    margin-top: auto;
+  
+    width: 180px;
+    height: 40px;
+  
+    background: rgba(186, 12, 12, 1);
+    color: var(--secondary-title-color);
+  
+    border: none;
+    border-radius: 4px;
+  
+    cursor: pointer;
+    margin-bottom: 5%;
+  }
+
+  #close-mensagem-button:hover {
+    box-shadow: 0 2px var(--button-shadow-color);
+  
+    transform: translateY(2px);
+  }
+}
+
+@media screen and (max-height: 800px){
+  .buttons-container {
+    display: none;
+  }
+
+  .mensagem {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  #close-mensagem-button {
+    font-size: 35px;
+    font-weight: 700;
+  
+    padding-top: 5px;
+    margin-top: auto;
+  
+    width: 180px;
+    height: 40px;
+  
+    background: rgba(186, 12, 12, 1);
+    color: var(--secondary-title-color);
+  
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 5%;
+  
+    cursor: pointer;
+  }
+
+  #close-mensagem-button:hover {
+    box-shadow: 0 2px var(--button-shadow-color);
+  
+    transform: translateY(2px);
+  }
 }

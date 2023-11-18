@@ -1,24 +1,29 @@
 const playersData = [
-    {username: "flamengo-pai-do-classic", score: 20000, level: 66},
-    {username: "rafao-da-bala", score: 3000, level: 10},
-    {username: "miyazatsuo", score: 11111, level: 37},
-    {username: "brunorcorrea", score: 2222, level: 7},
-    {username: "vini-mengao", score: 444, level: 2},
-    {username: "guilhermePalermoCoelho", score: 19999, level: 66},
-    {username: "oMen", score: 122, level: 1},
-    {username: "arrascaMengo", score: 777, level: 2},
-    {username: "nicolasAndreatti", score: 110, level: 1},
-    {username: "Zezinho", score: 1000, level: 4},
+    { username: "flamengo-pai-do-classic", score: 20000, level: 66 },
+    { username: "rafao-da-bala", score: 3000, level: 10 },
+    { username: "miyazatsuo", score: 11111, level: 37 },
+    { username: "brunorcorrea", score: 2222, level: 7 },
+    { username: "vini-mengao", score: 444, level: 2 },
+    { username: "guilhermePalermoCoelho", score: 19999, level: 66 },
+    { username: "oMen", score: 122, level: 1 },
+    { username: "arrascaMengo", score: 777, level: 2 },
+    { username: "nicolasAndreatti", score: 110, level: 1 },
+    { username: "Zezinho", score: 1000, level: 4 },
 ];
 
 const userBestScore = [
-    {username: "Zezinho", score: 0, level: 0},
-    {username: "Zezinho", score: 1000, level: 4},
-    {username: "Zezinho", score: 100, level: 1},
+    { username: "Zezinho", score: 0, level: 0 },
+    { username: "Zezinho", score: 1000, level: 4 },
+    { username: "Zezinho", score: 100, level: 1 },
 ];
 
 function sortByScore(players) {
     return players.sort((a, b) => b.score - a.score);
+}
+
+function formatUsername(username) {
+    const maxLength = 10;
+    return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
 }
 
 function updateRanking() {
@@ -28,10 +33,10 @@ function updateRanking() {
         const line = rankingLines[i];
         const player = playersData[i];
         line.innerHTML = `
-      <p>${player.username}</p>
-      <p>${player.score}</p>
-      <p>${player.level}</p>
-    `;
+            <p>${formatUsername(player.username)}</p>
+            <p>${player.score}</p>
+            <p>${player.level}</p>
+        `;
     }
 }
 
@@ -51,10 +56,10 @@ function showUserBestScore() {
             }
 
             userBestScoreElement.innerHTML = `
-        <p>${maxUserScore.username}</p>
-        <p>${maxUserScore.score}</p>
-        <p>${maxUserScore.level}</p>
-      `;
+                <p>${formatUsername(maxUserScore.username)}</p>
+                <p>${maxUserScore.score}</p>
+                <p>${maxUserScore.level}</p>
+            `;
         } else {
             userBestScoreElement.innerHTML = "Nenhuma pontuação registrada para o usuário.";
         }
