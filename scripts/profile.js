@@ -75,8 +75,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             body: dataForm,
         });
 
-        const response = await data.json();
-
         if (data.ok) {
             alert("Dados atualizados com sucesso!");
         } else {
