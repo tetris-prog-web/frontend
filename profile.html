@@ -1,140 +1,152 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Perfil - Mirror Tetris</title>
-  <link rel="icon" type="image/x-icon" href="/images/logo.png"/>
-  <link rel="stylesheet" href="css/global.css"/>
-  <link rel="stylesheet" href="css/profile-page.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Perfil - Mirror Tetris</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/profile-page.css" />
 
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-  <script src="scripts/profile.js" defer></script>
-  <script src="scripts/format-and-validate.js" defer></script>
-  <script src="./scripts/is-authenticated.js"></script>
-  <script src="scripts/logout.js"></script>
-</head>
-<body>
-<div id="top-right-container">
-  <a id="logout-button"> SAIR
-    <iconify-icon icon="el:off"></iconify-icon>
-  </a>
-</div>
-<main id="main-container">
-  <aside id="presentation-container">
-    <div id="back-to-home-page-link-container">
-      <a id="back-to-home-page-link" href="menu.html">
-        <iconify-icon icon="material-symbols:arrow-back"></iconify-icon>
-        <span id="back-to-home-page-text">VOLTAR</span>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/format-and-validate.js" defer></script>
+    <script src="./scripts/is-authenticated.js"></script>
+    <script src="./scripts/profile.js" defer></script>
+    <script src="scripts/logout.js"></script>
+  </head>
+  <body>
+    <div id="top-right-container">
+      <a id="logout-button">
+        SAIR
+        <iconify-icon icon="el:off"></iconify-icon>
       </a>
     </div>
-
-    <h1 class="brand-title">TETRIS</h1>
-    <figure id="profile-game-image-container">
-      <img
-              src="./images/game-image.png"
-              alt="Imagem representando uma partida do jogo de Mirror Tetris"
-      />
-    </figure>
-  </aside>
-
-  <div id="profile-container">
-    <div id="profile-title-container">
-      <h2 id="profile-title">Perfil de Usuário</h2>
-    </div>
-
-    <div id="profile-form-container">
-      <form id="profile-form">
-        <div class="edit-input">
-          <label for="full-name-input"></label>
-          <input
-                  id="full-name-input"
-                  type="text"
-                  placeholder="Zezinho Da Silva"
-                  required
-          />
-          <iconify-icon icon="ic:outline-edit"></iconify-icon>
+    <main id="main-container">
+      <aside id="presentation-container">
+        <div id="back-to-home-page-link-container">
+          <a id="back-to-home-page-link" href="menu.html">
+            <iconify-icon icon="material-symbols:arrow-back"></iconify-icon>
+            <span id="back-to-home-page-text">VOLTAR</span>
+          </a>
         </div>
 
-        <div class="edit-input">
-          <label for="birthdate-input"></label>
-          <input
-                  id="birthdate-input"
-                  type="text"
-                  placeholder="01/01/2000"
-                  onkeyup="mask_birthdate()"
-                  maxlength="10"
-                  required
-                  readonly
+        <h1 class="brand-title">TETRIS</h1>
+        <figure id="profile-game-image-container">
+          <img
+            src="./images/game-image.png"
+            alt="Imagem representando uma partida do jogo de Mirror Tetris"
           />
+        </figure>
+      </aside>
+
+      <div id="profile-container">
+        <div id="profile-title-container">
+          <h2 id="profile-title">Perfil de Usuário</h2>
         </div>
 
-        <div class="edit-input">
-          <label for="cpf-input"></label>
-          <input
-                  id="cpf-input"
-                  type="text"
-                  placeholder="123.456.788-38"
-                  onkeyup="mask_cpf()"
-                  maxlength="14"
-                  required
-                  readonly
-          />
-        </div>
+        <div id="profile-form-container">
+          <form id="profile-form">
+            <div class="edit-input">
+              <label for="full-name-input"></label>
+              <input
+                id="full-name-input"
+                name="full-name-input"
+                type="text"
+                placeholder="Zezinho Da Silva"
+                required
+              />
+              <iconify-icon icon="ic:outline-edit"></iconify-icon>
+            </div>
 
-        <div class="edit-input">
-          <label for="telephone-input"></label>
-          <input
-                  id="telephone-input"
-                  type="tel"
-                  placeholder="(88) 88716-3145"
-                  onkeyup="mask_phone()"
-                  maxlength="15"
-                  required
-          />
-          <iconify-icon icon="ic:outline-edit"></iconify-icon>
-        </div>
+            <div class="edit-input">
+              <label for="birthdate-input"></label>
+              <input
+                id="birthdate-input"
+                name="birthdate-input"
+                type="text"
+                placeholder="01/01/2000"
+                onkeyup="mask_birthdate()"
+                maxlength="10"
+                required
+                readonly
+              />
+            </div>
 
-        <div class="edit-input">
-          <label for="email-input"></label>
-          <input
-                  id="email-input"
-                  type="email"
-                  placeholder="zezinhodasilva@gmail.com"
-                  required
-          />
-          <iconify-icon icon="ic:outline-edit"></iconify-icon>
-        </div>
+            <div class="edit-input">
+              <label for="cpf-input"></label>
+              <input
+                id="cpf-input"
+                name="cpf-input"
+                type="text"
+                placeholder="123.456.788-38"
+                onkeyup="mask_cpf()"
+                maxlength="14"
+                required
+                readonly
+              />
+            </div>
 
-        <div class="edit-input">
-          <label for="username-input"></label>
-          <input
-                  id="username-input"
-                  type="text"
-                  placeholder="Zezinho"
-                  required
-                  readonly
-          />
-        </div>
+            <div class="edit-input">
+              <label for="telephone-input"></label>
+              <input
+                id="telephone-input"
+                name="telephone-input"
+                type="tel"
+                placeholder="(88) 88716-3145"
+                onkeyup="mask_phone()"
+                maxlength="15"
+                required
+              />
+              <iconify-icon icon="ic:outline-edit"></iconify-icon>
+            </div>
 
-        <div class="edit-input">
-          <label for="password-input"></label>
-          <input
-                  id="password-input"
-                  type="password"
-                  placeholder="********"
-                  required
-                  autocomplete="on"
-          />
-          <iconify-icon icon="ic:outline-edit"></iconify-icon>
-        </div>
+            <div class="edit-input">
+              <label for="email-input"></label>
+              <input
+                id="email-input"
+                name="email-input"
+                type="email"
+                placeholder="zezinhodasilva@gmail.com"
+                required
+              />
+              <iconify-icon icon="ic:outline-edit"></iconify-icon>
+            </div>
 
-        <button type="button" id="edit-user-button">
-          <span id="edit-user-button-text">SALVAR</span>
-        </button>
-      </form>
-    </div>
-  </div>
-</main>
-</body>
+            <div class="edit-input">
+              <label for="username-input"></label>
+              <input
+                id="username-input"
+                name="username-input"
+                type="text"
+                placeholder="Zezinho"
+                required
+                readonly
+              />
+            </div>
+
+            <div class="edit-input">
+              <label for="password-input"></label>
+              <input
+                id="password-input"
+                name="password-input"
+                type="password"
+                placeholder="********"
+                required
+                autocomplete="on"
+              />
+              <iconify-icon icon="ic:outline-edit"></iconify-icon>
+            </div>
+
+            <button type="submit" id="edit-user-button">
+              <span id="edit-user-button-text">SALVAR</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

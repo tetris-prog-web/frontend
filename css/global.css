@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&display=swap");
 
 :root {
   --main-background-color: #111;
@@ -6,16 +6,16 @@
   --main-title-color: #000;
   --secondary-title-color: #fff;
   --tertiary-title-color: #ddd;
-  --form-input-text-color: #A6A6A6;
+  --form-input-text-color: #a6a6a6;
   --form-input-background-color: rgba(166, 166, 166, 0.15);
   --button-shadow-color: rgba(0, 0, 0, 0.5);
   --default-player-ranking: rgba(69, 78, 74, 0.637);
   --current-player-ranking: rgba(209, 14, 14);
   --default-container-background-color: #000000b6;
-  --default-player-color: #18FF22;
-  --default-text-shadow-color: rgba(221, 221, 221, 0.40);
+  --default-player-color: #18ff22;
+  --default-text-shadow-color: rgba(221, 221, 221, 0.4);
   --error-message-color: #bb2222;
-  --primary-title-color:  rgba(47, 180, 189, 1.0);
+  --primary-title-color: rgba(47, 180, 189, 1);
 }
 
 html {
@@ -49,6 +49,7 @@ body {
 }
 
 .game-navbar a {
+  cursor: pointer;
   text-decoration: none;
   color: var(--brand-title-color);
 }

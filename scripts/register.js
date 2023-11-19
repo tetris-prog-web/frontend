@@ -7,72 +7,32 @@ const emailInput = document.getElementById("email-input");
 const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
 
-//This file is a base to the register page, when the database is implemented, this file will be changed
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (fullNameInput.value === "") {
-        alert("Por favor, preencha seu nome");
-        return;
-    } else {
-        localStorage.setItem('NomeCompleto', fullNameInput.value);
-    }
-
-    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-        alert("Por favor, preencha seu email corretamente");
-        return;
-    } else {
-        localStorage.setItem('Email', emailInput.value);
-    }
-
-    if (!isPasswordValid(passwordInput.value, 8)) {
-        alert("A senha precisa ter no mínimo 8 dígitos");
-        return;
-    } else {
-        localStorage.setItem('Senha', passwordInput.value);
-    }
-
-    if (birthdateInput.value === "" || !isDateValid(birthdateInput.value)) {
-        alert("Por favor, insira uma data válida");
-        return;
-    } else {
-        localStorage.setItem('DataNascimento', birthdateInput.value);
-    }
-
-    localStorage.setItem('Telefone', phoneNumber.value);
-    localStorage.setItem('CPF', cpfInput.value);
-
-    if (!isUsernameUsed(usernameInput.value)) {
-        alert("Nome de usuário já utilizado");
-        return;
-    } else {
-        localStorage.setItem('NomeUsuario', usernameInput.value);
-    }
-
-    form.submit();
-})
-
-function isEmailValid(email) {
-    const emailRegex = new RegExp(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
-    );
-
-    return emailRegex.test(email);
+const formatBirthdate = (birthdate) => {
+    const [day, month, year] = birthdate.split("/");
+    return `${year}-${month}-${day}`;
 }
 
-function isDateValid(date) {
-    const dateRegex = new RegExp(
-        /^[0-9]+\/[0-9]+\/[0-9]/
-    );
-
-    return dateRegex.test(date);
+const formatCPF = (cpf) => {
+    return cpf.replace(/\D/g, "");
 }
 
-function isUsernameUsed(username) {
-    return username === localStorage.getItem('NomeUsuario');
+const formatPhone = (phone) => {
+    return phone.replace(/\D/g, "");
 }
 
-function isPasswordValid(password, minDigits) {
-    return password.length >= minDigits;
-}
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const dataForm = new FormData(form);
+
+    dataForm.set("birthdate-input", formatBirthdate(dataForm.get("birthdate-input")));
+    dataForm.set("cpf-input", formatCPF(dataForm.get("cpf-input")));
+    dataForm.set("telephone-input", formatPhone(dataForm.get("telephone-input")));
+
+    const data = await fetch("backend/register.php", {
+        method: "POST",
+        body: dataForm,
+    });
+
+    const response = await data.json();
+});
