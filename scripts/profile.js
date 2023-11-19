@@ -65,15 +65,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.preventDefault();
 
         const dataForm = new FormData(form);
-
         dataForm.delete("username-input");
         dataForm.delete("birthdate-input");
         dataForm.delete("cpf-input");
-        
         dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
-        for(let pair of dataForm.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
+
         const data = await fetch("backend/edit-profile.php", {
             method: "POST",
             body: dataForm,
@@ -81,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const response = await data.json();
 
-        if(data.ok) {
+        if (data.ok) {
             alert("Dados atualizados com sucesso!");
         } else {
             alert("Erro ao atualizar dados!");
