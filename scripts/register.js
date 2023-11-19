@@ -20,19 +20,10 @@ const formatPhone = (phone) => {
     return phone.replace(/\D/g, "");
 }
 
-const listPlayers = async (page) => {
-    const data = await fetch("./list.php?page=" + page);
-    const response = await data.text();
-    tbody.innerHTML = response;
-}
-
-listPlayers(1);
-
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const dataForm = new FormData(form);
-    dataForm.append("add", 1);
 
     dataForm.set("birthdate-input", formatBirthdate(dataForm.get("birthdate-input")));
     dataForm.set("cpf-input", formatCPF(dataForm.get("cpf-input")));

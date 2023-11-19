@@ -1,7 +1,7 @@
 <?php
 include_once "connection.php";
 
-$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT); //TODO clean with htmlspecialchars
 
 $query_exists_user_by_username = "SELECT count(*) FROM player WHERE username = :username";
 $prepared_statement = $conn->prepare($query_exists_user_by_username);

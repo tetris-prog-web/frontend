@@ -1,37 +1,46 @@
-$(document).ready(function () {
-    $("#login-button").on("click", function () {
-        var username = $("#username-input").val();
-        var password = $("#password-input").val();
+const form = document.getElementById("login-form");
+const usernameInput = document.getElementById("username-input");
+const passwordInput = document.getElementById("password-input");
+const errorMessageSpan = document.getElementById("login-error-message");
 
-        $.ajax({
-            type: "POST",
-            url: "./backend/login.php",
-            data: {
-                username: username,
-                password: password
-            },
-            success: function (response) {
-                console.log(response);
-                changePage();
-            },
-            error: function (error) {
-                console.log("Erro na solicitação Ajax: " + error);
-                if(error.status == 401){
-                    changeInputBorders();
-                    $("#login-error-message").text("Usuário ou senha incorretos!");
-                } else {
-                    $("#login-error-message").text("Erro interno ao realizar login, tente novamente!");
-                }
-            }
-        });
-    });
-});
+const changeInputBorders = () => {
+    if (usernameInput.classList.contains("normal-input-border")) {
+        usernameInput.classList.remove("normal-input-border");
+        usernameInput.classList.add("error-input-border");
+    }
 
-function changePage() {
+    if (passwordInput.classList.contains("normal-input-border")) {
+        passwordInput.classList.remove("normal-input-border");
+        passwordInput.classList.add("error-input-border");
+    }
+};
+
+const changePage = () => {
     window.location.href = "menu.html";
-}
+};
 
-function changeInputBorders() {
-    $("#username-input").toggleClass("normal-input-border error-input-border");
-    $("#password-input").toggleClass("normal-input-border error-input-border");
-}
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+        const dataForm = new FormData(form);
+
+        const response = await fetch("backend/login.php", {
+            method: "POST",
+            body: dataForm,
+        });
+
+        if (response.ok) {
+            console.log(response);
+            changePage();
+        } else if (response.status === 401) {
+            changeInputBorders();
+            errorMessageSpan.innerText = "Usuário ou senha incorretos!";
+        } else {
+            errorMessageSpan.innerText = "Um erro ocorreu ao realizar login, por favor tente novamente!";
+        }
+    } catch (error) {
+        console.log("Erro na solicitação Fetch: " + error);
+        // Lide com o erro de forma apropriada
+    }
+});
