@@ -4,7 +4,7 @@ include_once "connection.php";
 function get_user($username, $password)
 {
     $conn = $GLOBALS["conn"];
-    $query = "SELECT * FROM player WHERE username = :username AND password = :password";
+    $query = "SELECT * FROM player WHERE username = :username AND password = :password"; //TODO don't retrieve the id and password from the database
 
     try {
         $statement = $conn->prepare($query);

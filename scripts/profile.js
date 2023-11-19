@@ -1,63 +1,90 @@
-const form = document.getElementById("profile-form");
-const fullNameInput = document.getElementById("full-name-input");
-const birthdateInput = document.getElementById("birthdate-input");
-const cpfInput = document.getElementById("cpf-input");
-const phoneNumberInput = document.getElementById("telephone-input");
-const emailInput = document.getElementById("email-input");
-const usernameInput = document.getElementById("username-input");
-const passwordInput = document.getElementById("password-input");
+document.addEventListener("DOMContentLoaded", async () => {
+    const form = document.getElementById("profile-form");
+    const fullNameInput = document.getElementById("full-name-input");
+    const birthdateInput = document.getElementById("birthdate-input");
+    const cpfInput = document.getElementById("cpf-input");
+    const phoneNumberInput = document.getElementById("telephone-input");
+    const emailInput = document.getElementById("email-input");
+    const usernameInput = document.getElementById("username-input");
+    const passwordInput = document.getElementById("password-input");
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_user')) ?? [];
-const setLocalStorage = (dbUser) => localStorage.setItem("db_user", JSON.stringify(dbUser));
+    // Move all the masking to a separate file
 
-const updateUser = (user) => {
-    const index = getLocalStorage().findIndex(item => item.username === user.username);
+    const formatBirthdateToShow = (birthdate) => {
+        const [year, month, day] = birthdate.split("-");
+        return `${day}/${month}/${year}`;
+    };
 
-    const dbUsers = readUser();
-    dbUsers[index] = user;
-    setLocalStorage(dbUsers);
-};
-
-const readUser = () => getLocalStorage();
-
-const saveUser = (e) => {
-    e.preventDefault()
-
-
-    if (isValidFields(form) && usernameExists(usernameInput.value)) {
-        const user = {
-            name: fullNameInput.value,
-            date: birthdateInput.value,
-            cpf: cpfInput.value,
-            phone: phoneNumberInput.value,
-            email: emailInput.value,
-            username: usernameInput.value,
-            password: passwordInput.value
-        };
-
-        updateUser(user);
-        clearFields();
+    const formatCPFToShow = (cpf) => {
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
     }
-}
 
-const usernameExists = (username) => {
-    const dbUsers = readUser();
-    return dbUsers.some(user => user.username === username);
-}
-
-const fillFormFields = () => {
-    const user = readUser()[0];
-
-    if (user !== undefined) {
-        fullNameInput.value = user.name;
-        birthdateInput.value = user.date;
-        cpfInput.value = user.cpf;
-        phoneNumberInput.value = user.phone;
-        emailInput.value = user.email;
-        usernameInput.value = user.username;
-        passwordInput.value = user.password;
+    const formatPhoneToShow = (phone) => {
+        return phone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
     }
-}
-fillFormFields();
 
-document.getElementById('edit-user-button').addEventListener('click', e => saveUser(e))
+    const formatPhoneToSave = (phone) => {
+        return phone.replace(/\D/g, "");
+    }
+
+    try {
+        const response = await fetch("backend/profile.php", {
+            method: "GET",
+        });
+
+        if (response.ok) {
+            const user = (await response.json()).user;
+
+            fullNameInput.value = user.name;
+            birthdateInput.value = formatBirthdateToShow(user["birth_date"]);
+            cpfInput.value = formatCPFToShow(user.cpf);
+            emailInput.value = user.email;
+            passwordInput.value = user.password;
+            usernameInput.value = user.username;
+            phoneNumberInput.value = formatPhoneToShow(user.phone);
+            console.log(user);
+        } else if (response.status === 404) {
+            $.ajax({
+                type: "POST",
+                url: "./backend/logout.php",
+                success: function (response) {
+                    console.log(response);
+                    window.location.href = "index.html"; //TODO improve this whole thing
+                },
+                error: function (error) {
+                    console.log("Erro na solicitação Ajax: " + error);
+                    //TODO implement a message when the logout fails
+                }
+            });
+        }
+    } catch (error) {
+        console.log("Erro na solicitação Fetch: " + error);
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const dataForm = new FormData(form);
+
+        dataForm.delete("password-input");
+        dataForm.delete("username-input");
+        dataForm.delete("birthdate-input");
+        for(let pair of dataForm.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+        }
+        dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
+
+        const data = await fetch("backend/edit-profile.php", {
+            method: "POST",
+            body: dataForm,
+        });
+
+        const response = await data.json();
+
+        if(data.ok) {
+            alert("Dados atualizados com sucesso!");
+        } else {
+            alert("Erro ao atualizar dados!");
+        }
+    });
+});
