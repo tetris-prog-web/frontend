@@ -31,7 +31,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
     $user = get_user($username, $password);
     if($user){
         header('HTTP/1.1 200 Ok');
-        $return = ['error' => false, 'msg' => "Usuário logado com sucesso", 'user' => $user];
+        $return = ['error' => false, 'user' => $user];
         echo json_encode($return);
         exit();
     }else{

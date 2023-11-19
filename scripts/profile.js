@@ -66,14 +66,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const dataForm = new FormData(form);
 
-        dataForm.delete("password-input");
         dataForm.delete("username-input");
         dataForm.delete("birthdate-input");
+        dataForm.delete("cpf-input");
+        
+        dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
         for(let pair of dataForm.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
-        dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
-
         const data = await fetch("backend/edit-profile.php", {
             method: "POST",
             body: dataForm,

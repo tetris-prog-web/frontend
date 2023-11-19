@@ -2,10 +2,13 @@
 session_start();
 if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
     header('HTTP/1.1 401 Unauthorized');
-    echo "You are not logged in";
+    $return = ['error' => true, 'msg' => "Jogador não autenticado"];
+    echo json_encode($return);
     exit();
 } else {
-    echo "You are logged in";
+    header('HTTP/1.1 200 Ok');
+    $return = ['error' => false, 'msg' => "Jogador autenticado"];
+    echo json_encode($return);
     exit();
 }
 ?>
