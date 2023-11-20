@@ -23,7 +23,7 @@
 }
 
 #game-screen {
-  height: 100%;
+  height: 90%;
 
   background-image: url("../images/backgrounds/fire-watch-day.jpg");
   background-repeat: no-repeat;
@@ -185,7 +185,6 @@
   font-size: 3.5rem;
   color: var(--secondary-title-color);
 }
-
 
 #current-game-difficulty {
   font-weight: bold;
