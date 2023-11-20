@@ -12,7 +12,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     try {
-        const response = await fetch("backend/game-data.php", {
+        const baseUrl = "backend/game-data.php";
+        const parameters = {
+            type: 'NORMAL'
+          };
+        const queryString = Object.keys(parameters)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(parameters[key]))
+            .join('&');
+
+        const urlWithParameters = baseUrl + '?' + queryString;
+        const response = await fetch(urlWithParameters, {
             method: "GET",
         });
 

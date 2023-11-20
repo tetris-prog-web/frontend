@@ -5,7 +5,9 @@ let grid = {
     height: 0
 }
 
-if (window.location.pathname.includes("extended")) {
+const isExtendedGame = window.location.pathname.includes("extended");
+
+if (isExtendedGame) {
     grid.width = 22
     grid.height = 44
 } else {
@@ -164,6 +166,7 @@ async function showGameOverAlert() {
     matchData.append("score", totalPoints);
     matchData.append("level", level);
     matchData.append("duration", minutes*60 + seconds);
+    matchData.append("type", isExtendedGame ? "EXTENDED" : "NORMAL");
     
     const response = await fetch("backend/save-game-data.php", {
         method: "POST",

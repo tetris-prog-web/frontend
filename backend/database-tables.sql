@@ -19,6 +19,7 @@ CREATE TABLE matches (
     score INT NOT NULL,
     level INT NOT NULL,
     duration INT NOT NULL,
+    type VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (player_id) REFERENCES player(id)
 );

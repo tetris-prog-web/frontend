@@ -9,7 +9,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
     $conn = $GLOBALS["conn"];
     $data = filter_input_array(INPUT_POST, FILTER_DEFAULT); //TODO clean with htmlspecialchars
-    $query = "INSERT INTO matches (player_id, score, level, duration) VALUES ((SELECT id FROM player WHERE username = :username AND password = :password), :score, :level, :duration)";
+    $query = "INSERT INTO matches (player_id, score, level, duration, type) VALUES ((SELECT id FROM player WHERE username = :username AND password = :password), :score, :level, :duration, :type)";
 
     try {
         $statement = $conn->prepare($query);
@@ -18,6 +18,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         $statement->bindValue(":score", $data['score']);
         $statement->bindValue(":level", $data['level']);
         $statement->bindValue(":duration", $data['duration']);
+        $statement->bindValue(":type", $data['type']);
 
         if ($statement->execute()) {
             header('HTTP/1.1 204 No Content');

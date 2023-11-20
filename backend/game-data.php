@@ -10,6 +10,7 @@ function get_matches($username, $password)
                 LEFT JOIN player p ON m.player_id = p.id
                 WHERE p.username = :username
                 AND p.password = :password
+                AND m.type = :type
                 ORDER BY m.score DESC, m.level DESC, m.duration ASC
             ";
 
@@ -17,6 +18,7 @@ function get_matches($username, $password)
         $statement = $conn->prepare($query);
         $statement->bindValue(":username", $username);
         $statement->bindValue(":password", $password);
+        $statement->bindValue(":type", $_GET['type']);
 
         if ($statement->execute()) {
             return $statement->rowCount() > 0 ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
