@@ -7,12 +7,15 @@ function get_username_ranking()
     $query = "SELECT p.username, MAX(m.score) AS max_score, MAX(m.level) AS max_level
               FROM player p
               INNER JOIN matches m ON p.id = m.player_id
+              WHERE m.type = :type
               GROUP BY p.username
-              ORDER BY max_score DESC
+              ORDER BY max_score DESC, max_level DESC
               LIMIT 10";
-    
+
     try {
-        $statement = $conn->query($query);
+        $statement = $conn->prepare($query);
+        $statement->bindValue(":type", $_GET['type']);
+        $statement->execute();
 
         if ($statement) {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -33,21 +36,21 @@ function get_user_position($username)
                 SELECT *,
                 (SELECT COUNT(*) + 1
                     FROM (
-                        SELECT p.username, MAX(m.score) AS max_score
+                        SELECT p.username, MAX(m.score) AS max_score, MAX(m.level) AS max_level
                         FROM player p
                         INNER JOIN matches m ON p.id = m.player_id
+                        WHERE m.type = :type
                         GROUP BY p.username
-                        ORDER BY max_score DESC
-                        LIMIT 10
+                        ORDER BY max_score DESC, max_level DESC
                     ) AS sub
                     WHERE sub.max_score > ranking.max_score) AS position
                 FROM (
                     SELECT p.username, MAX(m.score) AS max_score, MAX(m.level) AS max_level
                     FROM player p
                     INNER JOIN matches m ON p.id = m.player_id
+                    WHERE m.type = :type
                     GROUP BY p.username
                     ORDER BY max_score DESC
-                    LIMIT 11
                 ) AS ranking
               ) AS user_ranking
               WHERE username = :username";
@@ -55,6 +58,7 @@ function get_user_position($username)
     try {
         $statement = $conn->prepare($query);
         $statement->bindParam(':username', $username);
+        $statement->bindValue(':type', $_GET['type']);
         $statement->execute();
 
         $userData = $statement->fetch(PDO::FETCH_ASSOC);
@@ -75,7 +79,7 @@ if (isset($_SESSION['username'])) {
 
     $data = [
         'username_ranking' => $username_ranking ? $username_ranking : [],
-        'user_data' => $user_data 
+        'user_data' => $user_data
     ];
 
     header('HTTP/1.1 200 Ok');
