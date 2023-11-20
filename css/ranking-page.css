@@ -67,8 +67,27 @@
   line-height: normal;
 }
 
+#no-matches-played {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    height: 80%;
+    min-height: 36px;
+    
+    color: var(--secondary-title-color);
+    
+    font-family: League Spartan, sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 #ranking-lines-box {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;

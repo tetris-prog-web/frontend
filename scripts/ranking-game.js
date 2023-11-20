@@ -1,71 +1,105 @@
-const playersData = [
-    { username: "flamengo-pai-do-classic", score: 20000, level: 66 },
-    { username: "rafao-da-bala", score: 3000, level: 10 },
-    { username: "miyazatsuo", score: 11111, level: 37 },
-    { username: "brunorcorrea", score: 2222, level: 7 },
-    { username: "vini-mengao", score: 444, level: 2 },
-    { username: "guilhermePalermoCoelho", score: 19999, level: 66 },
-    { username: "oMen", score: 122, level: 1 },
-    { username: "arrascaMengo", score: 777, level: 2 },
-    { username: "nicolasAndreatti", score: 110, level: 1 },
-    { username: "Zezinho", score: 1000, level: 4 },
-];
-
-const userBestScore = [
-    { username: "Zezinho", score: 0, level: 0 },
-    { username: "Zezinho", score: 1000, level: 4 },
-    { username: "Zezinho", score: 100, level: 1 },
-];
-
 function sortByScore(players) {
-    return players.sort((a, b) => b.score - a.score);
+    return players.sort((a, b) => b['max_score'] - a['max_score']);
 }
 
 function formatUsername(username) {
-    const maxLength = 10;
+    const maxLength = 12;
     return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
 }
 
-function updateRanking() {
-    const rankingLines = document.querySelectorAll(".ranking-line");
-
-    for (let i = 0; i < rankingLines.length && i < playersData.length; i++) {
-        const line = rankingLines[i];
-        const player = playersData[i];
-        line.innerHTML = `
-            <p>${formatUsername(player.username)}</p>
-            <p>${player.score}</p>
-            <p>${player.level}</p>
-        `;
+function formatRankingPositions(rankingPosition) {
+    if (rankingPosition == 1) {
+        return `<iconify-icon icon="twemoji:trophy"></iconify-icon>`;
+    } else if (rankingPosition == 2) {
+        return `<iconify-icon icon="twemoji:2nd-place-medal"></iconify-icon>`;
+    } else if (rankingPosition == 3) {
+        return `<iconify-icon icon="twemoji:3rd-place-medal"></iconify-icon>`;
+    } else {
+        return rankingPosition;
     }
 }
 
-function showUserBestScore() {
-    const userBestScoreElement = document.querySelector(".ranking-line-your-max-score");
+function updateRanking(playersData, userData) {
 
-    if (userBestScoreElement) {
-        if (userBestScore.length > 0) {
-            sortByScore(userBestScore);
-            const maxUserScore = userBestScore[0];
+    if (playersData.length > 0) {
+        document.getElementById("no-matches-played").style.display = "none";
+        document.getElementById("ranking-lines-box").style.display = "flex";
 
-            for (let i = 1; i <= playersData.length; i++) {
-                if (playersData[i - 1].score <= maxUserScore.score) {
-                    document.getElementById("your-max-score-position").innerHTML = `<span>${i}</span>`
-                    break
-                }
-            }
+        const rankingLinesBox = document.getElementById("ranking-lines-box");
+        const rankingLines = playersData.map((player, index) => {
+            const line2 = document.createElement("div");
 
-            userBestScoreElement.innerHTML = `
-                <p>${formatUsername(maxUserScore.username)}</p>
-                <p>${maxUserScore.score}</p>
-                <p>${maxUserScore.level}</p>
+            const positionIndicator = document.createElement("div");
+            positionIndicator.classList.add("position-indicator");
+            positionIndicator.innerHTML = formatRankingPositions(index + 1);
+            line2.appendChild(positionIndicator);
+
+            const line = document.createElement("div");
+            line.classList.add("ranking-line");
+            line.innerHTML = `
+                <p>${formatUsername(player['username'])}</p>
+                <p>${player['max_score']}</p>
+                <p>${player['max_level']}</p>
             `;
-        } else {
-            userBestScoreElement.innerHTML = "Nenhuma pontuação registrada para o usuário.";
+            line2.appendChild(line);
+            return line2;
+        });
+
+        rankingLines.forEach(line => rankingLinesBox.appendChild(line));
+
+        if (userData) {
+            const yourMaxScoreBox = document.createElement("div");
+            const yourMaxScorePosition = document.createElement("div");
+            yourMaxScorePosition.id = "your-max-score-position";
+            yourMaxScorePosition.classList.add("position-indicator");
+            yourMaxScorePosition.innerHTML = formatRankingPositions(userData['position']);
+            const yourMaxScoreLine = document.createElement("div");
+            yourMaxScoreLine.classList.add("ranking-line-your-max-score");
+
+            yourMaxScoreLine.innerHTML = `
+            <p>${userData['username']}</p>
+            <p>${userData['max_score']}</p>
+            <p>${userData['max_level']}</p>
+            `;
+            yourMaxScoreBox.appendChild(yourMaxScorePosition);
+            yourMaxScoreBox.appendChild(yourMaxScoreLine);
+            rankingLinesBox.appendChild(yourMaxScoreBox);
         }
     }
 }
 
-sortByScore(playersData);
-updateRanking();
-showUserBestScore();
+function fetchDataAndUpdateUI() {
+    const isExtendedGame = window.location.pathname.includes("extended");
+    const baseUrl = "backend/ranking.php";
+    const parameters = {
+        type: isExtendedGame ? 'EXTENDED' : 'NORMAL',
+    };
+    const queryString = Object.keys(parameters)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(parameters[key]))
+        .join('&');
+
+    const urlWithParameters = baseUrl + '?' + queryString;
+    fetch(urlWithParameters, {
+        method: "GET",
+    })
+        .then(response => {
+            if (!response.ok) {
+                response.text().then(text => console.error(text));
+                throw new Error('Erro ao obter dados do backend');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const playersData = data.data.username_ranking || [];
+            const userData = data.data.user_data || null;
+
+            const sortedPlayers = sortByScore(playersData);
+            updateRanking(sortedPlayers, userData);
+        })
+        .catch(error => {
+            console.error('Erro ao obter dados do backend:', error);
+        });
+}
+
+fetchDataAndUpdateUI();
+

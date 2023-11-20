@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (response.ok) {
             const responseData = (await response.json()).data;
-            responseData.username = responseData.username || "Anônimo";
+            responseData.username = responseData.username || "Anônimo"; //TODO if the user is not logged in, the username will be null, so logout
             usernameRankingField.innerHTML = responseData.username;
             console.log(responseData)
             const matches = responseData.matches;
