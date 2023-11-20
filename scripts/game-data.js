@@ -1,6 +1,7 @@
-const usernameRankingField = document.querySelector("#username");
-
 document.addEventListener("DOMContentLoaded", async () => {
+    const usernameRankingField = document.querySelector("#username");
+    const isExtendedGame = window.location.pathname.includes("extended");
+
     const formatDuration = (duration) => {
         const minutes = Math.floor(duration / 60);
         const seconds = duration % 60;
@@ -14,8 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
         const baseUrl = "backend/game-data.php";
         const parameters = {
-            type: 'NORMAL'
-          };
+            type: isExtendedGame ? 'EXTENDED' : 'NORMAL',
+        };
         const queryString = Object.keys(parameters)
             .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(parameters[key]))
             .join('&');

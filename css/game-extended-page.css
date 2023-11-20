@@ -186,12 +186,22 @@
   color: var(--secondary-title-color);
 }
 
-
 #current-game-difficulty {
   font-weight: bold;
   font-family: League Spartan, sans-serif;
   font-size: 1.2rem;
   color: var(--secondary-title-color);
+}
+
+#no-matches-played {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-family: League Spartan, sans-serif;
+    font-size: 1.2rem;
+    color: var(--secondary-title-color);
 }
 
 #player-ranking-list {
@@ -256,7 +266,7 @@
 #ranking-table-header {
   width: 80%;
   height: 20%;
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
