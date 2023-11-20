@@ -106,17 +106,37 @@ function isCpfUsed(cpf) {
 }
 
 function mask_cpf() {
-    if (cpfInput.value.length === 3 || cpfInput.value.length === 7) {
-        cpfInput.value += "."
-    } else if (cpfInput.value.length === 11) {
-        cpfInput.value += "-"
+    let value = cpfInput.value.replace(/\D/g, ''); 
+
+    if (value.length <= 3) {
+        cpfInput.value = value.replace(/(\d{0,3})/, '$1');
+    } else if (value.length <= 6) {
+        cpfInput.value = value.replace(/(\d{0,3})(\d{0,3})/, '$1.$2');
+    } else if (value.length <= 9) {
+        cpfInput.value = value.replace(/(\d{0,3})(\d{0,3})(\d{0,3})/, '$1.$2.$3');
+    } else if (value.length <= 11) {
+        cpfInput.value = value.replace(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/, '$1.$2.$3-$4');
     }
 }
 
 function mask_birthdate() {
-    if (birthdateInput.value.length === 2 || birthdateInput.value.length === 5) {
-        birthdateInput.value += "/";
+    let value = birthdateInput.value.replace(/\D/g, ''); 
+    let formattedValue = '';
+
+    if (value.length > 2) {
+        formattedValue += value.substring(0, 2) + '/';
     }
+
+    if (value.length > 4) {
+        formattedValue += value.substring(2, 4) + '/';
+        formattedValue += value.substring(4); 
+    } else if (value.length > 2) {
+        formattedValue += value.substring(2);
+    } else {
+        formattedValue = value; 
+    }
+
+    birthdateInput.value = formattedValue; 
 }
 
 function mask_phone() {
