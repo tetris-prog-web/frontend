@@ -13,12 +13,13 @@ CREATE TABLE player (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE ranking (
+CREATE TABLE matches (
     id INT NOT NULL AUTO_INCREMENT,
     player_id INT NOT NULL,
     score INT NOT NULL,
     level INT NOT NULL,
-    duration TIME NOT NULL,
+    duration INT NOT NULL,
+    type VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (player_id) REFERENCES player(id)
 );

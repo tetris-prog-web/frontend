@@ -15,6 +15,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"
           integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="./scripts/is-authenticated.js"></script>
+  <script defer src="scripts/game-data.js"></script>
 </head>
 <body>
 <main id="main-container">
@@ -103,36 +104,23 @@
       </div>
 
       <div id="second-data-container" class="data-container">
-        <div id="username">Zezinho</div>
+        <div id="username"></div>
+        
+        <div id="no-matches-played">
+          <p>Sem partidas registradas até o momento.</p>
+        </div>
+        
         <div id="ranking-table-header">
           <p>Pontos</p>
           <p>Nível</p>
           <p>Tempo</p>
         </div>
-        <div id="player-ranking-list">
-          <div class="player-position">
-            <p>1000</p>
-            <p>13</p>
-            <p>23:30</p>
-          </div>
-          <div class="player-position">
-            <p>10000</p>
-            <p>130</p>
-            <p>22:30</p>
-          </div>
-          <div class="player-position">
-            <p>100</p>
-            <p>3</p>
-            <p>21:30</p>
-          </div>
-          <div class="player-position">
-            <p>10</p>
-            <p>1</p>
-            <p>2:30</p>
-          </div>
-          <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
+        <div id="player-ranking-list"></div>
+        
+        <div id="game-mode-container">
+          <h2 id="game-mode">MODO DE JOGO: ESTENDIDO</h2>
         </div>
-
+      </div>
       </div>
     </div>
   </div>

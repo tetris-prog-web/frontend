@@ -1,148 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo - Mirror Tetris</title>
-  <link rel="icon" type="image/x-icon" href="/images/logo.png">
-  <link rel="stylesheet" href="css/game-page.css">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/instructions-modal.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo - Mirror Tetris</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png" />
+    <link rel="stylesheet" href="css/game-page.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/instructions-modal.css" />
 
-  <script src="scripts/modal.js" defer></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js"
-          integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-  <script src="./scripts/is-authenticated.js"></script>
-  <script defer src="scripts/game.js"></script>
-</head>
-<body>
-<main id="main-container">
-  <div class="mobile-not-supported-warning">
-    <p>Desculpe, mas este jogo não é compatível com dispositivos mobile!</p>
-    <div>
-      <a href="menu.html"><button id="close-mobile-warning-button">Entendi!</button></a>
-    </div>
-  </div>
-
-  <div id="modal-background"></div>
-  <div id="modal">
-    <div class="modal-header">
-      <h2>Instruções</h2>
-    </div>
-    <div id="modal-body">
-      <p>
-        O Mirror Tetris segue as regras clássicas do Tetris, porém, ao longo da partida e de maneira aleatória
-        podem surgir peças especiais que, quando compõem uma linha eliminada, provocam o espelhamento do tabuleiro,
-        além dos controles que ficam invertidos (esquerda e direita), este comportamento se repete toda vez que uma
-        peça especial esteja presente em uma linha eliminada. <br><br>
-
-        A peça especial é formada por uma única célula no tabuleiro (quadradinho) e de cor diferente das demais.<br><br>
-
-        O controle do jogo se dá pelas quatro setas do teclado.<br><br>
-
-        Sobre a pontuação, cada linha eliminada gerará uma soma de 10 pontos no placar total do usuário e o bônus
-        corresponderá à multiplicação dos pontos gerados em uma eliminação pelo número de linhas eliminadas
-        simultaneamente.
-        Por exemplo, se o jogador eliminar 3 linhas simultaneamente, será adicionado ao seu placar (10 + 10 + 10) x 3 =
-        90 pontos.<br><br>
-
-        Sobre a dificuldade, a velocidade em que a peça desce pelo tabuleiro será aumentada a cada 300 pontos
-        conquistados.<br><br>
-
-        Sobre os tabuleiros, você pode escolher entre os dois tipos de tabuleiros, o normal com dimensões de 10x20,
-        e o estendido com dimensões de 22x44.<br><br>
-      </p>
-
-      <div id="control-modal">
-        <button id="close-modal-button">Entendi!</button>
-        <label style="position:relative; z-index:10;"><input type="checkbox" name="instructions" id="dont-show-modal-again">Não mostrar novamente</label>
+    <script src="scripts/modal.js" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/is-authenticated.js"></script>
+    <script defer src="scripts/game.js"></script>
+    <script defer src="scripts/game-data.js"></script>
+  </head>
+  <body>
+    <main id="main-container">
+      <div class="mobile-not-supported-warning">
+        <p>Desculpe, mas este jogo não é compatível com dispositivos mobile!</p>
+        <div>
+          <a href="menu.html">
+            <button id="close-mobile-warning-button">Entendi!</button>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-  
-  <nav class="game-navbar">
-    <a href="menu.html">
-      <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
-    </a>
 
-    <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
+      <div id="modal-background"></div>
+      <div id="modal">
+        <div class="modal-header">
+          <h2>Instruções</h2>
+        </div>
+        <div id="modal-body">
+          <p>
+            O Mirror Tetris segue as regras clássicas do Tetris, porém, ao longo
+            da partida e de maneira aleatória podem surgir peças especiais que,
+            quando compõem uma linha eliminada, provocam o espelhamento do
+            tabuleiro, além dos controles que ficam invertidos (esquerda e
+            direita), este comportamento se repete toda vez que uma peça
+            especial esteja presente em uma linha eliminada.
+            <br />
+            <br />
 
-    <a href="profile.html">
-      <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
-    </a>
-  </nav>
+            A peça especial é formada por uma única célula no tabuleiro
+            (quadradinho) e de cor diferente das demais.
+            <br />
+            <br />
 
-  <div id="game-screen">
+            O controle do jogo se dá pelas quatro setas do teclado.
+            <br />
+            <br />
 
-    <div id="controls-area">
+            Sobre a pontuação, cada linha eliminada gerará uma soma de 10 pontos
+            no placar total do usuário e o bônus corresponderá à multiplicação
+            dos pontos gerados em uma eliminação pelo número de linhas
+            eliminadas simultaneamente. Por exemplo, se o jogador eliminar 3
+            linhas simultaneamente, será adicionado ao seu placar (10 + 10 + 10)
+            x 3 = 90 pontos.
+            <br />
+            <br />
 
-      <iconify-icon icon="material-symbols:help" id="open-modal-button" width="50" height="50"></iconify-icon>
+            Sobre a dificuldade, a velocidade em que a peça desce pelo tabuleiro
+            será aumentada a cada 300 pontos conquistados.
+            <br />
+            <br />
 
-      <div class="buttons-container">
-        <button id="start-button">Começar/Pausar</button>
-        <button id="restart-button">Restart</button>
+            Sobre os tabuleiros, você pode escolher entre os dois tipos de
+            tabuleiros, o normal com dimensões de 10x20, e o estendido com
+            dimensões de 22x44.
+            <br />
+            <br />
+          </p>
+
+          <div id="control-modal">
+            <button id="close-modal-button">Entendi!</button>
+            <label style="position: relative; z-index: 10">
+              <input
+                type="checkbox"
+                name="instructions"
+                id="dont-show-modal-again"
+              />
+              Não mostrar novamente
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="game-area-container">
+      <nav class="game-navbar">
+        <a href="menu.html">
+          <iconify-icon icon="mingcute:exit-fill"></iconify-icon>
+        </a>
 
-    </div>
+        <a href="menu.html"><h1 class="brand-title">TETRIS</h1></a>
 
-    <div id="game-information">
-      <div id="first-data-container" class="data-container">
-        <div id="current-score">00000</div>
-        <div id="current-game-time">Tempo: 00:00</div>
-        <div id="current-game-difficulty">Nível: 1</div>
-        <div id="next-piece-container">
+        <a href="profile.html">
+          <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
+        </a>
+      </nav>
 
+      <div id="game-screen">
+        <div id="controls-area">
+          <iconify-icon
+            icon="material-symbols:help"
+            id="open-modal-button"
+            width="50"
+            height="50"
+          ></iconify-icon>
+
+          <div class="buttons-container">
+            <button id="start-button">Começar/Pausar</button>
+            <button id="restart-button">Restart</button>
+          </div>
         </div>
 
-        <div id="eliminated-rows">Linhas eliminadas: 0</div>
-      </div>
+        <div class="game-area-container"></div>
 
-      <div id="second-data-container" class="data-container">
-        <div id="username">Zezinho</div>
-        <div id="ranking-table-header">
-          <p>Pontos</p>
-          <p>Nível</p>
-          <p>Tempo</p>
-        </div>
-        <div id="player-ranking-list">
-          <div class="player-position">
-            <p>1000</p>
-            <p>13</p>
-            <p>23:30</p>
-          </div>
-          <div class="player-position">
-            <p>10000</p>
-            <p>130</p>
-            <p>22:30</p>
-          </div>
-          <div class="player-position">
-            <p>100</p>
-            <p>3</p>
-            <p>21:30</p>
-          </div>
-          <div class="player-position">
-            <p>10</p>
-            <p>1</p>
-            <p>2:30</p>
-          </div>
-          <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
-        </div>
+        <div id="game-information">
+          <div id="first-data-container" class="data-container">
+            <div id="current-score">00000</div>
+            <div id="current-game-time">Tempo: 00:00</div>
+            <div id="current-game-difficulty">Nível: 1</div>
+            <div id="next-piece-container"></div>
 
+            <div id="eliminated-rows">Linhas eliminadas: 0</div>
+          </div>
+
+          <div id="second-data-container" class="data-container">
+            <div id="username"></div>
+
+            <div id="no-matches-played">
+              <p>Sem partidas registradas até o momento.</p>
+            </div>
+
+            <div id="ranking-table-header">
+              <p>Pontos</p>
+              <p>Nível</p>
+              <p>Tempo</p>
+            </div>
+
+            <div id="player-ranking-list"></div>
+            
+            <div id="game-mode-container">
+              <h2 id="game-mode">MODO DE JOGO: NORMAL</h2>
+            </div>
+          </div>
+        </div>
       </div>
+    </main>
+
+    <div id="nameErrorPopup" class="popup">
+      <p>Você perdeu o jogo! Deseja jogar novamente?</p>
+      <button id="resetButton">Jogar novamente</button>
+      <button id="menuButton">Voltar ao menu</button>
     </div>
-  </div>
-</main>
-
-<div id="nameErrorPopup" class="popup">
-  <p>Você perdeu o jogo! Deseja jogar novamente? </p>
-  <button id="resetButton">Jogar novamente</button>
-  <button id="menuButton">Voltar ao menu</button>
-</div>
-
-
-</body>
+  </body>
 </html>

@@ -80,7 +80,8 @@
   align-items: center;
 }
 
-#start-button, #restart-button {
+#start-button,
+#restart-button {
   align-items: center;
   justify-content: space-evenly;
   text-decoration: none;
@@ -186,12 +187,35 @@
   color: var(--secondary-title-color);
 }
 
-
 #current-game-difficulty {
   font-weight: bold;
   font-family: League Spartan, sans-serif;
   font-size: 1.2rem;
   color: var(--secondary-title-color);
+}
+
+#no-matches-played {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: League Spartan, sans-serif;
+  font-size: 1.2rem;
+  color: var(--secondary-title-color);
+}
+
+#player-ranking-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+#player-ranking-list::-webkit-scrollbar-thumb {
+  background-color: var(--default-player-ranking);
+  border-radius: 10px;
+}
+
+#player-ranking-list::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 #player-ranking-list {
@@ -201,7 +225,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   overflow: auto;
 }
 
@@ -210,7 +234,8 @@
   height: 10%;
   max-height: 10%;
 
-  margin: 10px;
+  margin: 1%;
+  padding: 2%;
 
   border-radius: 15px;
   background-color: var(--default-player-ranking);
@@ -256,7 +281,7 @@
 #ranking-table-header {
   width: 80%;
   height: 20%;
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
@@ -303,7 +328,8 @@
   border: none;
   border-radius: 10px;
 
-  box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
+  box-shadow: 0 0 20px 20px var(--form-input-background-color),
+    0 0 30px 30px var(--form-input-background-color);
   background: var(--secondary-title-color);
 }
 
@@ -322,7 +348,6 @@
 #control-modal {
   display: flex;
   flex-direction: column;
-
 }
 
 #modal button {
@@ -371,7 +396,8 @@
   margin-bottom: 30px;
 }
 
-#resetButton, #menuButton {
+#resetButton,
+#menuButton {
   align-items: center;
   justify-content: space-evenly;
   text-decoration: none;
@@ -386,11 +412,11 @@
   cursor: pointer;
 }
 
-#resetButton:hover, #menuButton:hover {
+#resetButton:hover,
+#menuButton:hover {
   box-shadow: 0 2px var(--button-shadow-color);
   transform: translateY(2px);
 }
-
 
 .mobile-not-supported-warning {
   display: none;
@@ -405,8 +431,8 @@
   transform: translate(-50%, -50%);
 
   background: var(--secondary-title-color);
-  box-shadow: 0 0 20px 20px var(--form-input-background-color), 0 0 30px 30px var(--form-input-background-color);
-
+  box-shadow: 0 0 20px 20px var(--form-input-background-color),
+    0 0 30px 30px var(--form-input-background-color);
 }
 
 .mobile-not-supported-warning p {
@@ -416,7 +442,6 @@
 }
 
 @media screen and (max-width: 1068px) {
-
   .buttons-container {
     display: none;
   }

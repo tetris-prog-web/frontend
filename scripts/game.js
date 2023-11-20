@@ -5,7 +5,9 @@ let grid = {
     height: 0
 }
 
-if (window.location.pathname.includes("extended")) {
+const isExtendedGame = window.location.pathname.includes("extended");
+
+if (isExtendedGame) {
     grid.width = 22
     grid.height = 44
 } else {
@@ -151,10 +153,33 @@ function rotate() {
 const nameErrorPopup = document.getElementById("nameErrorPopup");
 const resetButton = document.getElementById("resetButton");
 const menuButton = document.getElementById("menuButton");
+let cronometer;
+let seconds = 0;
+let minutes = 0;
 
-function showGameOverAlert() {
+async function showGameOverAlert() {
     stopGame();
+
     nameErrorPopup.style.display = "block";
+
+    const matchData = new FormData();
+    matchData.append("score", totalPoints);
+    matchData.append("level", level);
+    matchData.append("duration", minutes*60 + seconds);
+    matchData.append("type", isExtendedGame ? "EXTENDED" : "NORMAL");
+    
+    const response = await fetch("backend/save-game-data.php", {
+        method: "POST",
+        body: matchData
+    });
+
+    console.log(await response.json())
+
+    if(response.status === 204) {
+        console.log("Partida atual salva com sucesso!");
+    } else {
+        console.log("Erro ao salvar partida atual!");
+    }
 }
 
 menuButton.addEventListener("click", function () {
@@ -367,10 +392,6 @@ function stopGame() {
     clearInterval(cronometer);
 }
 
-let cronometer;
-let seconds = 0;
-let minutes = 0;
-
 function cronometerGame() {
     const divGameTime = document.getElementById("current-game-time");
 
@@ -394,6 +415,7 @@ document.getElementById("start-button").addEventListener("click", () => {
 });
 
 document.getElementById("restart-button").addEventListener("click", () => {
+    //TODO colocar um alerta que pergunta se o usuário quer mesmo reiniciar o jogo e salvar o score, level, tempo
     location.reload();
 });
 
