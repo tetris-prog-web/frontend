@@ -1,10 +1,13 @@
 <?php
-include_once "connection.php";
 
-function get_user($username, $password)
+include_once "../database/connection.php";
+
+session_start();
+
+function user_exists($username, $password)
 {
     $conn = $GLOBALS["conn"];
-    $query = "SELECT * FROM player WHERE username = :username AND password = :password"; //TODO don't retrieve the id and password from the database
+    $query = "SELECT COUNT(*) FROM player WHERE username = :username AND password = :password";
 
     try {
         $statement = $conn->prepare($query);
@@ -12,7 +15,7 @@ function get_user($username, $password)
         $statement->bindValue(":password", $password);
 
         if ($statement->execute()) {
-            return $statement->rowCount() > 0 ? $statement->fetch(PDO::FETCH_ASSOC) : false;
+            return $statement->fetchColumn() > 0;
         } else {
             throw new Exception("A execução da query falhou.");
         }
@@ -23,16 +26,17 @@ function get_user($username, $password)
     }
 }
 
-session_start();
 if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    if (isset($dados['username']) && isset($dados['password'])) {
-        $username = htmlspecialchars($dados['username']);
-        $password = htmlspecialchars($dados['password']);
+    $formData = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        if (get_user($username, $password)) {
+    if (isset($formData['username']) && isset($formData['password'])) {
+        $username = $formData['username'];
+        $password = $formData['password'];
+
+        if (user_exists($username, $password)) {
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
+
             header('HTTP/1.1 200 Ok');
             $return = ['error' => false, 'msg' => "Login efetuado com sucesso"];
             echo json_encode($return);
@@ -49,5 +53,5 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
         echo json_encode($return);
         exit();
     }
-} //TODO add an else case, this means that the user is already logged in
+}
 ?>

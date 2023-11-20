@@ -1,17 +1,8 @@
-$(document).ready(function () {
-    $.ajax({
-        type: "POST",
-        url: "./backend/is-authenticated.php",
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (error) {
-            console.log("Erro na solicitação Ajax: " + error);
-            changePage();
-        }
-    });
+document.addEventListener("DOMContentLoaded", async function () {
+    fetch("./backend/account/is_authenticated.php")
+        .then((response) => {
+            if (response.status === 401) {
+                window.location.href = "unauthorized-page.html";
+            }
+        });
 });
-
-function changePage() {
-    window.location.href = "unauthorized-page.html";
-}

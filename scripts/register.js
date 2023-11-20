@@ -23,16 +23,25 @@ const formatPhone = (phone) => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const dataForm = new FormData(form);
+    if (isValidFields(form)) {
+        const dataForm = new FormData(form);
 
-    dataForm.set("birthdate-input", formatBirthdate(dataForm.get("birthdate-input")));
-    dataForm.set("cpf-input", formatCPF(dataForm.get("cpf-input")));
-    dataForm.set("telephone-input", formatPhone(dataForm.get("telephone-input")));
+        dataForm.set("birthdate-input", formatBirthdate(dataForm.get("birthdate-input")));
+        dataForm.set("cpf-input", formatCPF(dataForm.get("cpf-input")));
+        dataForm.set("telephone-input", formatPhone(dataForm.get("telephone-input")));
 
-    const data = await fetch("backend/register.php", {
-        method: "POST",
-        body: dataForm,
-    });
-
-    const response = await data.json();
+        await fetch("./backend/account/register.php", {
+            method: "POST",
+            body: dataForm,
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                if (response.error) {
+                    alert(response.msg);
+                } else {
+                    alert("Usuário cadastrado com sucesso!");
+                    window.location.href = "index.html";
+                }
+            });
+    }
 });

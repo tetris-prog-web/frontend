@@ -93,18 +93,6 @@ const isValidFields = (form) => {
     return form.reportValidity();
 };
 
-function isUsernameUsed(username) {
-    return username === localStorage.getItem('username');
-}
-
-function isEmailUsed(email) {
-    return email === localStorage.getItem('email');
-}
-
-function isCpfUsed(cpf) {
-    return cpf === localStorage.getItem('cpf');
-}
-
 function mask_cpf() {
     let value = cpfInput.value.replace(/\D/g, ''); 
 

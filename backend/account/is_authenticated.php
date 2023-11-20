@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
     header('HTTP/1.1 401 Unauthorized');
     $return = ['error' => true, 'msg' => "Jogador não autenticado"];

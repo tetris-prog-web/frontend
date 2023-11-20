@@ -168,17 +168,15 @@ async function showGameOverAlert() {
     matchData.append("duration", minutes*60 + seconds);
     matchData.append("type", isExtendedGame ? "EXTENDED" : "NORMAL");
     
-    const response = await fetch("backend/save-game-data.php", {
+    const response = await fetch("./backend/matches/save-matches-data.php", {
         method: "POST",
         body: matchData
     });
 
-    console.log(await response.json())
-
     if(response.status === 204) {
-        console.log("Partida atual salva com sucesso!");
+        alert("Partida atual salva com sucesso!");
     } else {
-        console.log("Erro ao salvar partida atual!");
+        alert("Erro ao salvar partida atual!");
     }
 }
 
@@ -415,7 +413,6 @@ document.getElementById("start-button").addEventListener("click", () => {
 });
 
 document.getElementById("restart-button").addEventListener("click", () => {
-    //TODO colocar um alerta que pergunta se o usuário quer mesmo reiniciar o jogo e salvar o score, level, tempo
     location.reload();
 });
 

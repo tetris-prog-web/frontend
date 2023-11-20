@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const usernameInput = document.getElementById("username-input");
     const passwordInput = document.getElementById("password-input");
 
-    // Move all the masking to a separate file
-
     const formatBirthdateToShow = (birthdate) => {
         const [year, month, day] = birthdate.split("-");
         return `${day}/${month}/${year}`;
@@ -28,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch("backend/profile.php", {
+        const response = await fetch("./backend/profile/get_player_data.php", {
             method: "GET",
         });
 
@@ -42,20 +40,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             passwordInput.value = user.password;
             usernameInput.value = user.username;
             phoneNumberInput.value = formatPhoneToShow(user.phone);
-            console.log(user);
         } else if (response.status === 404) {
-            $.ajax({
-                type: "POST",
-                url: "./backend/logout.php",
-                success: function (response) {
-                    console.log(response);
-                    window.location.href = "index.html"; //TODO improve this whole thing
-                },
-                error: function (error) {
-                    console.log("Erro na solicitação Ajax: " + error);
-                    //TODO implement a message when the logout fails
-                }
-            });
+            fetch("./backend/account/logout.php")
+                .then((response) => {
+                    if (response.ok) {
+                        window.location.href = "index.html";
+                    }
+                });
         }
     } catch (error) {
         console.log("Erro na solicitação Fetch: " + error);
@@ -70,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         dataForm.delete("cpf-input");
         dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
 
-        const data = await fetch("backend/edit-profile.php", {
+        const data = await fetch("./backend/profile/edit_player_data.php", {
             method: "POST",
             body: dataForm,
         });
@@ -80,5 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             alert("Erro ao atualizar dados!");
         }
+        window.location.href = "profile.html";
     });
 });

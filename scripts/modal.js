@@ -11,10 +11,17 @@ const showModal = () => {
 };
 
 [openModalButton, closeModalButton, modalBackground].forEach((el) => {
-    el.addEventListener("click", () => showModal());
+    el.addEventListener("click", () => {
+        showModal();
+        setShouldShowModal();
+    });
 });
 
 doNotShowModalAgainCheckBox.onclick = () => {
+    setShouldShowModal();
+}
+
+const setShouldShowModal = () => {
     const value = doNotShowModalAgainCheckBox.checked ? 'false' : 'true';
     localStorage.setItem('shouldShowModal', value);
 }
