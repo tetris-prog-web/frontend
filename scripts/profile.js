@@ -55,22 +55,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const dataForm = new FormData(form);
-        dataForm.delete("username-input");
-        dataForm.delete("birthdate-input");
-        dataForm.delete("cpf-input");
-        dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
+        if (isValidFields(form)) {
+            const dataForm = new FormData(form);
+            dataForm.delete("username-input");
+            dataForm.delete("birthdate-input");
+            dataForm.delete("cpf-input");
+            dataForm.set("telephone-input", formatPhoneToSave(dataForm.get("telephone-input")));
 
-        const data = await fetch("./backend/profile/edit_player_data.php", {
-            method: "POST",
-            body: dataForm,
-        });
+            const data = await fetch("./backend/profile/edit_player_data.php", {
+                method: "POST",
+                body: dataForm,
+            });
 
-        if (data.ok) {
-            alert("Dados atualizados com sucesso!");
-        } else {
-            alert("Erro ao atualizar dados!");
+            if (data.ok) {
+                alert("Dados atualizados com sucesso!");
+            } else {
+                alert("Erro ao atualizar dados!");
+            }
+            window.location.href = "profile.html";
         }
-        window.location.href = "profile.html";
     });
 });

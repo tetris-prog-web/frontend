@@ -168,7 +168,7 @@ async function showGameOverAlert() {
     matchData.append("duration", minutes*60 + seconds);
     matchData.append("type", isExtendedGame ? "EXTENDED" : "NORMAL");
     
-    const response = await fetch("./backend/matches/save-matches-data.php", {
+    const response = await fetch("./backend/matches/save_matches_data.php", {
         method: "POST",
         body: matchData
     });

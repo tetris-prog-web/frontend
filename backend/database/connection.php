@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "root";
 $dbname = "tetris_grupo_02";
 $port = "3306";
 
