@@ -70,7 +70,7 @@ function updateRanking(playersData, userData) {
 
 function fetchDataAndUpdateUI() {
     const isExtendedGame = window.location.pathname.includes("extended");
-    const baseUrl = "backend/ranking.php";
+    const baseUrl = "./backend/matches/ranking.php";
     const parameters = {
         type: isExtendedGame ? 'EXTENDED' : 'NORMAL',
     };

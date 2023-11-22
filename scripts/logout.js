@@ -1,20 +1,11 @@
-$(document).ready(function () {
-    $("#logout-button").on("click", function () {
-        $.ajax({
-            type: "POST",
-            url: "./backend/logout.php",
-            success: function (response) {
-                console.log(response);
-                changePage();
-            },
-            error: function (error) {
-                console.log("Erro na solicitação Ajax: " + error);
-                //TODO implement a message when the logout fails
-            }
-        });
+document.addEventListener("DOMContentLoaded", async function () {
+    const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", async () => {
+        fetch("./backend/account/logout.php")
+            .then((response) => {
+                if (response.ok) {
+                    window.location.href = "index.html";
+                }
+            });
     });
 });
-
-function changePage() {
-    window.location.href = "index.html";
-}

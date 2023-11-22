@@ -1,4 +1,11 @@
+const form = document.getElementById("register-form");
+const fullNameInput = document.getElementById("full-name-input");
+const birthdateInput = document.getElementById("birthdate-input");
+const cpfInput = document.getElementById("cpf-input");
 const phoneNumberInput = document.getElementById("telephone-input");
+const emailInput = document.getElementById("email-input");
+const usernameInput = document.getElementById("username-input");
+const passwordInput = document.getElementById("password-input");
 
 function isPasswordValid(password, minDigits) {
     return password.length >= minDigits;
@@ -93,20 +100,8 @@ const isValidFields = (form) => {
     return form.reportValidity();
 };
 
-function isUsernameUsed(username) {
-    return username === localStorage.getItem('username');
-}
-
-function isEmailUsed(email) {
-    return email === localStorage.getItem('email');
-}
-
-function isCpfUsed(cpf) {
-    return cpf === localStorage.getItem('cpf');
-}
-
 function mask_cpf() {
-    let value = cpfInput.value.replace(/\D/g, ''); 
+    let value = cpfInput.value.replace(/\D/g, '');
 
     if (value.length <= 3) {
         cpfInput.value = value.replace(/(\d{0,3})/, '$1');
@@ -120,7 +115,7 @@ function mask_cpf() {
 }
 
 function mask_birthdate() {
-    let value = birthdateInput.value.replace(/\D/g, ''); 
+    let value = birthdateInput.value.replace(/\D/g, '');
     let formattedValue = '';
 
     if (value.length > 2) {
@@ -129,14 +124,14 @@ function mask_birthdate() {
 
     if (value.length > 4) {
         formattedValue += value.substring(2, 4) + '/';
-        formattedValue += value.substring(4); 
+        formattedValue += value.substring(4);
     } else if (value.length > 2) {
         formattedValue += value.substring(2);
     } else {
-        formattedValue = value; 
+        formattedValue = value;
     }
 
-    birthdateInput.value = formattedValue; 
+    birthdateInput.value = formattedValue;
 }
 
 function mask_phone() {

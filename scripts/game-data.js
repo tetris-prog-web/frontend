@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     try {
-        const baseUrl = "backend/game-data.php";
+        const baseUrl = "./backend/matches/get_matches_data.php";
         const parameters = {
             type: isExtendedGame ? 'EXTENDED' : 'NORMAL',
         };
@@ -28,9 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (response.ok) {
             const responseData = (await response.json()).data;
-            responseData.username = responseData.username || "Anônimo"; //TODO if the user is not logged in, the username will be null, so logout
             usernameRankingField.innerHTML = responseData.username;
-            console.log(responseData)
+
             const matches = responseData.matches;
             if (matches.length > 0) {
                 document.getElementById("no-matches-played").style.display = "none";
@@ -48,8 +47,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     document.getElementById("player-ranking-list").appendChild(matchElement);
                 });
             }
-
-            console.log(responseData);
         }
     } catch (error) {
         console.log("Erro na solicitação Fetch: " + error);

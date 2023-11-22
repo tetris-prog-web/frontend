@@ -1,6 +1,8 @@
 <?php
 
-include_once "connection.php";
+include_once "../database/connection.php";
+
+session_start();
 
 function get_matches($username, $password)
 {
@@ -32,7 +34,6 @@ function get_matches($username, $password)
     }
 }
 
-session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];

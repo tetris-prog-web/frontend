@@ -1,5 +1,6 @@
 <?php
-include_once "connection.php";
+
+include_once "../database/connection.php";
 
 function get_username_ranking()
 {
@@ -15,9 +16,8 @@ function get_username_ranking()
     try {
         $statement = $conn->prepare($query);
         $statement->bindValue(":type", $_GET['type']);
-        $statement->execute();
 
-        if ($statement) {
+        if ($statement->execute()) {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } else {
             throw new Exception("A execução da query falhou.");
@@ -59,11 +59,11 @@ function get_user_position($username)
         $statement = $conn->prepare($query);
         $statement->bindParam(':username', $username);
         $statement->bindValue(':type', $_GET['type']);
-        $statement->execute();
-
-        $userData = $statement->fetch(PDO::FETCH_ASSOC);
-
-        return $userData;
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            throw new Exception("A execução da query falhou.");
+        }
     } catch (PDOException $e) {
         header('HTTP/1.1 500 Internal Server Error');
         echo "Erro: " . $e->getMessage();
@@ -88,5 +88,4 @@ if (isset($_SESSION['username'])) {
     header('HTTP/1.1 401 Unauthorized');
     echo json_encode(['error' => true, 'message' => 'Usuário não autenticado']);
 }
-
 ?>

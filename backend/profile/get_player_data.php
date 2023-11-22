@@ -1,11 +1,11 @@
 <?php
 
-include_once "connection.php";
+include_once "../database/connection.php";
 
 function get_user($username, $password)
 {
     $conn = $GLOBALS["conn"];
-    $query = "SELECT * FROM player WHERE username = :username AND password = :password"; //TODO don't retrieve the id and password from the database
+    $query = "SELECT name, birth_date, cpf, phone, email, username, password FROM player WHERE username = :username AND password = :password";
 
     try {
         $statement = $conn->prepare($query);
@@ -28,6 +28,7 @@ session_start();
 if(isset($_SESSION['username']) && isset($_SESSION['password'])){
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];
+
     $user = get_user($username, $password);
     if($user){
         header('HTTP/1.1 200 Ok');
@@ -36,7 +37,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
         exit();
     }else{
         header('HTTP/1.1 404 Not Found');
-        $return = ['error' => true, 'msg' => "Usuário não encontrado"];
+        $return = ['error' => true, 'msg' => "Usuário não encontrado!"];
         echo json_encode($return);
         exit();
     }

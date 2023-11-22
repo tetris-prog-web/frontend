@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("./backend/account/is_authenticated.php")
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = "menu.html";
+            }
+        })
+});
+
 const form = document.getElementById("login-form");
 const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
@@ -25,13 +34,12 @@ form.addEventListener("submit", async (e) => {
     try {
         const dataForm = new FormData(form);
 
-        const response = await fetch("backend/login.php", {
+        const response = await fetch("./backend/account/login.php", {
             method: "POST",
             body: dataForm,
         });
 
         if (response.ok) {
-            console.log(response);
             changePage();
         } else if (response.status === 401) {
             changeInputBorders();
@@ -41,6 +49,5 @@ form.addEventListener("submit", async (e) => {
         }
     } catch (error) {
         console.log("Erro na solicitação Fetch: " + error);
-        // Lide com o erro de forma apropriada
     }
 });
