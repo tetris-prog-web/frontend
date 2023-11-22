@@ -2,56 +2,63 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <title>Mirror Tetris</title>
-  <link rel="icon" type="image/x-icon" href="/images/logo.png"/>
-  <link rel="stylesheet" href="css/home-page.css"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="icon" type="image/x-icon" href="/images/logo.png" />
+  <link rel="stylesheet" href="css/home-page.css" />
+  <link rel="stylesheet" href="css/global.css" />
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="./scripts/login.js" defer></script>
+  <script src="./scripts/show-password.js"></script>
 </head>
 
 <body>
-<main id="main-container">
-  <aside id="login-container">
-    <div id="login-container-header">
-      <figure id="home-page-logo-image-container">
-        <img src="./images/logo.png" alt="Logo do Mirror Tetris"/>
-      </figure>
+  <main id="main-container">
+    <aside id="login-container">
+      <div id="login-container-header">
+        <figure id="home-page-logo-image-container">
+          <img src="./images/logo.png" alt="Logo do Mirror Tetris" />
+        </figure>
 
-      <div id="login-title-container">
-        <h2 id="login-title">Fazer Login</h2>
+        <div id="login-title-container">
+          <h2 id="login-title">Fazer Login</h2>
+        </div>
       </div>
-    </div>
 
-    <div id="login-form-container">
-      <form id="login-form">
-        <label for="username-input"></label>
-        <input id="username-input" name="username" type="text" placeholder="Nome de usuário"
-               class="normal-input-border" required/>
+      <div id="login-form-container">
+        <form id="login-form">
 
-        <label for="password-input"></label>
-        <input id="password-input" name="password" type="password" placeholder="Senha"
-               class="normal-input-border" autocomplete="on" required/>
+          <div class="login-inputs">
+            <label for="username-input"></label>
+            <input id="username-input" name="username" type="text" placeholder="Nome de usuário"
+              class="normal-input-border" required />
+          </div>
+          <div class="login-inputs">
+            <label for="password-input"></label>
+            <input id="password-input" name="password" type="password" placeholder="Senha" class="normal-input-border"
+              autocomplete="on" required />
+            <iconify-icon id="open-eye" icon="bi:eye"
+              onclick="mostrarSenha('password-input', 'open-eye')"></iconify-icon>
+          </div>
 
-        <span id="login-error-message"></span>
+          <span id="login-error-message"></span>
 
-        <button id="login-button" type="submit">
-          <span id="login-button-text">JOGAR</span>
-          <iconify-icon icon="carbon:play-outline"></iconify-icon>
-        </button>
-      </form>
-    </div>
+          <button id="login-button" type="submit">
+            <span id="login-button-text">JOGAR</span>
+            <iconify-icon icon="carbon:play-outline"></iconify-icon>
+          </button>
+        </form>
+      </div>
       <a id="register-account-link" href="./register.html">CRIAR CONTA</a>
-  </aside>
+    </aside>
 
-  <div id="presentation-container">
-    <h1 class="brand-title">TETRIS</h1>
-    <figure id="home-page-game-image-container">
-      <img src="./images/game-image.png" alt="Imagem representando uma partida do jogo de Mirror Tetris"/>
-    </figure>
-  </div>
-</main>
+    <div id="presentation-container">
+      <h1 class="brand-title">TETRIS</h1>
+      <figure id="home-page-game-image-container">
+        <img src="./images/game-image.png" alt="Imagem representando uma partida do jogo de Mirror Tetris" />
+      </figure>
+    </div>
+  </main>
 </body>
 
 </html>

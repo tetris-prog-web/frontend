@@ -9,6 +9,7 @@
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="scripts/register.js" defer></script>
   <script src="scripts/format-and-validate.js" defer></script>
+  <script src="./scripts/show-password.js"></script>
 </head>
 <body>
 <main id="main-container">
@@ -53,8 +54,12 @@
         <label for="username-input"></label>
         <input id="username-input" name="username-input" class="erase" type="text" placeholder="Nome de usuário" required/>
 
-        <label for="password-input"></label>
-        <input id="password-input" name="password-input" class="erase" type="password" placeholder="Senha" required autocomplete="on"/>
+        <div id="register-password-input">
+          <label for="password-input"></label>
+          <input id="password-input" name="password-input" class="erase" type="password" placeholder="Senha" required autocomplete="on"/>
+          <iconify-icon id="open-eye" icon="bi:eye"
+              onclick="mostrarSenha('password-input', 'open-eye')"></iconify-icon>
+        </div>
 
         <button type="submit" id="register-button">
           <span id="register-button-text">CADASTRAR</span>

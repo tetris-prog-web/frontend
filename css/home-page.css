@@ -46,23 +46,36 @@
   align-items: center;
 }
 
-#login-form > input {
-  width: 100%;
-
-  color: var(--form-input-text-color);
+#login-form input {
+  width: 90%;
   font-family: League Spartan, sans-serif;
-  font-size: 1.5625rem;
+  font-size: 1.563rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 
-  
+  padding: 20px 10px 20px 10px;
+
+  background-color: rgba(0, 0, 0, 0);
+  border: rgba(0, 0, 0, 0);
+}
+
+#login-form .login-inputs {
+  width: 100%;
+
+  border: var(--form-input-background-color);
   border-radius: 10px;
   background: var(--form-input-background-color);
 
-  padding: 1.25rem 0.625rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 10px;
 }
+
+#login-form .login-inputs iconify-icon {
+  width: 1%;
+  font-size: 1.563rem;
+  cursor: pointer;
+}
+
 
 #login-error-message {
   color: var(--error-message-color);
@@ -75,7 +88,7 @@
 }
 
 .normal-input-border {
-    border: var(--form-input-background-color);
+  border: var(--form-input-background-color);
 }
 
 .error-input-border {
@@ -113,7 +126,7 @@
   text-align: center;
   padding-top: 0.625rem;
   font-family: League Spartan, sans-serif;
-  font-size: 3.25rem; 
+  font-size: 3.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -122,19 +135,19 @@
 #login-button iconify-icon {
   text-decoration: none;
   color: var(--secondary-title-color);
-  font-size: 3.125rem; 
+  font-size: 3.125rem;
 }
 
 #register-account-link {
   color: var(--main-title-color);
 
   font-family: League Spartan, sans-serif;
-  font-size: 2.25rem; 
+  font-size: 2.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-decoration-line: underline;
-  
+
   margin-bottom: 5.625rem;
 }
 
@@ -150,14 +163,14 @@
   align-items: center;
 }
 
-#home-page-game-image-container > img {
+#home-page-game-image-container>img {
   width: 100%;
   height: 90%;
 }
 
 @media screen and (max-width: 1280px) {
   #login-title {
-    font-size: 2.75rem; 
+    font-size: 2.75rem;
   }
 
   #login-button-text {
@@ -165,10 +178,10 @@
   }
 
   #register-account-link {
-    font-size: 2.0625rem; 
+    font-size: 2.0625rem;
   }
 
-  #home-page-game-image-container > img {
+  #home-page-game-image-container>img {
     width: 100%;
     height: 90%;
   }
@@ -183,12 +196,13 @@
     width: 50%;
     margin-top: 1.25rem;
   }
+
   #login-button-text {
     font-size: 3.25rem;
   }
 
   #register-account-link {
-    font-size: 2.25rem; 
+    font-size: 2.25rem;
     margin: 1.25rem;
   }
 }
