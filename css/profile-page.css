@@ -102,7 +102,6 @@
   border-radius: 10px;
   background: var(--form-input-background-color);
 
-  padding: 20px 10px 20px 10px;
   margin-bottom: 10px;
 }
 
@@ -114,12 +113,15 @@
   font-weight: 700;
   line-height: normal;
 
+  padding: 20px 10px 20px 10px;
+
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
 }
 
 .edit-input > iconify-icon {
   font-size: 1.563rem;
+  cursor: pointer;
 }
 
 #edit-user-button {

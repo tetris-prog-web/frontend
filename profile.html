@@ -17,6 +17,7 @@
     <script src="./scripts/is-authenticated.js"></script>
     <script src="./scripts/profile.js" defer></script>
     <script src="scripts/logout.js"></script>
+    <script src="./scripts/show-password.js"></script>
   </head>
   <body>
     <div id="top-right-container">
@@ -138,6 +139,8 @@
                 required
                 autocomplete="on"
               />
+              <iconify-icon id="open-eye" icon="bi:eye"
+              onclick="mostrarSenha('password-input', 'open-eye')"></iconify-icon>
               <iconify-icon icon="ic:outline-edit"></iconify-icon>
             </div>
 
