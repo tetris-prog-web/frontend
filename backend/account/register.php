@@ -14,6 +14,7 @@ try {
     if ($statement->fetchColumn() > 0) {
         header('HTTP/1.1 409 Conflict');
         $return = ['error' => true, 'msg' => "Username já cadastrado!"];
+        echo json_encode($return);
     } else {
         $query = "INSERT INTO player (name, birth_date, cpf, phone, email, username, password) VALUES (:name, :birth_date, :cpf, :phone, :email, :username, :password) ";
         $statement = $conn->prepare($query);
